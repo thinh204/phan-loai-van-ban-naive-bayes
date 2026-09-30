@@ -98,9 +98,15 @@ Toàn bộ thông số huấn luyện và số liệu thực nghiệm được b
 
 ---
 
-## 5. Kết luận nghiệm thu Plan 10
+## 5. Kết luận nghiệm thu Plan 10 & Chú thích hậu kiểm
 
-1. Hai lỗi phát hiện từ Plan 9 (nhập liệu rỗng và hậu tố `(Rỗng)` trong đoạn trích) đã được sửa triệt để cả ở mã nguồn cục bộ và hệ thống triển khai thực tế trên Streamlit Cloud.
-2. 27/27 kiểm thử tự động đạt 100%, bao gồm kiểm thử hồi quy hành vi người dùng và xuất CSV.
-3. Toàn bộ bằng chứng ảnh chụp, file JSON báo cáo và file CSV tải thực tế đã được lưu trữ có thể kiểm chứng tại thư mục [`docs/evidence/plan-10/`](evidence/plan-10/).
-4. Dự án sẵn sàng nâng cấp phiên bản tập trung lên `v1.0.4`, đóng gói bài nộp và phát hành bản sửa lỗi GitHub Release `v1.0.4`.
+1. **Khắc phục triệt để hành vi:** Hai lỗi phát hiện từ Plan 9 (nhập liệu rỗng và hậu tố `(Rỗng)` trong đoạn trích) đã được sửa triệt để cả ở mã nguồn cục bộ và hệ thống triển khai thực tế trên Streamlit Cloud (18/18 ca kiểm thử đạt 100%).
+2. **Kiểm thử tự động:** 27/27 kiểm thử tự động đạt 100%, bao gồm kiểm thử hồi quy hành vi người dùng (`tests/test_ui_behavior.py`) và xuất CSV.
+3. **Bằng chứng nghiệm thu:** Toàn bộ bằng chứng ảnh chụp, file JSON báo cáo và file CSV tải thực tế đã được lưu trữ có thể kiểm chứng tại thư mục [`docs/evidence/plan-10/`](evidence/plan-10/).
+4. **Phát hành chính thức v1.0.4:** Bản phát hành chính thức [`v1.0.4`](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/releases/tag/v1.0.4) đã được xuất bản thành công trên GitHub Release (Release ID: `400276283`) với 3 tài sản đính kèm (`phan-loai-van-ban-naive-bayes-final-submission.zip`, `MANIFEST.json`, `CHECKSUMS.sha256`). Mã băm SHA-256 tải về khớp tuyệt đối: `189918bdc3acaca2bc1e19f22ff370f475ad260b7b9b219ff9fe9ceb3a20d975`.
+
+> [!NOTE]
+> **Đính chính và chú thích về ảnh `tc18_post_release_v1_0_4.png`:**
+> - Ảnh chụp `tc18_post_release_v1_0_4.png` ghi nhận việc kiểm thử hành vi sau sửa lỗi (đầu vào rỗng hiển thị cảnh báo và không sinh dòng lịch sử mới, đầu vào hợp lệ suy diễn ra `sci.space` 93,80% trong 14,77 ms và sinh đúng 1 dòng lịch sử).
+> - Tuy nhiên, do tiến trình container Python trên Streamlit Cloud lúc đó chưa được khởi động lại (Reboot) nên `sys.modules['src.config']` trong bộ nhớ vẫn giữ giá trị chuỗi phiên bản cũ `v1.0.3` thay vì nạp lại từ tệp `src/config.py` mới của commit phát hành `14e88a2`. Do đó, ảnh `tc18_post_release_v1_0_4.png` là bằng chứng về **hành vi đã sửa**, không phải bằng chứng về **chuỗi phiên bản hiển thị v1.0.4**.
+> - Việc xác minh nghiêm ngặt phiên bản hiển thị `v1.0.4` trên Sidebar và Footer được bàn giao sang **Plan 11** tại [`docs/HAU_KIEM_V1.0.4.md`](HAU_KIEM_V1.0.4.md) cùng thư mục bằng chứng độc lập [`docs/evidence/plan-11/`](evidence/plan-11/).

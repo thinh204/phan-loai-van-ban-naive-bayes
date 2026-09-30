@@ -1,0 +1,3 @@
+﻿timestamp,text_preview,predicted_class,confidence_percent,in_vocab_tokens,is_uncertain,latency_ms
+2026-09-30 17:44:32,NASA launched a spacecraft into orbit to study distant planets and explore the s...,sci.space,99.44,14,Không,21.35
+2026-09-30 17:44:37,space,sci.space,92.55,1,Có,13.78

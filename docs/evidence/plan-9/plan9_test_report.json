@@ -1,0 +1,417 @@
+{
+  "timestamp": "2026-09-30 23:41:45",
+  "target_url": "https://phan-loai-van-ban-naive-bayes.streamlit.app/",
+  "results": {
+    "tc01_graphics": {
+      "input": "The graphics software renders three dimensional images using polygons, textures and computer animation.",
+      "pred_class": "comp.graphics",
+      "confidence": 99.6,
+      "vn_name": "Đồ họa máy tính (Computer Graphics)",
+      "latency_ms": 20.41,
+      "alerts": [
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "Chủ đề",
+            "Tên tiếng Việt",
+            "Tỷ lệ (%)"
+          ],
+          "rows": [
+            [
+              "🖥️ comp.graphics",
+              "Đồ họa máy tính (Computer Graphics)",
+              "99.60%"
+            ],
+            [
+              "🚀 sci.space",
+              "Khoa học vũ trụ (Space Science)",
+              "0.32%"
+            ],
+            [
+              "⚾ rec.sport.baseball",
+              "Thể thao - Bóng chày (Baseball)",
+              "0.05%"
+            ],
+            [
+              "🏛️ talk.politics.misc",
+              "Chính trị tổng hợp (Politics)",
+              "0.03%"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Từ khóa",
+            "TF-IDF",
+            "Mức đóng góp",
+            "Mức độ ủng hộ"
+          ],
+          "rows": [
+            [
+              "animation",
+              "0.3006",
+              "1.1369",
+              "Rất mạnh"
+            ],
+            [
+              "graphics",
+              "0.2177",
+              "1.0927",
+              "Rất mạnh"
+            ],
+            [
+              "polygons",
+              "0.3521",
+              "1.0456",
+              "Rất mạnh"
+            ],
+            [
+              "textures",
+              "0.4069",
+              "0.6665",
+              "Rất mạnh"
+            ],
+            [
+              "computer",
+              "0.2439",
+              "0.5448",
+              "Rất mạnh"
+            ],
+            [
+              "dimensional",
+              "0.3617",
+              "0.3651",
+              "Rất mạnh"
+            ],
+            [
+              "images",
+              "0.2549",
+              "0.335",
+              "Rất mạnh"
+            ],
+            [
+              "using",
+              "0.2073",
+              "0.2114",
+              "Ủng hộ tích cực"
+            ],
+            [
+              "software",
+              "0.2371",
+              "0.1954",
+              "Ủng hộ tích cực"
+            ],
+            [
+              "renders",
+              "0.3964",
+              "0.1489",
+              "Ủng hộ tích cực"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Thời gian",
+            "Đoạn trích",
+            "Nhãn dự đoán",
+            "Độ tin cậy (%)"
+          ],
+          "rows": [
+            [
+              "2026-09-30 16:41:21",
+              "The graphics software renders three dimensional images using polygons, textures ...",
+              "comp.graphics",
+              "99.6"
+            ]
+          ]
+        }
+      ],
+      "screenshot": "tc01_graphics.png",
+      "status": "PASS"
+    },
+    "tc02_baseball": {
+      "input": "The baseball pitcher threw the ball and the batter hit a home run during the game.",
+      "pred_class": "rec.sport.baseball",
+      "confidence": 99.87,
+      "vn_name": "Thể thao - Bóng chày (Baseball)",
+      "latency_ms": 32.77,
+      "alerts": [
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "screenshot": "tc02_baseball.png",
+      "status": "PASS"
+    },
+    "tc03_space": {
+      "input": "NASA launched a spacecraft into orbit to study distant planets and explore the solar system.",
+      "pred_class": "sci.space",
+      "confidence": 99.44,
+      "vn_name": "Khoa học vũ trụ (Space Science)",
+      "latency_ms": 15.59,
+      "alerts": [
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "screenshot": "tc03_space.png",
+      "status": "PASS"
+    },
+    "tc04_politics": {
+      "input": "The government and parliament debated public policy, elections and political reform.",
+      "pred_class": "talk.politics.misc",
+      "confidence": 93.7,
+      "vn_name": "Chính trị tổng hợp (Politics)",
+      "latency_ms": 15.94,
+      "alerts": [
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "screenshot": "tc04_politics.png",
+      "status": "PASS"
+    },
+    "tc05_empty": {
+      "input": "   ",
+      "alerts": [
+        "Văn bản rỗng: Văn bản không có ký tự hợp lệ. Kết quả phản ánh xác suất tiên nghiệm (prior probability) của tập huấn luyện.",
+        "Không có từ khóa nào trong văn bản nằm trong bộ từ vựng TF-IDF đã học.",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "has_result_box": true,
+      "pred_class": "rec.sport.baseball",
+      "screenshot": "tc05_empty.png",
+      "status": "OBSERVED"
+    },
+    "tc06_short": {
+      "input": "space",
+      "pred_class": "sci.space",
+      "confidence": 92.55,
+      "alerts": [
+        "Rất ít từ khóa đặc trưng: Chỉ tìm thấy 1 từ khóa nằm trong bộ từ vựng TF-IDF (['space']). Tín hiệu ngữ cảnh có thể chưa đủ phong phú.",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "uncertainty_box": "⚠️ Cảnh báo độ tin cậy: Dự đoán này có mức độ không chắc chắn cao do tín hiệu văn bản yếu, thiếu từ vựng trong từ điển TF-IDF hoặc độ tin cậy thấp (92.6%). Kết quả cần được người dùng kiểm tra kỹ.",
+      "screenshot": "tc06_short.png",
+      "status": "OBSERVED"
+    },
+    "tc07_oov": {
+      "input": "zxqvbnm qqqzxvv",
+      "pred_class": "rec.sport.baseball",
+      "confidence": 26.66,
+      "alerts": [
+        "Từ vựng nằm ngoài từ điển (OOV): Không có từ khóa nào trong văn bản xuất hiện trong bộ từ vựng TF-IDF đã học. Dự đoán hoàn toàn dựa trên phân bố tiên nghiệm giữa các lớp.",
+        "Độ tin cậy thấp (< 60%): Mô hình đạt độ tin cậy 26.66% (dưới ngưỡng cảnh báo 60%). Kết quả mang tính tham khảo và có sự phân vân giữa các lớp cạnh tranh.",
+        "Không có từ khóa nào trong văn bản nằm trong bộ từ vựng TF-IDF đã học.",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "uncertainty_box": "⚠️ Cảnh báo độ tin cậy: Dự đoán này có mức độ không chắc chắn cao do tín hiệu văn bản yếu, thiếu từ vựng trong từ điển TF-IDF hoặc độ tin cậy thấp (26.7%). Kết quả cần được người dùng kiểm tra kỹ.",
+      "screenshot": "tc07_oov.png",
+      "status": "PASS"
+    },
+    "tc08_low_conf": {
+      "input": "baseball game software render satellite government debate",
+      "pred_class": "sci.space",
+      "confidence": 45.56,
+      "alerts": [
+        "Độ tin cậy thấp (< 60%): Mô hình đạt độ tin cậy 45.56% (dưới ngưỡng cảnh báo 60%). Kết quả mang tính tham khảo và có sự phân vân giữa các lớp cạnh tranh.",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "uncertainty_box": "⚠️ Cảnh báo độ tin cậy: Dự đoán này có mức độ không chắc chắn cao do tín hiệu văn bản yếu, thiếu từ vựng trong từ điển TF-IDF hoặc độ tin cậy thấp (45.6%). Kết quả cần được người dùng kiểm tra kỹ.",
+      "screenshot": "tc08_low_conf.png",
+      "status": "PASS"
+    },
+    "tc09_explanation": {
+      "input": "Hubble space telescope orbit astronaut cosmic galaxy exploration",
+      "pred_class": "sci.space",
+      "confidence": 99.65,
+      "tables": [
+        {
+          "headers": [
+            "Chủ đề",
+            "Tên tiếng Việt",
+            "Tỷ lệ (%)"
+          ],
+          "rows": [
+            [
+              "🚀 sci.space",
+              "Khoa học vũ trụ (Space Science)",
+              "99.65%"
+            ],
+            [
+              "🖥️ comp.graphics",
+              "Đồ họa máy tính (Computer Graphics)",
+              "0.22%"
+            ],
+            [
+              "🏛️ talk.politics.misc",
+              "Chính trị tổng hợp (Politics)",
+              "0.08%"
+            ],
+            [
+              "⚾ rec.sport.baseball",
+              "Thể thao - Bóng chày (Baseball)",
+              "0.05%"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Từ khóa",
+            "TF-IDF",
+            "Mức đóng góp",
+            "Mức độ ủng hộ"
+          ],
+          "rows": [
+            [
+              "orbit",
+              "0.2745",
+              "1.0668",
+              "Rất mạnh"
+            ],
+            [
+              "astronaut",
+              "0.3915",
+              "0.9873",
+              "Rất mạnh"
+            ],
+            [
+              "telescope",
+              "0.3595",
+              "0.9447",
+              "Rất mạnh"
+            ],
+            [
+              "exploration",
+              "0.3468",
+              "0.9244",
+              "Rất mạnh"
+            ],
+            [
+              "hubble",
+              "0.4131",
+              "0.6401",
+              "Rất mạnh"
+            ],
+            [
+              "space",
+              "0.2086",
+              "0.5698",
+              "Rất mạnh"
+            ],
+            [
+              "galaxy",
+              "0.3829",
+              "0.3916",
+              "Rất mạnh"
+            ],
+            [
+              "cosmic",
+              "0.4014",
+              "0.3868",
+              "Rất mạnh"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Thời gian",
+            "Đoạn trích",
+            "Nhãn dự đoán",
+            "Độ tin cậy (%)"
+          ],
+          "rows": [
+            [
+              "2026-09-30 16:41:21",
+              "The graphics software renders three dimensional images using polygons, textures ...",
+              "comp.graphics",
+              "99.6"
+            ],
+            [
+              "2026-09-30 16:41:23",
+              "The baseball pitcher threw the ball and the batter hit a home run during the gam...",
+              "rec.sport.baseball",
+              "99.87"
+            ],
+            [
+              "2026-09-30 16:41:24",
+              "NASA launched a spacecraft into orbit to study distant planets and explore the s...",
+              "sci.space",
+              "99.44"
+            ],
+            [
+              "2026-09-30 16:41:26",
+              "The government and parliament debated public policy, elections and political ref...",
+              "talk.politics.misc",
+              "93.7"
+            ],
+            [
+              "2026-09-30 16:41:28",
+              "(Rỗng)",
+              "rec.sport.baseball",
+              "26.66"
+            ],
+            [
+              "2026-09-30 16:41:29",
+              "space(Rỗng)",
+              "sci.space",
+              "92.55"
+            ],
+            [
+              "2026-09-30 16:41:31",
+              "zxqvbnm qqqzxvv(Rỗng)",
+              "rec.sport.baseball",
+              "26.66"
+            ],
+            [
+              "2026-09-30 16:41:33",
+              "baseball game software render satellite government debate(Rỗng)",
+              "sci.space",
+              "45.56"
+            ],
+            [
+              "2026-09-30 16:41:34",
+              "Hubble space telescope orbit astronaut cosmic galaxy exploration(Rỗng)",
+              "sci.space",
+              "99.65"
+            ]
+          ]
+        }
+      ],
+      "screenshot": "tc09_explanation.png",
+      "status": "PASS"
+    },
+    "tc10_history": {
+      "history_rows_count": 24,
+      "history_preview": [
+        "Chủ đềTên tiếng ViệtTỷ lệ (%)",
+        "🚀 sci.spaceKhoa học vũ trụ (Space Science)99.65%",
+        "🖥️ comp.graphicsĐồ họa máy tính (Computer Graphics)0.22%",
+        "🏛️ talk.politics.miscChính trị tổng hợp (Politics)0.08%",
+        "⚾ rec.sport.baseballThể thao - Bóng chày (Baseball)0.05%"
+      ],
+      "screenshot": "tc10_history.png",
+      "status": "PASS"
+    },
+    "tc11_csv": {
+      "csv_saved_path": "tc11_downloaded_history.csv",
+      "header": "timestamp,text_preview,predicted_class,confidence_percent,in_vocab_tokens,is_uncertain,latency_ms",
+      "row_count": 9,
+      "sample_rows": [
+        "2026-09-30 16:41:21,\"The graphics software renders three dimensional images using polygons, textures ...\",comp.graphics,99.6,13,Không,20.41",
+        "2026-09-30 16:41:23,The baseball pitcher threw the ball and the batter hit a home run during the gam...,rec.sport.baseball,99.87,12,Không,32.77",
+        "2026-09-30 16:41:24,NASA launched a spacecraft into orbit to study distant planets and explore the s...,sci.space,99.44,14,Không,15.59"
+      ],
+      "status": "PASS"
+    },
+    "tc12_clear_history": {
+      "cleared_clicked": true,
+      "history_rows_count": 0,
+      "screenshot": "tc12_clear_history.png",
+      "status": "PASS"
+    },
+    "tc13_reload": {
+      "input": "Astronomers observe deep space stellar explosion with radio telescopes.",
+      "pred_class": "sci.space",
+      "confidence": 93.89,
+      "screenshot": "tc13_reload.png",
+      "status": "PASS"
+    }
+  }
+}

@@ -34,10 +34,10 @@ Repository đã được chuẩn hóa 100% để tương thích với môi trư�
 
 5. **Xác nhận hoạt động và URL chính thức:**
    - **URL triển khai chính thức**: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
-   - **Kết quả kiểm tra & khắc phục quyền truy cập (Plan 5)**:
+   - **Kết quả kiểm tra & khắc phục quyền truy cập (Plan 7)**:
      - **Chuyển đổi Repository**: Đã chuyển repository GitHub `thinh204/phan-loai-van-ban-naive-bayes` sang chế độ **Public** công khai qua GitHub REST API.
-     - **Cấu hình chia sẻ công khai**: Trên bảng điều khiển `https://share.streamlit.io`, chủ sở hữu ứng dụng vào **Settings** -> **Sharing** -> Đảm bảo mục **Viewer authorization** ở trạng thái **Public** (cho phép người dùng truy cập trực tiếp không cần đăng nhập tài khoản).
-     - **Máy chủ phản hồi**: Hạ tầng Nginx/Google Cloud của Streamlit Community Cloud phản hồi trực tiếp, sẵn sàng phục vụ trình diễn.
+     - **Cấu hình chia sẻ công khai**: Trên bảng điều khiển `https://share.streamlit.io`, cấu hình quyền truy cập **Viewer authorization** chuyển sang **Public** (cho phép người dùng truy cập trực tiếp không cần đăng nhập tài khoản).
+     - **Kiểm thử thực tế từ phiên ẩn danh**: Ứng dụng đã được kiểm tra trực tiếp từ phiên khách ẩn danh (Incognito), hiển thị trọn vẹn giao diện `v1.0.3 – Plan 6` và thực hiện phân loại văn bản tức thì.
 
 ---
 

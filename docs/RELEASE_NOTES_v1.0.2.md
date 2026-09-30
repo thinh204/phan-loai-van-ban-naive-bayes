@@ -67,7 +67,7 @@ Dự án tuân thủ nghiêm ngặt nguyên tắc khoa học: **không huấn lu
 
 | Chỉ số thực nghiệm | Mô hình cơ sở (`alpha=1.0`) | Mô hình tối ưu (`alpha=0.1`) | Mức độ cải thiện |
 | :--- | :---: | :---: | :---: |
-| **5-Fold Cross-Validation F1** | 89,32% | **91,47%** | **+2,15%** |
+| **5-Fold Cross-Validation F1** | 88,55% | **90,28%** | **+1,73%** |
 | **Test Accuracy** | 87,18% | **88,52%** | **+1,34%** |
 | **Test Macro F1** | 86,87% | **88,33%** | **+1,46%** |
 | **Test Weighted F1** | 87,09% | **88,49%** | **+1,40%** |

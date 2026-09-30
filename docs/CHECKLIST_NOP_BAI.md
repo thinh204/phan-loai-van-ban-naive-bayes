@@ -24,7 +24,7 @@
 | **9** | **Kịch bản thuyết trình & Demo** | `docs/thuyet-trinh.md`, `docs/DEMO_SCRIPT.md`, `docs/DIEN_TAP_BAO_VE.md` | ✅ Đầy đủ | Phân bổ thời lượng chi tiết 9 phút cho 3 thành viên, câu thoại gợi ý và thao tác UI. |
 | **10** | **Bộ câu hỏi phản biện (Q&A)** | `docs/DEFENSE_QA.md` | ✅ Đầy đủ | 12 nhóm câu hỏi trọng tâm thường gặp từ hội đồng giảng viên. |
 | **11** | **Biên bản nghiệm thu chức năng** | `docs/NGHIEM_THU.md` | ✅ Đầy đủ | Nghiệm thu 11 ca kiểm thử thực tế (TC01 - TC11) đạt 100%. |
-| **12** | **URL ứng dụng trực tuyến** | [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app) | ✅ Hoạt động | Triển khai trên Streamlit Community Cloud và sẵn sàng chạy nội bộ `localhost:8501`. |
+| **12** | **URL ứng dụng trực tuyến** | [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app) | ⏳ Đang chờ mở quyền | Container Cloud phản hồi 200 OK (`/healthz`). Đang chờ chủ tài khoản bật Viewer Public (Plan 8). Chạy nội bộ `localhost:8501` sẵn sàng 100%. |
 | **13** | **Gói nộp bài nén (ZIP)** | `release/phan-loai-van-ban-naive-bayes-final-submission.zip` | ✅ Đã nén | Gói nén chứa trọn vẹn toàn bộ dự án, vượt qua kiểm tra toàn vẹn môi trường sạch. |
 
 ---

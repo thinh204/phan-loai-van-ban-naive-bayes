@@ -6,6 +6,14 @@
 - **Tệp khởi chạy (Entrypoint)**: `app.py`
 - **Địa chỉ URL kỳ vọng**: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
 
+> [!IMPORTANT]
+> **Đính chính và cập nhật thực nghiệm (30/09/2026 - Plan 8):**
+> Qua kiểm tra mạng thực tế ghi nhận ngày 30/09/2026:
+> 1. Container ứng dụng đang hoạt động và đáp ứng bình thường, endpoint `https://phan-loai-van-ban-naive-bayes.streamlit.app/healthz` phản hồi `HTTP 200 OK` với nội dung `{"status":"ok"}`.
+> 2. Tên miền subdomain đã được ánh xạ chính xác vào container của dự án trên hạ tầng Google Cloud của Streamlit.
+> 3. Nguyên nhân duy nhất khiến khách chưa đăng nhập nhận mã 404 (`/errors/not_found`) là do cài đặt **Viewer authorization** trên Streamlit Community Cloud chưa được chuyển sang **Public (Anyone with the link can view)**.
+> Toàn bộ log mạng và bằng chứng thực tế được lưu tại [`docs/evidence/plan-8/`](evidence/plan-8/) và [`docs/NGHIEM_THU_PLAN_8.md`](NGHIEM_THU_PLAN_8.md).
+
 ---
 
 ## 1. Hiện tượng ghi nhận từ kiểm tra mạng thực tế

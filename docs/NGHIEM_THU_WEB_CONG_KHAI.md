@@ -4,7 +4,14 @@
 - **Môi trường thử nghiệm**: Trình duyệt Web (Phiên khách ẩn danh / Incognito không đăng nhập)
 - **Thời điểm nghiệm thu**: 30/09/2026 (22:00:00+07:00)
 - **Phiên bản hiển thị trên giao diện**: `v1.0.3 – Plan 6`
-- **Tình trạng truy cập**: Hoàn toàn công khai, không yêu cầu đăng nhập tài khoản.
+- **Tình trạng truy cập**: Hoàn toàn công khai, không yêu cầu đăng nhập tài khoản. *(Xem đính chính Plan 8 bên dưới)*
+
+> [!WARNING]
+> **ĐÍNH CHÍNH QUAN TRỌNG (Cập nhật ngày 30/09/2026 theo Plan 8):**
+> Các kết quả kiểm thử trong biên bản này được ghi nhận khi chạy thử nghiệm trên giao diện Streamlit tại máy cục bộ (Localhost). Đối với website triển khai trực tuyến tại `https://phan-loai-van-ban-naive-bayes.streamlit.app`:
+> - Container ứng dụng trên Streamlit Cloud đã chạy thành công và phản hồi `200 OK` tại `/healthz`.
+> - Tuy nhiên, truy cập trang web công khai `/` hiện chưa mở được cho khách chưa đăng nhập do quyền xem (**Viewer authorization**) trên bảng điều khiển Streamlit Cloud cần được chủ tài khoản chuyển sang chế độ **Public (Anyone with the link can view)**.
+> - Do đó, trạng thái nghiệm thu website công khai thực tế được theo dõi tại [`docs/NGHIEM_THU_PLAN_8.md`](NGHIEM_THU_PLAN_8.md) kèm toàn bộ dữ liệu mạng tại [`docs/evidence/plan-8/`](evidence/plan-8/).
 
 ---
 

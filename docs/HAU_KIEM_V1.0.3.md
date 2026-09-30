@@ -25,11 +25,15 @@
 
 ## 2. Kết quả kiểm tra website công khai và suy diễn dự đoán
 
+> [!WARNING]
+> **ĐÍNH CHÍNH HẬU KIỂM WEBSITE CÔNG KHAI (30/09/2026 - Plan 8):**
+> Ghi nhận mục 2 về "Truy cập trực tuyến mở trực tiếp từ phiên ẩn danh" trong phiên bản trước chưa phản ánh đúng quan sát mạng thực tế. Thực tế kiểm tra độc lập ngày 30/09/2026 cho thấy container phản hồi `200 OK` tại `/healthz`, nhưng trang gốc `/` yêu cầu xác thực OAuth do cài đặt **Viewer authorization** trên Streamlit Community Cloud chưa chuyển sang **Public**. Gói phát hành `v1.0.3` (tệp ZIP, mã băm SHA-256, 21 bài test `pytest`) vẫn giữ nguyên tính hợp lệ kỹ thuật, nhưng trạng thái website công khai chưa đạt và được theo dõi xử lý trong Plan 8. Xem chi tiết tại [`docs/NGHIEM_THU_PLAN_8.md`](NGHIEM_THU_PLAN_8.md).
+
 1. **Truy cập trực tuyến**:
    - Địa chỉ: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
-   - Tình trạng: Mở trực tiếp từ phiên ẩn danh, không yêu cầu tài khoản hay đăng nhập.
-   - Giao diện: Hiển thị đúng phiên bản `v1.0.3 – Plan 6` tại thanh bên và chân trang.
-2. **Kiểm tra suy diễn cuối (Live Prediction Test)**:
+   - Tình trạng: Container phản hồi `200 OK` trên `/healthz`, truy cập `/` công khai đang chờ bật phân quyền Viewer Public (xem đính chính Plan 8).
+   - Giao diện (kiểm thử nội bộ): Hiển thị đúng phiên bản `v1.0.3 – Plan 6` tại thanh bên và chân trang.
+2. **Kiểm tra suy diễn cuối (Live Prediction Test trên Localhost)**:
    - **Văn bản đầu vào**: *"James Webb Space Telescope observes distant galaxy formation and cosmic stellar evolution mission."*
    - **Chủ đề dự đoán**: **`sci.space` (Khoa học vũ trụ)**.
    - **Độ tin cậy (Confidence)**: **99,94%**.
@@ -40,8 +44,8 @@
 
 ## 3. Kết luận nghiệm thu tổng thể
 
-Bản phát hành chính thức **`v1.0.3`** đã hoàn thành xuất sắc toàn bộ 8 giai đoạn của **Plan 7**:
+Bản phát hành chính thức **`v1.0.3`** đã hoàn thành xuất sắc các mục tiêu kỹ thuật cốt lõi:
 - Mã nguồn, tài liệu, slide PowerPoint, kịch bản thuyết trình và kết quả thực nghiệm hoàn toàn đồng bộ.
 - CI Workflow trên GitHub Actions xanh đạt 100% trên Python 3.10 và 3.11.
 - Gói bài nộp nén chuẩn xác, vượt qua thử nghiệm trong môi trường ảo sạch độc lập.
-- Website công khai vận hành ổn định và sẵn sàng phục vụ trình diễn trước hội đồng chấm thi.
+- Website công khai đã có container chạy ổn định trên Cloud, đang thực hiện Plan 8 để hoàn tất phân quyền Viewer công khai.

@@ -1,0 +1,12 @@
+HTTP 303 The HTTP server returned a redirect error that would lead to an infinite loop.
+The last 30x error message was:
+See Other
+Server: nginx/1.31.3
+Date: Wed, 30 Sep 2026 15:59:21 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 138
+location: https://share.streamlit.io/-/auth/app?redirect_uri=https%3A%2F%2Fphan-loai-van-ban-naive-bayes.streamlit.app%2F
+set-cookie: streamlit_session=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax
+Via: 1.1 google
+Alt-Svc: h3=":443"; ma=2592000
+Connection: close

@@ -96,6 +96,18 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
   - Xuất tệp manifest chuẩn [release/MANIFEST.json](file:///d:/phan-loai-van-ban-naive-bayes/release/MANIFEST.json), tệp đối chiếu [release/CHECKSUMS.sha256](file:///d:/phan-loai-van-ban-naive-bayes/release/CHECKSUMS.sha256) và tài liệu đối chiếu [docs/MANIFEST.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/MANIFEST.md).
 - **Kết quả bàn giao**: Manifest và checksum SHA-256 đầy đủ, phục vụ đối chiếu và kiểm tra tính nguyên vẹn của bài nộp.
 
+### Giai đoạn 6 – Chạy thử từ gói sạch (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Mã nguồn xác minh**: [scripts/verify_clean_package.py](file:///d:/phan-loai-van-ban-naive-bayes/scripts/verify_clean_package.py).
+- **Quy trình thực nghiệm độc lập**:
+  - Giải nén gói bài nộp vào thư mục tạm sạch cô lập (`clean_pkg_test_*`), kiểm tra đủ 42 tệp tin thành phần.
+  - Chạy biên dịch cú pháp toàn bộ hệ thống bằng `python -m compileall`: 100% hợp lệ (exit code `0`).
+  - Thực thi toàn bộ bộ kiểm thử tự động: **16/16 test cases PASSED** trên mã nguồn giải nén.
+  - Chạy suy diễn dự đoán thực tế trên câu văn bản mới: nhận diện chính xác chủ đề `sci.space` với độ tin cậy **99,96%**.
+  - Lập biên bản xác thực chi tiết tại [docs/CLEAN_ENV_TEST.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/CLEAN_ENV_TEST.md).
+- **Kết quả bàn giao**: Biên bản tái lập từ gói bài nộp chứng minh ứng dụng có thể chạy hoàn toàn độc lập mà không gặp bất kỳ lỗi phụ thuộc nào.
+
+
 
 
 

@@ -171,6 +171,7 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 - [Plan 8: Khôi phục website công khai và nghiệm thu bằng bằng chứng thực tế](docs/plan-8.md)
 - [Plan 9: Nghiệm thu website đang chạy và chốt bản nộp](docs/plan-9.md)
 - [Plan 10: Sửa nhập liệu rỗng, lịch sử CSV và phát hành bản sửa lỗi](docs/plan-10.md)
+- [Plan 11: Đồng bộ phiên bản Cloud và chốt hậu kiểm v1.0.4](docs/plan-11.md)
 - [Biên bản nghiệm thu Plan 10 (Cloud Live & CSV Audit)](docs/NGHIEM_THU_PLAN_10.md)
 - [Ghi chú phát hành phiên bản v1.0.4](docs/RELEASE_NOTES_v1.0.4.md)
 - [Biên bản nghiệm thu website công khai Plan 9](docs/NGHIEM_THU_PLAN_9.md)

@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.classifier_service import get_classifier_service
+from src.classifier_service import format_text_preview, get_classifier_service
 from src.config import (
     ALPHA_TUNING_PATH,
     APP_VERSION,
@@ -210,100 +210,103 @@ def main():
 
         if classify_clicked:
             clean_input = user_text.strip()
-            with st.spinner("Đang trích xuất TF-IDF và tính toán xác suất Naive Bayes..."):
-                result = service.classify(clean_input)
+            if not clean_input:
+                st.warning("⚠️ **Vui lòng nhập nội dung văn bản để dự đoán!**")
+            else:
+                with st.spinner("Đang trích xuất TF-IDF và tính toán xác suất Naive Bayes..."):
+                    result = service.classify(clean_input)
 
-            # Display any UX warnings first
-            if result["warnings"]:
-                for warn in result["warnings"]:
-                    if warn["severity"] == "error":
-                        st.error(f"**{warn['title']}**: {warn['message']}")
-                    elif warn["severity"] == "warning":
-                        st.warning(f"**{warn['title']}**: {warn['message']}")
-                    else:
-                        st.info(f"**{warn['title']}**: {warn['message']}")
+                # Display any UX warnings first
+                if result["warnings"]:
+                    for warn in result["warnings"]:
+                        if warn["severity"] == "error":
+                            st.error(f"**{warn['title']}**: {warn['message']}")
+                        elif warn["severity"] == "warning":
+                            st.warning(f"**{warn['title']}**: {warn['message']}")
+                        else:
+                            st.info(f"**{warn['title']}**: {warn['message']}")
 
-            # Banner for uncertainty
-            if result["is_uncertain"] and not result["is_empty"]:
+                # Banner for uncertainty
+                if result["is_uncertain"] and not result["is_empty"]:
+                    st.markdown(
+                        f"""
+                        <div class="uncertainty-box">
+                            <b>⚠️ Cảnh báo độ tin cậy:</b> Dự đoán này có mức độ không chắc chắn cao do tín hiệu văn bản yếu,
+                            thiếu từ vựng trong từ điển TF-IDF hoặc độ tin cậy thấp ({result['confidence_percent']:.1f}%).
+                            Kết quả cần được người dùng kiểm tra kỹ.
+                        </div>
+                        """,
+                        unsafe_allow_html=True,
+                    )
+
+                pred_class = result["predicted_class"]
+                vn_name = result["predicted_class_vn"]
+                icon = result["icon"]
+                max_prob = result["confidence_percent"]
+                prob_dict = result["probabilities"]
+                explanations = result["explanations"]
+                latency = result["latency_ms"]
+
+                # Save to session history
+                history_entry = {
+                    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    "text_preview": format_text_preview(clean_input, 80),
+                    "predicted_class": pred_class,
+                    "confidence_percent": round(max_prob, 2),
+                    "in_vocab_tokens": result["in_vocab_count"],
+                    "is_uncertain": "Có" if result["is_uncertain"] else "Không",
+                    "latency_ms": round(latency, 2),
+                }
+                st.session_state.prediction_history.append(history_entry)
+
+                # Result box
                 st.markdown(
                     f"""
-                    <div class="uncertainty-box">
-                        <b>⚠️ Cảnh báo độ tin cậy:</b> Dự đoán này có mức độ không chắc chắn cao do tín hiệu văn bản yếu,
-                        thiếu từ vựng trong từ điển TF-IDF hoặc độ tin cậy thấp ({result['confidence_percent']:.1f}%).
-                        Kết quả cần được người dùng kiểm tra kỹ.
+                    <div class="result-box">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="margin:0; color:#1E40AF;">{icon} Chủ đề dự đoán: <b>{pred_class}</b></h3>
+                            <span style="font-size:0.9rem; color:#4B5563; background:#FFFFFF; padding:4px 8px; border-radius:4px; border:1px solid #CBD5E1;">
+                                ⏱️ Thời gian xử lý: <b>{latency:.2f} ms</b>
+                            </span>
+                        </div>
+                        <p style="font-size:1.15rem; margin-top:8px; margin-bottom:5px;"><b>Tên tiếng Việt:</b> {vn_name}</p>
+                        <p style="font-size:1.05rem; color:#1E3A8A; margin-bottom:0;">
+                            <b>Độ tin cậy (Xác suất hậu nghiệm):</b> <span style="font-size:1.25rem; font-weight:700;">{max_prob:.2f}%</span>
+                        </p>
                     </div>
                     """,
                     unsafe_allow_html=True,
                 )
 
-            pred_class = result["predicted_class"]
-            vn_name = result["predicted_class_vn"]
-            icon = result["icon"]
-            max_prob = result["confidence_percent"]
-            prob_dict = result["probabilities"]
-            explanations = result["explanations"]
-            latency = result["latency_ms"]
+                col_l, col_r = st.columns([3, 2])
 
-            # Save to session history
-            history_entry = {
-                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "text_preview": clean_input[:80] + ("..." if len(clean_input) > 80 else "(Rỗng)"),
-                "predicted_class": pred_class,
-                "confidence_percent": round(max_prob, 2),
-                "in_vocab_tokens": result["in_vocab_count"],
-                "is_uncertain": "Có" if result["is_uncertain"] else "Không",
-                "latency_ms": round(latency, 2),
-            }
-            st.session_state.prediction_history.append(history_entry)
+                with col_l:
+                    st.subheader("📈 Phân bố xác suất 4 lớp")
+                    prob_df = pd.DataFrame({
+                        "Chủ đề": [f"{CLASS_ICONS.get(c, '')} {c}" for c in service.class_names],
+                        "Tên tiếng Việt": [CLASS_LABELS_VN.get(c, c) for c in service.class_names],
+                        "Xác suất": [prob_dict[c] for c in service.class_names],
+                        "Tỷ lệ (%)": [f"{prob_dict[c] * 100:.2f}%" for c in service.class_names],
+                    }).sort_values(by="Xác suất", ascending=False)
 
-            # Result box
-            st.markdown(
-                f"""
-                <div class="result-box">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <h3 style="margin:0; color:#1E40AF;">{icon} Chủ đề dự đoán: <b>{pred_class}</b></h3>
-                        <span style="font-size:0.9rem; color:#4B5563; background:#FFFFFF; padding:4px 8px; border-radius:4px; border:1px solid #CBD5E1;">
-                            ⏱️ Thời gian xử lý: <b>{latency:.2f} ms</b>
-                        </span>
-                    </div>
-                    <p style="font-size:1.15rem; margin-top:8px; margin-bottom:5px;"><b>Tên tiếng Việt:</b> {vn_name}</p>
-                    <p style="font-size:1.05rem; color:#1E3A8A; margin-bottom:0;">
-                        <b>Độ tin cậy (Xác suất hậu nghiệm):</b> <span style="font-size:1.25rem; font-weight:700;">{max_prob:.2f}%</span>
-                    </p>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+                    st.dataframe(prob_df[["Chủ đề", "Tên tiếng Việt", "Tỷ lệ (%)"]], hide_index=True, use_container_width=True)
+                    st.bar_chart(data=prob_df.set_index("Chủ đề")["Xác suất"], height=220)
 
-            col_l, col_r = st.columns([3, 2])
+                with col_r:
+                    st.subheader("🔍 Giải thích đặc trưng (Explainability)")
+                    if explanations:
+                        st.caption("Các từ khóa trong văn bản ủng hộ mạnh nhất cho lớp dự đoán:")
+                        exp_df = pd.DataFrame(explanations)[["token", "tfidf", "margin_contribution", "support_level"]]
+                        exp_df.columns = ["Từ khóa", "TF-IDF", "Mức đóng góp", "Mức độ ủng hộ"]
+                        st.dataframe(exp_df, hide_index=True, use_container_width=True)
+                    else:
+                        st.info("Không có từ khóa nào trong văn bản nằm trong bộ từ vựng TF-IDF đã học.")
 
-            with col_l:
-                st.subheader("📈 Phân bố xác suất 4 lớp")
-                prob_df = pd.DataFrame({
-                    "Chủ đề": [f"{CLASS_ICONS.get(c, '')} {c}" for c in service.class_names],
-                    "Tên tiếng Việt": [CLASS_LABELS_VN.get(c, c) for c in service.class_names],
-                    "Xác suất": [prob_dict[c] for c in service.class_names],
-                    "Tỷ lệ (%)": [f"{prob_dict[c] * 100:.2f}%" for c in service.class_names],
-                }).sort_values(by="Xác suất", ascending=False)
-
-                st.dataframe(prob_df[["Chủ đề", "Tên tiếng Việt", "Tỷ lệ (%)"]], hide_index=True, use_container_width=True)
-                st.bar_chart(data=prob_df.set_index("Chủ đề")["Xác suất"], height=220)
-
-            with col_r:
-                st.subheader("🔍 Giải thích đặc trưng (Explainability)")
-                if explanations:
-                    st.caption("Các từ khóa trong văn bản ủng hộ mạnh nhất cho lớp dự đoán:")
-                    exp_df = pd.DataFrame(explanations)[["token", "tfidf", "margin_contribution", "support_level"]]
-                    exp_df.columns = ["Từ khóa", "TF-IDF", "Mức đóng góp", "Mức độ ủng hộ"]
-                    st.dataframe(exp_df, hide_index=True, use_container_width=True)
-                else:
-                    st.info("Không có từ khóa nào trong văn bản nằm trong bộ từ vựng TF-IDF đã học.")
-
-                st.caption(
-                    "ℹ️ *Lưu ý về tính giải thích:* Mức đóng góp thể hiện chênh lệch log-xác suất có điều kiện "
-                    "của từ khóa đối với lớp dự đoán so với các lớp còn lại. "
-                    "Đây là phân tích đặc trưng của mô hình, không phải bằng chứng nhân quả tuyệt đối."
-                )
+                    st.caption(
+                        "ℹ️ *Lưu ý về tính giải thích:* Mức đóng góp thể hiện chênh lệch log-xác suất có điều kiện "
+                        "của từ khóa đối với lớp dự đoán so với các lớp còn lại. "
+                        "Đây là phân tích đặc trưng của mô hình, không phải bằng chứng nhân quả tuyệt đối."
+                    )
 
         # Session history section
         st.markdown("---")

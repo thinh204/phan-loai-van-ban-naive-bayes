@@ -272,3 +272,21 @@ def get_classifier_service() -> TextClassifierService:
         _classifier_service = TextClassifierService()
         _classifier_service.load_artifacts()
     return _classifier_service
+
+
+def format_text_preview(text: str | None, max_len: int = 80) -> str:
+    """Format text preview for UI history display and CSV export.
+
+    - Strips leading and trailing whitespaces.
+    - If text is empty, all-whitespace, or None, returns '(Rỗng)'.
+    - If length > max_len, returns first max_len characters with '...'.
+    - If length <= max_len, returns the cleaned string unchanged without '(Rỗng)'.
+    """
+    if text is None:
+        return "(Rỗng)"
+    clean = text.strip()
+    if not clean:
+        return "(Rỗng)"
+    if len(clean) > max_len:
+        return clean[:max_len] + "..."
+    return clean

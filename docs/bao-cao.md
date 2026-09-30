@@ -133,11 +133,14 @@ Trong 1.490 mẫu test, có **60 mẫu** có ít hơn hoặc bằng 2 từ vựn
 
 ## 8. Triển khai ứng dụng Web tương tác (Streamlit)
 
-Hệ thống được chuẩn hóa kiến trúc hướng dịch vụ (**Service-Oriented Architecture**):
-- **Tách tầng dịch vụ (`src/classifier_service.py`):** Lớp `TextClassifierService` độc lập đảm nhiệm nạp mô hình, tiền xử lý an toàn (xử lý an toàn văn bản rỗng, None, từ vựng ngoài từ điển OOV), trích xuất TF-IDF và tính xác suất. `app.py` chỉ tập trung xử lý giao diện người dùng.
-- **Trực quan hóa đa chiều:** Hiển thị nhãn dự đoán, độ tin cậy, thời gian xử lý (độ trễ ms), phân bố xác suất 4 lớp bằng bảng và biểu đồ cột, trích xuất top từ khóa TF-IDF.
-- **Lịch sử phiên & Xuất CSV:** Lưu trữ toàn bộ các lượt phân loại trong phiên và hỗ trợ tải báo cáo lịch sử về máy dạng tệp CSV.
-- **Đọc kết quả thực nghiệm động:** Không hard-code chỉ số; toàn bộ số liệu hiển thị trên giao diện được đọc tự động từ `results/evaluation_summary.json` với cơ chế xử lý lỗi an toàn.
+Hệ thống được chuẩn hóa kiến trúc hướng dịch vụ (**Service-Oriented Architecture**) và thiết kế giao diện đa mục đích phục vụ bảo vệ đề tài:
+- **Tách tầng dịch vụ (`src/classifier_service.py`):** Lớp `TextClassifierService` độc lập đảm nhiệm nạp mô hình, tiền xử lý an toàn (xử lý an toàn văn bản rỗng, None, từ vựng ngoài từ điển OOV), trích xuất TF-IDF, tính xác suất và tính toán mức đóng góp log-odds của từng từ khóa đối với lớp dự đoán. `app.py` chỉ tập trung xử lý giao diện người dùng.
+- **Tổ chức 4 Tab chuyên biệt phục vụ thuyết trình:**
+  1. **Tab 1 - Dự đoán & Giải thích:** Ô nhập văn bản, phân loại thời gian thực, đo độ trễ xử lý (ms), bảng và biểu đồ xác suất 4 lớp, bảng giải thích mức đóng góp của các từ khóa TF-IDF, cảnh báo độ tin cậy thấp và xuất lịch sử phiên ra file CSV.
+  2. **Tab 2 - Giới thiệu mô hình:** Trình bày trực quan quy trình pipeline `Text → Preprocessing → TF-IDF → MultinomialNB → Prediction`, công thức định lý Bayes, log-space và nguyên lý làm trơn Laplace.
+  3. **Tab 3 - Đánh giá thực nghiệm:** Nạp động kết quả từ `results/evaluation_summary.json` và `results/alpha_tuning.json`; hiển thị các metric Test Accuracy (88,52%), Macro F1 (88,33%), Classification Report, Confusion Matrix và bảng so sánh 5-Fold Cross-Validation của 8 giá trị alpha.
+  4. **Tab 4 - Giới hạn & Lưu ý:** Phân tích các giới hạn phương pháp luận về tập dữ liệu tiếng Anh, từ ngữ OOV, văn bản quá ngắn và bản chất xác suất hậu nghiệm của Naive Bayes.
+- **Đọc kết quả thực nghiệm động:** Không hard-code chỉ số; toàn bộ số liệu hiển thị trên giao diện được đọc tự động từ các tệp kết quả với cơ chế xử lý lỗi an toàn.
 
 ## 9. Kiểm thử tự động với pytest
 

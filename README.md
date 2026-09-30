@@ -161,6 +161,7 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 - [Kế hoạch và phân công](docs/ke-hoach.md)
 - [Plan 3: Đóng gói, triển khai và chuẩn bị bảo vệ](docs/plan-3.md)
 - [Plan 4: Nghiệm thu, triển khai chính thức và đóng gói bài nộp](docs/plan-4.md)
+- [Plan 5: Khắc phục nghiệm thu cuối và diễn tập bảo vệ](docs/plan-5.md)
 - [Biên bản nghiệm thu chức năng Plan 4](docs/NGHIEM_THU.md)
 - [Bằng chứng xác minh CI GitHub Actions](docs/CI_VERIFICATION.md)
 - [Hướng dẫn triển khai Streamlit Cloud](docs/DEPLOYMENT.md)

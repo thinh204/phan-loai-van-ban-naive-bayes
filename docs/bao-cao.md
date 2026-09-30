@@ -67,44 +67,91 @@ Xét câu cần phân loại **“bóng đá mới”**:
 
 ## 6. Kết quả thực nghiệm
 
-Chạy `src/run_experiment.py` với scikit-learn 1.7.2 cho **2.239** tài liệu train và **1.490** tài liệu test. Sau khi loại metadata, 63 tài liệu train và 42 tài liệu test có nội dung rỗng. Các số dưới đây được làm tròn từ [`results/metrics.json`](../results/metrics.json); tệp đó cũng lưu tham số, số mẫu theo lớp và ma trận nhầm lẫn đầy đủ.
+## 6. Kết quả thực nghiệm và tối ưu hóa siêu tham số
+
+### 6.1. So sánh cơ sở giữa Bag of Words và TF-IDF (alpha = 1.0)
+Chạy `src/run_experiment.py` với scikit-learn cho **2.239** tài liệu train và **1.490** tài liệu test:
 
 | Biểu diễn đầu vào | Accuracy | Macro F1 | Số đặc trưng |
 | --- | ---: | ---: | ---: |
 | Bag of Words (CountVectorizer) | 0,8544 | 0,8520 | 13.068 |
 | TF-IDF (TfidfVectorizer) | 0,8718 | 0,8687 | 13.068 |
 
-TF-IDF cao hơn Bag of Words **0,0174 điểm accuracy** và **0,0166 điểm macro F1** trên đúng tập test này. Đây là phép so sánh hai cách biểu diễn cùng một thuật toán, chưa chứng minh TF-IDF luôn tốt hơn trên dữ liệu khác.
+### 6.2. Tối ưu hóa siêu tham số Alpha bằng Stratified 5-Fold Cross-Validation
+Để cải thiện độ chính xác mà **hoàn toàn không rò rỉ dữ liệu test**, nhóm thực hiện tìm kiếm siêu tham số làm trơn Laplace/Lidstone `alpha` trên tập dữ liệu train thông qua Stratified 5-Fold Cross-Validation (`src/tune_alpha.py`). Mỗi fold đều độc lập fit `TfidfVectorizer` trên 4 fold huấn luyện và transform trên fold kiểm thực tế.
 
-| Lớp | F1 Bag of Words | F1 TF-IDF | Recall Bag of Words | Recall TF-IDF |
-| --- | ---: | ---: | ---: | ---: |
-| `comp.graphics` | 0,905 | 0,908 | 0,897 | 0,902 |
-| `rec.sport.baseball` | 0,889 | 0,904 | 0,892 | 0,947 |
-| `sci.space` | 0,816 | 0,835 | 0,739 | 0,855 |
-| `talk.politics.misc` | 0,797 | 0,827 | 0,900 | 0,758 |
+| Giá trị `alpha` | CV Accuracy trung bình | CV Macro F1 trung bình |
+| :---: | :---: | :---: |
+| `0.01` | 0,8982 (+/- 0,0076) | 0,8977 (+/- 0,0082) |
+| `0.05` | 0,9026 (+/- 0,0090) | 0,9023 (+/- 0,0095) |
+| **`0.10`** | **0,9026 (+/- 0,0102)** | **0,9028 (+/- 0,0107)** |
+| `0.20` | 0,9017 (+/- 0,0086) | 0,9018 (+/- 0,0091) |
+| `0.50` | 0,8973 (+/- 0,0040) | 0,8973 (+/- 0,0037) |
+| `1.00` (mặc định) | 0,8861 (+/- 0,0051) | 0,8855 (+/- 0,0049) |
+| `1.50` | 0,8740 (+/- 0,0106) | 0,8725 (+/- 0,0115) |
+| `2.00` | 0,8593 (+/- 0,0123) | 0,8553 (+/- 0,0135) |
 
-Với Bag of Words, **62/394** bài thuộc `sci.space` bị dự đoán thành `talk.politics.misc`. Con số này giảm xuống **14/394** với TF-IDF. Chiều ngược lại tăng từ **15/310** lên **45/310**. Vì vậy, điểm F1 chung tăng nhưng TF-IDF làm giảm recall của lớp chính trị. Ma trận đầy đủ nằm trong [`confusion_count.csv`](../results/confusion_count.csv) và [`confusion_tfidf.csv`](../results/confusion_tfidf.csv).
+Dựa trên điểm CV Macro F1 cao nhất trên tập train, **`alpha = 0.1`** được chọn và khóa lại để huấn luyện mô hình cuối cùng trên toàn bộ 2.239 mẫu train.
 
-Một số lỗi có thể giải thích từ dữ liệu: mẫu test số **1** thuộc `sci.space` trở thành rỗng sau khi lọc metadata; mẫu số **36** của cùng lớp chỉ còn 4 ký tự. Hai trường hợp này có rất ít tín hiệu về chủ đề. Mẫu số **0** là bài bóng chày bàn về chi phí trận đấu và có nhắc chuyện vận động chính trị, nên mô hình Bag of Words gán nhãn chính trị. Nhận xét này dựa trên xem trực tiếp mẫu sai; nó không chứng minh nguyên nhân chính xác của từng điểm dự đoán. Các tệp `errors_*.json` chỉ lưu chỉ số, nhãn thật, nhãn dự đoán và độ dài văn bản để người chạy mã có thể kiểm tra lại trên bộ dữ liệu gốc.
+### 6.3. Đánh giá mô hình tối ưu trên tập kiểm thử Test
+Đánh giá đúng MỘT LẦN trên 1.490 mẫu test độc lập ([`results/evaluation_summary.json`](../results/evaluation_summary.json)):
 
-Kết quả chỉ phản ánh bốn lớp đã chọn, cách lọc metadata và thiết lập `alpha=1`. Nhóm chưa dùng tập validation hoặc lặp nhiều lần trên bộ dữ liệu khác, nên không diễn giải chênh lệch 1–2 điểm phần trăm như một kết luận tổng quát.
+| Chỉ số | Trước tối ưu (`alpha=1.0`) | Sau tối ưu (`alpha=0.1`) | Mức cải thiện |
+| :--- | :---: | :---: | :---: |
+| **Test Accuracy** | 0,8718 (87,18%) | **0,8852 (88,52%)** | **+1,34%** |
+| **Macro Precision** | 0,8763 (87,63%) | **0,8841 (88,41%)** | **+0,78%** |
+| **Weighted Precision** | 0,8742 (87,42%) | **0,8857 (88,57%)** | **+1,15%** |
+| **Macro Recall** | 0,8657 (86,57%) | **0,8835 (88,35%)** | **+1,78%** |
+| **Weighted Recall** | 0,8718 (87,18%) | **0,8852 (88,52%)** | **+1,34%** |
+| **Macro F1-Score** | 0,8687 (86,87%) | **0,8833 (88,33%)** | **+1,46%** |
+| **Weighted F1-Score** | 0,8709 (87,09%) | **0,8849 (88,49%)** | **+1,40%** |
 
-## 7. Ưu điểm, giới hạn và hướng mở rộng
+Chi tiết từng lớp với `alpha=0.1`:
+- `comp.graphics`: Precision 0,9297 | Recall 0,9177 | F1 0,9237 (389 mẫu)
+- `rec.sport.baseball`: Precision 0,8685 | Recall 0,9320 | F1 0,8991 (397 mẫu)
+- `sci.space`: Precision 0,8865 | Recall 0,8325 | F1 0,8586 (394 mẫu)
+- `talk.politics.misc`: Precision 0,8516 | Recall 0,8516 | F1 0,8516 (310 mẫu)
 
-MNB học nhanh, cần ít tham số và có thể giải thích ảnh hưởng của từ thông qua xác suất đặc trưng theo lớp. Giả định độc lập có điều kiện không mô tả quan hệ ngữ nghĩa hoặc thứ tự dài giữa các từ. Bag of Words bỏ thứ tự; TF-IDF vẫn dựa trên thống kê từ vựng. Tài liệu ngắn, từ hiếm và chủ đề giao nhau có thể gây nhầm lẫn. Ngoài ra, điểm số từ bộ dữ liệu tiếng Anh không đo chất lượng phân loại văn bản tiếng Việt.
+## 7. Phân tích lỗi chi tiết (Error Analysis)
 
-Nếu mở rộng, nhóm có thể dùng một tập dữ liệu tiếng Việt có nhãn rõ nguồn, thử đặc trưng n-gram hoặc so sánh với một mô hình khác. Các thử nghiệm mở rộng phải dùng một tập validation riêng thay vì điều chỉnh theo test.
+Dựa trên kết quả chạy thực tế trên 1.490 mẫu test ([`results/error_analysis.json`](../results/error_analysis.json)):
+- **Dự đoán đúng:** 1.319 mẫu (88,52%).
+- **Dự đoán sai:** 171 mẫu (11,48%).
 
-## 8. Triển khai giao diện Web tương tác (Streamlit)
+### 7.1. Các cặp lớp thường nhầm lẫn nhất
+1. `sci.space` -> `rec.sport.baseball` (25 lần) & `sci.space` -> `talk.politics.misc` (25 lần): Các bài đăng về vũ trụ thảo luận ngân sách chính phủ hoặc có văn phong trao đổi thông thường.
+2. `talk.politics.misc` -> `sci.space` (23 lần) & `talk.politics.misc` -> `rec.sport.baseball` (19 lần): Các bài tranh luận chính trị nhắc tới chương trình nghiên cứu không gian hoặc vấn đề tài trợ thể thao.
+3. `sci.space` -> `comp.graphics` (16 lần): Các bài viết thiên văn học mô tả đồ họa mô phỏng, phần mềm hiển thị kính viễn vọng.
 
-Để trực quan hóa và kiểm chứng khả năng phân loại trên các văn bản mới trong thực tế, nhóm xây dựng ứng dụng web tương tác bằng thư viện **Streamlit** (`app.py`).
+### 7.2. Tác động của văn bản ngắn / thiếu từ vựng
+Trong 1.490 mẫu test, có **60 mẫu** có ít hơn hoặc bằng 2 từ vựng nằm trong bộ từ vựng TF-IDF đã học (chủ yếu do bước lọc bỏ header, footer, quote khiến văn bản chỉ còn vài từ ngắn hoặc rỗng).
+- Tỷ lệ lỗi ở nhóm ít từ vựng là **53,33%** (32/60 mẫu sai), cao hơn gấp 5 lần so với nhóm bình thường (**9,72%**). Điều này khẳng định MNB phụ thuộc mật thiết vào tần suất từ khóa mang tính phân biệt chủ đề.
 
-- **Cơ chế hoạt động:** Ứng dụng nạp mô hình `MultinomialNB` và bộ véc-tơ hóa `TfidfVectorizer` đã huấn luyện sẵn từ thư mục `models/` (được lưu bằng `joblib`), tránh việc huấn luyện lại khi người dùng gửi yêu cầu.
-- **Quy trình xử lý:** Văn bản người dùng nhập vào được chuyển đổi qua `vectorizer.transform()` (chỉ thực hiện phép chiếu không gian từ vựng train, chống rò rỉ dữ liệu). Mô hình tính điểm và trả về:
-  1. Nhãn chủ đề có xác suất hậu nghiệm cao nhất.
-  2. Phân bố xác suất của cả bốn lớp (`predict_proba`) kèm biểu đồ trực quan.
-  3. Danh sách các từ khóa có trọng số TF-IDF cao nhất trong câu đầu vào giúp giải thích kết quả dự đoán.
-- **Cách khởi chạy:** Thực hiện lệnh `streamlit run app.py` và truy cập cổng mặc định `http://localhost:8501`.
+### 7.3. Phân tích độ tin cậy thấp (Confidence < 60%)
+- Có **266 mẫu** có xác suất dự đoán cao nhất nhỏ hơn 60%. Tỷ lệ lỗi trong nhóm này lên đến **44,36%** (118/266 mẫu sai).
+- Trong khi đó, ở nhóm có độ tin cậy từ 60% trở lên (1.224 mẫu), tỷ lệ lỗi chỉ là **4,33%** (53/1.224 mẫu). Nhờ đó, ứng dụng có thể sử dụng ngưỡng 60% làm chỉ báo cảnh báo người dùng khi độ tin cậy chưa cao.
+
+## 8. Triển khai ứng dụng Web tương tác (Streamlit)
+
+Hệ thống được chuẩn hóa kiến trúc hướng dịch vụ (**Service-Oriented Architecture**):
+- **Tách tầng dịch vụ (`src/classifier_service.py`):** Lớp `TextClassifierService` độc lập đảm nhiệm nạp mô hình, tiền xử lý an toàn (xử lý an toàn văn bản rỗng, None, từ vựng ngoài từ điển OOV), trích xuất TF-IDF và tính xác suất. `app.py` chỉ tập trung xử lý giao diện người dùng.
+- **Trực quan hóa đa chiều:** Hiển thị nhãn dự đoán, độ tin cậy, thời gian xử lý (độ trễ ms), phân bố xác suất 4 lớp bằng bảng và biểu đồ cột, trích xuất top từ khóa TF-IDF.
+- **Lịch sử phiên & Xuất CSV:** Lưu trữ toàn bộ các lượt phân loại trong phiên và hỗ trợ tải báo cáo lịch sử về máy dạng tệp CSV.
+- **Đọc kết quả thực nghiệm động:** Không hard-code chỉ số; toàn bộ số liệu hiển thị trên giao diện được đọc tự động từ `results/evaluation_summary.json` với cơ chế xử lý lỗi an toàn.
+
+## 9. Kiểm thử tự động với pytest
+
+Dự án trang bị bộ kiểm thử tự động 14 test cases (`tests/test_pipeline.py`):
+1. Nạp mô hình MultinomialNB thành công.
+2. Nạp bộ véc-tơ TF-IDF thành công (13.068 đặc trưng).
+3. Dự đoán trả về nhãn hợp lệ trong 4 chủ đề.
+4. Xử lý an toàn chuỗi rỗng, khoảng trắng và giá trị None.
+5. Văn bản chứa từ ngữ ngoài từ điển (OOV) không gây lỗi crash ứng dụng.
+6. Xác suất `predict_proba` nằm trong khoảng hợp lệ [0, 1].
+7. Tổng xác suất các lớp xấp xỉ 1.0.
+8. Mô hình nhận diện chính xác 4 lớp của bài toán.
+9. Khả năng dự đoán chính xác văn bản mới chưa từng xuất hiện.
+Lệnh thực thi kiểm thử: `pytest -v` (100% passed).
 
 ## Tài liệu tham khảo
 

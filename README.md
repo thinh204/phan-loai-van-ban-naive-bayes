@@ -1,28 +1,32 @@
 # Phân loại văn bản bằng Naive Bayes đa thức (Multinomial Naive Bayes)
 
-Đề tài môn Trí tuệ nhân tạo của nhóm 3 thành viên. Dự án giải thích phương pháp Multinomial Naive Bayes kết hợp trích xuất đặc trưng TF-IDF và kiểm chứng trên bài toán phân loại chủ đề văn bản (bộ dữ liệu 20 Newsgroups).
+Đề tài môn Trí tuệ nhân tạo của nhóm 3 thành viên. Dự án nghiên cứu phương pháp Multinomial Naive Bayes kết hợp trích xuất đặc trưng TF-IDF trên bài toán phân loại chủ đề văn bản (bộ dữ liệu 20 Newsgroups).
 
-Hệ thống cung cấp pipeline xử lý dữ liệu hoàn chỉnh và **giao diện web trực quan bằng Streamlit** cho phép người dùng phân loại văn bản tức thì.
+Dự án đã được hoàn thiện và nâng cấp toàn diện (**Plan 1 & Plan 2**): kiến trúc module hóa tách biệt dịch vụ dự đoán, tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation, kiểm thử tự động với `pytest`, phân tích lỗi chi tiết và giao diện web **Streamlit** tương tác hỗ trợ lịch sử phiên làm việc cùng tính năng xuất CSV.
 
 ---
 
 ## Cấu trúc mã nguồn
 
+- `src/config.py`: Quản lý tập trung đường dẫn, nhãn lớp và cấu hình hệ thống.
+- `src/classifier_service.py`: Service dự đoán độc lập (nạp mô hình, tiền xử lý, trích xuất TF-IDF, tính xác suất `predict_proba`, trích xuất từ khóa tiêu biểu).
 - `src/prepare_data.py`: Đọc dataset bằng Pandas, kiểm tra phân bố nhãn, dữ liệu thiếu và trùng lặp.
-- `src/tfidf_pipeline.py`: Chia tập train/test và trích xuất TF-IDF chuẩn xác, kiểm soát tuyệt đối không rò rỉ dữ liệu (chỉ `fit_transform` trên `X_train`, `transform` trên `X_test`).
-- `src/train_evaluate.py`: Huấn luyện mô hình `MultinomialNB`, đánh giá toàn diện các chỉ số thực nghiệm và lưu trữ model.
-- `app.py`: Giao diện ứng dụng web Streamlit phân loại văn bản trực tiếp.
-- `models/`: Chứa mô hình Naive Bayes (`naive_bayes_model.joblib`) và bộ véc-tơ hóa (`tfidf_vectorizer.joblib`).
-- `results/`: Báo cáo chỉ số thực tế (`metrics.json`, `evaluation_summary.json`, `confusion_tfidf.csv`).
-- `docs/`: Báo cáo chi tiết lý thuyết, kịch bản thuyết trình và hướng dẫn thực nghiệm.
+- `src/tfidf_pipeline.py`: Phân chia train/test và vector hóa TF-IDF nghiêm ngặt không rò rỉ dữ liệu (`fit_transform` chỉ trên train, `transform` trên test).
+- `src/tune_alpha.py`: Tối ưu hóa siêu tham số `alpha` bằng Stratified 5-Fold Cross-Validation trên tập train và khóa tham số để đánh giá mô hình cuối cùng trên test set.
+- `src/train_evaluate.py`: Huấn luyện và đánh giá mô hình Multinomial Naive Bayes cơ sở (`alpha=1.0`).
+- `src/error_analysis.py`: Phân tích lỗi chuyên sâu trên tập test (độ tin cậy thấp, văn bản ít từ vựng, các cặp lớp nhầm lẫn).
+- `app.py`: Giao diện web Streamlit nâng cao (phân loại tức thì, hiển thị xác suất, top từ khóa, lịch sử phiên, tải file CSV).
+- `tests/test_pipeline.py`: Bộ kiểm thử tự động toàn diện với `pytest` (14 test cases).
+- `results/`: Chứa các kết quả thực nghiệm động (`evaluation_summary.json`, `alpha_tuning.json`, `alpha_tuning.csv`, `error_analysis.json`, `confusion_tfidf.csv`).
+- `docs/`: Báo cáo lý thuyết, kế hoạch thực hiện, phân tích lỗi và kịch bản thuyết trình.
 
 ---
 
-## Hướng dẫn cài đặt và sử dụng
+## Hướng dẫn cài đặt và khởi chạy
 
-### 1. Cài đặt môi trường
+### 1. Cài đặt môi trường chuẩn
 
-Khởi tạo môi trường ảo Python (khuyến nghị Python 3.10+) và cài đặt các phụ thuộc:
+Khởi tạo môi trường ảo Python (khuyến nghị Python 3.10+) và cài đặt phụ thuộc:
 
 ```powershell
 python -m venv .venv
@@ -30,61 +34,127 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 2. Thực thi pipeline dữ liệu và huấn luyện
+### 2. Chạy kiểm thử tự động với pytest
 
-Bạn có thể chạy kiểm tra từng giai đoạn hoặc chạy toàn bộ pipeline:
+Kiểm tra toàn bộ 14 test cases cho pipeline, mô hình và các trường hợp biên:
 
 ```powershell
-# Giai đoạn 1: Chuẩn bị và kiểm tra dữ liệu bằng Pandas
-python src/prepare_data.py
-
-# Giai đoạn 2: Trích xuất đặc trưng TF-IDF chống rò rỉ dữ liệu
-python src/tfidf_pipeline.py
-
-# Giai đoạn 3: Huấn luyện và đánh giá mô hình Naive Bayes
-python src/train_evaluate.py
+pytest -v
 ```
 
-### 3. Khởi chạy giao diện web Streamlit
+### 3. Tối ưu hóa mô hình và phân tích lỗi
 
-Khởi chạy ứng dụng phân loại văn bản:
+```powershell
+# Chạy tối ưu hóa tham số alpha bằng Stratified 5-Fold Cross-Validation
+python src/tune_alpha.py
+
+# Chạy phân tích lỗi chi tiết trên tập kiểm thử test
+python src/error_analysis.py
+```
+
+### 4. Khởi chạy giao diện web Streamlit
 
 ```powershell
 streamlit run app.py
 ```
 
-Ứng dụng sẽ mở giao diện tại: `http://localhost:8501`. Người dùng có thể nhập văn bản tùy ý hoặc chọn các đoạn văn mẫu để nhận dự đoán phân loại chủ đề kèm phân bố xác suất chi tiết.
+Truy cập ứng dụng tại: `http://localhost:8501`. Ứng dụng cung cấp:
+- Ô nhập văn bản tiếng Anh hoặc chọn bài viết mẫu.
+- Phân loại chủ đề và hiển thị xác suất của 4 lớp kèm biểu đồ trực quan.
+- Trích xuất top từ khóa TF-IDF đóng góp vào quyết định của mô hình.
+- Theo dõi thời gian xử lý (độ trễ ms) và lưu vết lịch sử các lần phân loại.
+- Tải toàn bộ lịch sử dự đoán trong phiên về máy dưới định dạng file CSV.
+
+---
+
+## Hướng dẫn chạy trên môi trường khác
+
+### Chạy bằng Visual Studio Code (VS Code)
+1. Mở thư mục dự án trong VS Code: `File -> Open Folder...`.
+2. Mở Command Palette (`Ctrl + Shift + P`) -> chọn `Python: Select Interpreter` -> chọn trình thông dịch trong `.\.venv\Scripts\python.exe`.
+3. Mở Terminal tích hợp (`Ctrl + ~`) và chạy:
+   ```powershell
+   pytest -v
+   streamlit run app.py
+   ```
+
+### Chạy bằng Google Colab
+1. Nén thư mục repo hoặc clone từ GitHub vào môi trường Colab:
+   ```python
+   !git clone https://github.com/thinh204/phan-loai-van-ban-naive-bayes.git
+   %cd phan-loai-van-ban-naive-bayes
+   !pip install -r requirements.txt
+   !pip install localtunnel
+   ```
+2. Chạy kiểm thử và tối ưu:
+   ```python
+   !pytest -v
+   !python src/tune_alpha.py
+   ```
+3. Chạy giao diện Streamlit với LocalTunnel:
+   ```python
+   !streamlit run app.py & npx localtunnel --port 8501
+   ```
 
 ---
 
 ## Kết quả thực nghiệm thực tế
 
-Mô hình được đánh giá trên tập kiểm thử độc lập gồm **1.490 mẫu** (huấn luyện trên **2.239 mẫu**):
+Mọi số liệu dưới đây được đo lường trực tiếp từ việc thực thi mã nguồn trên **1.490 mẫu test** (sau khi học từ **2.239 mẫu train**):
 
-| Chỉ số đánh giá | Kết quả thực tế |
-| :--- | :---: |
-| **Accuracy (Độ chính xác tổng thể)** | **87.18%** (0.8718) |
-| **Macro Precision** | **87.63%** (0.8763) |
-| **Weighted Precision** | **87.42%** (0.8742) |
-| **Macro Recall** | **86.57%** (0.8657) |
-| **Weighted Recall** | **87.18%** (0.8718) |
-| **Macro F1-Score** | **86.87%** (0.8687) |
-| **Weighted F1-Score** | **87.09%** (0.8709) |
+### 1. Quá trình chọn siêu tham số Alpha (Stratified 5-Fold CV trên tập Train)
 
-### Chi tiết từng lớp (Classification Report)
+| Giá trị Alpha | CV Accuracy trung bình | CV Macro F1 trung bình | Nhận xét |
+| :---: | :---: | :---: | :--- |
+| `0.01` | 89.82% (+/- 0.76%) | 89.77% (+/- 0.82%) | Độ trơn thấp |
+| `0.05` | 90.26% (+/- 0.90%) | 90.23% (+/- 0.95%) | Hiệu năng cao |
+| **`0.10`** | **90.26% (+/- 1.02%)** | **90.28% (+/- 1.07%)** | **Tối ưu nhất - Được chọn** |
+| `0.20` | 90.17% (+/- 0.86%) | 90.18% (+/- 0.91%) | Ổn định |
+| `0.50` | 89.73% (+/- 0.40%) | 89.73% (+/- 0.37%) | Giảm nhẹ |
+| `1.00` | 88.61% (+/- 0.51%) | 88.55% (+/- 0.49%) | Mức Laplace mặc định |
+| `1.50` | 87.40% (+/- 1.06%) | 87.25% (+/- 1.15%) | Quá trơn |
+| `2.00` | 85.93% (+/- 1.23%) | 85.53% (+/- 1.35%) | Điểm số giảm rõ rệt |
+
+### 2. Đánh giá mô hình tối ưu trên tập kiểm thử Test (Alpha = 0.1)
+
+| Chỉ số đánh giá | Trước tối ưu (`alpha=1.0`) | **Sau tối ưu (`alpha=0.1`)** | Mức cải thiện |
+| :--- | :---: | :---: | :---: |
+| **Test Accuracy** | 87.18% | **88.52%** | **+1.34%** |
+| **Macro Precision** | 87.63% | **88.41%** | **+0.78%** |
+| **Weighted Precision** | 87.42% | **88.57%** | **+1.15%** |
+| **Macro Recall** | 86.57% | **88.35%** | **+1.78%** |
+| **Weighted Recall** | 87.18% | **88.52%** | **+1.34%** |
+| **Macro F1-Score** | 86.87% | **88.33%** | **+1.46%** |
+| **Weighted F1-Score** | 87.09% | **88.49%** | **+1.40%** |
+
+### 3. Chi tiết Classification Report theo từng lớp (`alpha=0.1`)
 
 | Chủ đề (Class) | Precision | Recall | F1-Score | Số mẫu test (Support) |
 | :--- | :---: | :---: | :---: | :---: |
-| `comp.graphics` (Đồ họa máy tính) | 0.9141 | 0.9023 | 0.9082 | 389 |
-| `rec.sport.baseball` (Bóng chày) | 0.8644 | 0.9471 | 0.9038 | 397 |
-| `sci.space` (Khoa học không gian) | 0.8160 | 0.8553 | 0.8352 | 394 |
-| `talk.politics.misc` (Chính trị) | 0.9109 | 0.7581 | 0.8275 | 310 |
+| `comp.graphics` | 0.9297 | 0.9177 | 0.9237 | 389 |
+| `rec.sport.baseball` | 0.8685 | 0.9320 | 0.8991 | 397 |
+| `sci.space` | 0.8865 | 0.8325 | 0.8586 | 394 |
+| `talk.politics.misc` | 0.8516 | 0.8516 | 0.8516 | 310 |
+
+---
+
+## Phân tích lỗi thực nghiệm
+
+Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](results/error_analysis.json)):
+- **Dự đoán đúng:** 1.319 mẫu (**88.52%**)
+- **Dự đoán sai:** 171 mẫu (**11.48%**)
+- **Các cặp lớp thường nhầm lẫn nhất:**
+  1. `sci.space` -> `rec.sport.baseball` (25 lần) & `sci.space` -> `talk.politics.misc` (25 lần)
+  2. `talk.politics.misc` -> `sci.space` (23 lần) & `talk.politics.misc` -> `rec.sport.baseball` (19 lần)
+  3. `sci.space` -> `comp.graphics` (16 lần)
+- **Tác động của độ dài văn bản và từ vựng:** 60 mẫu có ít hơn hoặc bằng 2 từ vựng TF-IDF (do lọc bỏ header/footer/quote) có tỷ lệ lỗi lên tới **53.33%** (so với chỉ 9.72% ở các văn bản bình thường).
+- **Phân tích độ tin cậy thấp (ngưỡng < 60%):** Có 266 mẫu có độ tin cậy < 60%; tỷ lệ dự đoán sai trong nhóm này lên đến **44.36%** (so với chỉ 4.33% ở nhóm có độ tin cậy >= 60%).
 
 ---
 
 ## Tài liệu liên quan
 
 - [Kế hoạch và phân công](docs/ke-hoach.md)
-- [Báo cáo lý thuyết, ví dụ tính tay và kết quả](docs/bao-cao.md)
-- [Hướng dẫn chạy thực nghiệm chi tiết](docs/chay-thu-nghiem.md)
-- [Slide thuyết trình](presentation/phan-loai-van-ban-naive-bayes-v2.pptx) và [Kịch bản thuyết trình](docs/thuyet-trinh.md)
+- [Báo cáo lý thuyết và kết quả mở rộng](docs/bao-cao.md)
+- [Hướng dẫn chạy thực nghiệm](docs/chay-thu-nghiem.md)
+- [Kịch bản thuyết trình](docs/thuyet-trinh.md) và Slide PowerPoint

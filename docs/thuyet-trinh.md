@@ -19,9 +19,9 @@ Tệp PowerPoint: [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](../pres
 5. **Mô hình:** Điểm mỗi lớp gồm xác suất tiên nghiệm và đóng góp của các từ. Dùng log để tính ổn định; làm trơn `α=1` xử lý từ chưa xuất hiện ở lớp.
 6. **Ví dụ tính tay:** Với câu “bóng đá mới”, điểm Thể thao `9/5488` lớn hơn Công nghệ `2/5488`, nên dự đoán Thể thao. Đây là ví dụ tự tạo để giải thích công thức.
 7. **Thiết kế thực nghiệm:** 2.239 mẫu train, 1.490 mẫu test, bốn lớp, hai pipeline có cùng MNB. Loại header, chữ ký, phần trích dẫn để giảm tín hiệu nhãn ngoài nội dung.
-8. **Kết quả:** Accuracy là 85,44% với Bag of Words và 87,18% với TF-IDF. Macro F1 lần lượt là 85,20% và 86,87%. Số liệu lấy trực tiếp từ `results/metrics.json`.
-9. **Phân tích lỗi:** TF-IDF giảm nhầm lẫn Không gian sang Chính trị từ 62 xuống 14, nhưng tăng nhầm lẫn chiều ngược từ 15 lên 45. Vì thế cần xem chỉ số từng lớp, không chỉ nhìn accuracy chung.
-10. **Kết luận & Demo sản phẩm:** MNB dễ giải thích và cho kết quả hữu ích trong phạm vi thử nghiệm. Nhóm đã xây dựng hoàn chỉnh ứng dụng web bằng Streamlit (`streamlit run app.py`) để minh họa phân loại văn bản trực tiếp theo thời gian thực. Hướng mở rộng tiếp theo là thử nghiệm dữ liệu tiếng Việt có nhãn và validation riêng.
+8. **Kết quả:** Sau khi tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation trên tập train (chọn `alpha=0.1`), Accuracy trên tập test đạt 88,52% (tăng từ 87,18% ban đầu) và Macro F1 đạt 88,33% (tăng từ 86,87%). Số liệu lấy trực tiếp từ `results/evaluation_summary.json`.
+9. **Phân tích lỗi:** Trên 1.490 mẫu test có 1.319 mẫu đúng và 171 mẫu sai. Các văn bản có ít từ vựng TF-IDF (<= 2 từ) có tỷ lệ sai lên tới 53,33%. Ngưỡng tin cậy thấp (< 60%) có tỷ lệ sai 44,36%, đóng vai trò cảnh báo quan trọng trong ứng dụng.
+10. **Kết luận & Demo sản phẩm:** MNB học nhanh và dễ giải thích. Hệ thống đã chuẩn hóa kiến trúc hướng dịch vụ với `TextClassifierService`, bộ kiểm thử tự động 14 test cases (`pytest -v`), và giao diện web Streamlit nâng cao (`streamlit run app.py`) hỗ trợ đo độ trễ xử lý, phân bố xác suất và tải lịch sử dự đoán ra CSV.
 
 ## Câu hỏi có thể gặp
 

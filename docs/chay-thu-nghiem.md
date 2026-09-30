@@ -1,10 +1,13 @@
-# Cách chạy thực nghiệm và ứng dụng
+# Hướng dẫn chạy thực nghiệm và kiểm thử
 
-Dự án yêu cầu Python 3.10 trở lên. Dữ liệu 20 Newsgroups được lưu trữ trong `data/cache` và không đưa lên Git.
+Tài liệu này mô tả chi tiết quy trình chạy toàn diện các thành phần của hệ thống phân loại văn bản Naive Bayes đa thức, bao gồm kiểm thử tự động, tối ưu siêu tham số, phân tích lỗi và khởi chạy giao diện web.
 
-## 1. Cài đặt môi trường
+## 1. Yêu cầu môi trường
 
-Trong thư mục gốc của repository:
+- Python 3.10 trở lên.
+- Bộ nhớ đệm dữ liệu 20 Newsgroups đặt tại `data/cache`.
+
+Khởi tạo môi trường ảo và cài đặt thư viện:
 
 ```powershell
 python -m venv .venv
@@ -12,41 +15,87 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 2. Các bước chạy pipeline thực nghiệm
+## 2. Kiểm thử tự động với pytest
 
-### Giai đoạn 1: Đọc và phân tích dữ liệu với Pandas
+Hệ thống tích hợp bộ kiểm thử tự động 14 test cases kiểm tra từ việc nạp mô hình, trích xuất đặc trưng, tính xác suất đến xử lý ngoại lệ (văn bản rỗng, từ vựng ngoài từ điển OOV):
+
+```powershell
+pytest -v
+```
+
+Kết quả mong đợi: `14 passed`.
+
+## 3. Quy trình thực nghiệm và tối ưu mô hình
+
+### Bước 1: Khảo sát dữ liệu với Pandas
 ```powershell
 python src/prepare_data.py
 ```
-Lệnh này đọc dữ liệu, kiểm tra các nhãn, số lượng mẫu, đếm các bản ghi rỗng/khoảng trắng và kiểm tra dữ liệu trùng lặp.
+Kiểm tra số lượng mẫu, phân bố 4 lớp, kiểm tra dữ liệu thiếu Null/NaN và các văn bản rỗng sau khi loại bỏ metadata.
 
-### Giai đoạn 2: Phân chia tập dữ liệu và trích xuất TF-IDF
+### Bước 2: Phân chia tập dữ liệu và trích xuất TF-IDF
 ```powershell
 python src/tfidf_pipeline.py
 ```
-Thực hiện chia dữ liệu thành tập Train và Test. Khởi tạo `TfidfVectorizer` với nguyên tắc chống rò rỉ dữ liệu (data leakage) nghiêm ngặt:
-- `fit_transform()` chỉ chạy trên `X_train`.
-- `transform()` chạy trên `X_test`.
-- Kiểm tra tự động không có từ vựng riêng của tập test lọt vào bộ từ vựng train.
+Thực hiện chia dữ liệu và trích xuất đặc trưng TF-IDF đảm bảo nguyên tắc chống rò rỉ dữ liệu (`fit_transform` chỉ trên tập train, `transform` trên tập test).
 
-### Giai đoạn 3: Huấn luyện và đánh giá Multinomial Naive Bayes
+### Bước 3: Tối ưu hóa siêu tham số Alpha bằng Stratified 5-Fold Cross-Validation
 ```powershell
-python src/train_evaluate.py
+python src/tune_alpha.py
 ```
-Huấn luyện mô hình `MultinomialNB(alpha=1.0)` trên đặc trưng TF-IDF của tập train. Đánh giá toàn diện các chỉ số thực tế trên tập test:
-- Accuracy, Precision (Macro/Weighted), Recall (Macro/Weighted), F1-Score (Macro/Weighted).
-- Xuất Classification Report và Confusion Matrix lưu vào `results/evaluation_summary.json` và `results/confusion_tfidf.csv`.
-- Lưu model và vectorizer vào thư mục `models/`.
+- Quá trình tìm kiếm `alpha` được thực hiện hoàn toàn trên **tập train** (2.239 mẫu) bằng Stratified 5-Fold Cross-Validation.
+- Mỗi fold trong CV đều fit TF-IDF riêng biệt để chống rò rỉ dữ liệu.
+- Giá trị tối ưu được chọn là `alpha = 0.1` với điểm CV Macro F1 cao nhất (90.28%).
+- Khóa `alpha = 0.1` và huấn luyện mô hình cuối cùng trên toàn bộ tập train, sau đó đánh giá đúng một lần trên tập test (1.490 mẫu), đạt Test Accuracy: **88.52%**, Macro F1: **88.33%**.
 
-## 3. Khởi chạy ứng dụng giao diện Web Streamlit
+### Bước 4: Phân tích lỗi chi tiết trên tập kiểm thử
+```powershell
+python src/error_analysis.py
+```
+Xuất báo cáo phân tích lỗi chuyên sâu, khảo sát các mẫu nhầm lẫn, các văn bản có ít từ vựng và các dự đoán có độ tin cậy thấp (< 60%). Kết quả được lưu tại `results/error_analysis.json`.
+
+## 4. Khởi chạy ứng dụng Web Streamlit
+
 ```powershell
 streamlit run app.py
 ```
+
 Truy cập địa chỉ cục bộ: `http://localhost:8501`.
 
-Ứng dụng cho phép:
-1. Nhập trực tiếp văn bản tiếng Anh bất kỳ hoặc chọn bài viết mẫu.
-2. Nhấn nút **Phân loại**.
-3. Chuyển đổi văn bản bằng bộ `TF-IDF` đã được fit từ tập train.
-4. Dự đoán nhãn chủ đề và hiển thị biểu đồ phân bố xác suất cho cả 4 lớp.
-5. Hiển thị danh sách các từ khóa có trọng số TF-IDF nổi bật nhất trong văn bản.
+Các tính năng nổi bật:
+1. **Phân loại văn bản thời gian thực:** Nhập văn bản hoặc chọn bài viết mẫu, nhấn nút **🚀 Phân loại**.
+2. **Hiển thị xác suất và độ tin cậy:** Trực quan hóa phân bố xác suất của 4 lớp bằng bảng và biểu đồ cột.
+3. **Giải thích mô hình:** Liệt kê các từ khóa có trọng số TF-IDF cao nhất trong câu đầu vào.
+4. **Lịch sử phiên làm việc:** Tự động ghi nhận lịch sử các lần phân loại kèm thời gian xử lý (độ trễ ms).
+5. **Xuất dữ liệu:** Cho phép người dùng tải toàn bộ lịch sử phân loại về máy dưới dạng tệp CSV.
+6. **Chỉ số thực nghiệm động:** Tự động đọc và hiển thị các metric mới nhất từ `results/evaluation_summary.json`.
+
+## 5. Hướng dẫn chạy trên VS Code và Google Colab
+
+### Chạy bằng Visual Studio Code
+1. Mở thư mục dự án bằng VS Code (`File -> Open Folder...`).
+2. Chọn Python Interpreter: Nhấn `Ctrl + Shift + P`, gõ `Python: Select Interpreter` và trỏ đến `.\.venv\Scripts\python.exe`.
+3. Mở terminal tích hợp (`Ctrl + ~`) và chạy:
+   ```powershell
+   pytest -v
+   streamlit run app.py
+   ```
+
+### Chạy bằng Google Colab
+1. Tạo một notebook mới và clone repository:
+   ```python
+   !git clone https://github.com/thinh204/phan-loai-van-ban-naive-bayes.git
+   %cd phan-loai-van-ban-naive-bayes
+   !pip install -r requirements.txt
+   !pip install localtunnel
+   ```
+2. Thực thi kiểm thử và tối ưu hóa:
+   ```python
+   !pytest -v
+   !python src/tune_alpha.py
+   ```
+3. Chạy ứng dụng Streamlit qua LocalTunnel:
+   ```python
+   !streamlit run app.py & npx localtunnel --port 8501
+   ```
+   Mở liên kết `localtunnel.me` được in ra màn hình để truy cập giao diện.

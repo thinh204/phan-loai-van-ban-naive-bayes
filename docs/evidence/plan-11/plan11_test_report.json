@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-10-01 00:44:52",
+  "timestamp": "2026-10-01 00:57:41",
   "target_url": "https://phan-loai-van-ban-naive-bayes.streamlit.app/",
-  "all_passed": false,
+  "all_passed": true,
   "results": {
     "ca1_public_access": "PASS",
-    "ca2_version": "FAIL",
+    "ca2_version": "PASS",
     "ca3_empty_input": "PASS",
     "ca4_valid_nasa": "PASS",
     "ca5_whitespace_after_valid": "PASS",
     "ca6_short_space": "PASS",
     "ca7_csv": "PASS",
-    "ca8_reload": "FAIL"
+    "ca8_reload": "PASS"
   }
 }

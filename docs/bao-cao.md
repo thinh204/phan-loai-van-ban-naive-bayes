@@ -1,5 +1,32 @@
 # Báo cáo: Phân loại văn bản bằng Multinomial Naive Bayes
 
+**Học viện Công nghệ Bưu chính Viễn thông**
+
+**Đồ án môn Trí tuệ nhân tạo** — Lớp **D23VHCN01-N**
+
+| Thành viên | Mã số sinh viên |
+| --- | --- |
+| Lại Huy Thịnh | N23DVCN057 |
+| Nguyễn Trần Mạnh Dũng | N23DVCN01 |
+| Nguyễn Hữu Đức | N23DVCN012 |
+
+Giảng viên: ........................................................
+
+Ngày hoàn thiện: 01/10/2026.
+
+## Mục lục
+
+1. Bài toán
+2. Biến văn bản thành đặc trưng
+3. Nguyên lý Multinomial Naive Bayes
+4. Ví dụ tính tay
+5. Thiết kế thực nghiệm
+6. Kết quả thực nghiệm và tối ưu hóa siêu tham số
+7. Phân tích lỗi
+8. Ứng dụng minh họa
+9. Kiểm thử và kết luận
+10. Tài liệu tham khảo
+
 ## 1. Bài toán
 
 Phân loại văn bản là gán một nhãn trong tập lớp đã biết cho một tài liệu mới. Trong đề tài này, đầu vào là nội dung một bài đăng tiếng Anh; đầu ra là một trong bốn chủ đề: đồ họa máy tính (`comp.graphics`), bóng chày (`rec.sport.baseball`), không gian (`sci.space`) hoặc chính trị tổng hợp (`talk.politics.misc`). Nhóm sử dụng bộ dữ liệu 20 Newsgroups qua `fetch_20newsgroups` của scikit-learn [1].
@@ -65,8 +92,6 @@ Xét câu cần phân loại **“bóng đá mới”**:
 - Đánh giá accuracy toàn bộ, precision/recall/F1 theo lớp, macro F1 và ma trận nhầm lẫn. Macro F1 cho mỗi lớp trọng số như nhau, hữu ích khi số mẫu từng lớp khác nhau [5].
 - Lưu số mẫu, phiên bản thư viện, tham số, kết quả và một số trường hợp sai được rút từ dự đoán trên test. Không dùng test để chọn tham số.
 
-## 6. Kết quả thực nghiệm
-
 ## 6. Kết quả thực nghiệm và tối ưu hóa siêu tham số
 
 ### 6.1. So sánh cơ sở giữa Bag of Words và TF-IDF (alpha = 1.0)
@@ -96,15 +121,15 @@ Dựa trên điểm CV Macro F1 cao nhất trên tập train, **`alpha = 0.1`** 
 ### 6.3. Đánh giá mô hình tối ưu trên tập kiểm thử Test
 Đánh giá đúng MỘT LẦN trên 1.490 mẫu test độc lập ([`results/evaluation_summary.json`](../results/evaluation_summary.json)):
 
-| Chỉ số | Trước tối ưu (`alpha=1.0`) | Sau tối ưu (`alpha=0.1`) | Mức cải thiện |
+| Chỉ số | Trước tối ưu (`alpha=1.0`) | Sau tối ưu (`alpha=0.1`) | Mức tăng (điểm phần trăm) |
 | :--- | :---: | :---: | :---: |
-| **Test Accuracy** | 0,8718 (87,18%) | **0,8852 (88,52%)** | **+1,34%** |
-| **Macro Precision** | 0,8763 (87,63%) | **0,8841 (88,41%)** | **+0,78%** |
-| **Weighted Precision** | 0,8742 (87,42%) | **0,8857 (88,57%)** | **+1,15%** |
-| **Macro Recall** | 0,8657 (86,57%) | **0,8835 (88,35%)** | **+1,78%** |
-| **Weighted Recall** | 0,8718 (87,18%) | **0,8852 (88,52%)** | **+1,34%** |
-| **Macro F1-Score** | 0,8687 (86,87%) | **0,8833 (88,33%)** | **+1,46%** |
-| **Weighted F1-Score** | 0,8709 (87,09%) | **0,8849 (88,49%)** | **+1,40%** |
+| **Test Accuracy** | 0,8718 (87,18%) | **0,8852 (88,52%)** | **+1,34** |
+| **Macro Precision** | 0,8763 (87,63%) | **0,8841 (88,41%)** | **+0,78** |
+| **Weighted Precision** | 0,8742 (87,42%) | **0,8857 (88,57%)** | **+1,15** |
+| **Macro Recall** | 0,8657 (86,57%) | **0,8835 (88,35%)** | **+1,78** |
+| **Weighted Recall** | 0,8718 (87,18%) | **0,8852 (88,52%)** | **+1,34** |
+| **Macro F1-Score** | 0,8687 (86,87%) | **0,8833 (88,33%)** | **+1,46** |
+| **Weighted F1-Score** | 0,8709 (87,09%) | **0,8849 (88,49%)** | **+1,40** |
 
 Chi tiết từng lớp với `alpha=0.1`:
 - `comp.graphics`: Precision 0,9297 | Recall 0,9177 | F1 0,9237 (389 mẫu)
@@ -119,9 +144,11 @@ Dựa trên kết quả chạy thực tế trên 1.490 mẫu test ([`results/err
 - **Dự đoán sai:** 171 mẫu (11,48%).
 
 ### 7.1. Các cặp lớp thường nhầm lẫn nhất
-1. `sci.space` -> `rec.sport.baseball` (25 lần) & `sci.space` -> `talk.politics.misc` (25 lần): Các bài đăng về vũ trụ thảo luận ngân sách chính phủ hoặc có văn phong trao đổi thông thường.
-2. `talk.politics.misc` -> `sci.space` (23 lần) & `talk.politics.misc` -> `rec.sport.baseball` (19 lần): Các bài tranh luận chính trị nhắc tới chương trình nghiên cứu không gian hoặc vấn đề tài trợ thể thao.
-3. `sci.space` -> `comp.graphics` (16 lần): Các bài viết thiên văn học mô tả đồ họa mô phỏng, phần mềm hiển thị kính viễn vọng.
+1. `sci.space` -> `rec.sport.baseball`: 25 lần; `sci.space` -> `talk.politics.misc`: 25 lần.
+2. `talk.politics.misc` -> `sci.space`: 23 lần; `talk.politics.misc` -> `rec.sport.baseball`: 19 lần.
+3. `sci.space` -> `comp.graphics`: 16 lần.
+
+Các số đếm được lấy từ ma trận nhầm lẫn của mô hình cuối. Chúng cho biết lớp nào bị nhầm, chưa chứng minh nguyên nhân. Văn bản pha trộn chủ đề hoặc thiếu từ phân biệt là những khả năng cần kiểm tra bằng từng mẫu sai cụ thể.
 
 ### 7.2. Tác động của văn bản ngắn / thiếu từ vựng
 Trong 1.490 mẫu test, có **60 mẫu** có ít hơn hoặc bằng 2 từ vựng nằm trong bộ từ vựng TF-IDF đã học (chủ yếu do bước lọc bỏ header, footer, quote khiến văn bản chỉ còn vài từ ngắn hoặc rỗng).
@@ -144,7 +171,7 @@ Hệ thống được chuẩn hóa kiến trúc hướng dịch vụ (**Service-
 
 ## 9. Kiểm thử tự động với pytest
 
-Dự án trang bị bộ kiểm thử tự động toàn diện gồm 16 test cases (`tests/test_pipeline.py` và `tests/test_inference.py`):
+Dự án có **27 ca kiểm thử** trong `test_pipeline.py`, `test_inference.py`, `test_ui_behavior.py` và `test_release_consistency.py`. Các nhóm kiểm tra gồm:
 1. Nạp mô hình MultinomialNB thành công từ file `.joblib`.
 2. Nạp bộ véc-tơ TF-IDF thành công (13.068 đặc trưng).
 3. Dự đoán trả về nhãn hợp lệ trong 4 chủ đề.
@@ -159,10 +186,16 @@ Dự án trang bị bộ kiểm thử tự động toàn diện gồm 16 test ca
 12. Xác thực tính toàn vẹn của các file artifact mô hình (`test_inference.py`).
 13. Đảm bảo độ chính xác trên các mẫu suy diễn thực tế chưa từng thấy (`test_inference.py`).
 
-Lệnh thực thi kiểm thử: `pytest -v` (16/16 passed 100%).
+Ngoài suy diễn, bộ kiểm thử hành vi dùng Streamlit AppTest xác minh đầu vào rỗng không tạo lượt dự đoán, khoảng trắng không tăng lịch sử, đoạn trích đúng ở biên 80/81 ký tự và dữ liệu lịch sử xuất CSV.
+
+Lệnh thực thi: `python -m pytest -q`; lần hậu kiểm ngày 01/10/2026 đạt **27/27**. Đây là số ca kiểm thử phần mềm đạt, không phải độ chính xác 100% của mô hình.
+
+### Kết luận
+
+TF-IDF kết hợp Multinomial Naive Bayes đạt Accuracy 88,52% và Macro F1 88,33% trên 1.490 mẫu test. Phương pháp phù hợp để minh họa phân loại văn bản có giám sát và cơ chế tính điểm xác suất. Đồ án giới hạn ở văn bản tiếng Anh thuộc bốn chủ đề; chưa được đánh giá cho tiếng Việt hoặc chủ đề ngoài tập lớp. Xác suất dự đoán chưa được hiệu chỉnh, vì vậy cần xem cảnh báo và kiểm tra kết quả khi đầu vào ít thông tin.
 
 
-## Tài liệu tham khảo
+## 10. Tài liệu tham khảo
 
 [1] scikit-learn, [fetch_20newsgroups](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html).
 

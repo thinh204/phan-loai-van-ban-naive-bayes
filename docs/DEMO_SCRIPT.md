@@ -70,4 +70,4 @@ Tài liệu này cung cấp kịch bản chi tiết từng phút cho nhóm sinh 
 > - Văn bản quá ngắn (dưới 2 từ vựng) có tỷ lệ sai lên tới 53.33% do thiếu tín hiệu đặc trưng."*
 
 ### 12. Kết luận (6:15 - 6:30)
-> *"Tóm lại, dự án đã hiện thực hóa thành công một hệ thống phân loại văn bản Naive Bayes chuẩn mực: không rò rỉ dữ liệu, tối ưu bằng cross-validation, kiểm thử tự động 16 test cases, có tính năng giải thích đặc trưng và sẵn sàng triển khai. Nhóm em xin cảm ơn quý thầy cô và kính mời thầy cô đặt câu hỏi ạ!"*
+> *"Tóm lại, dự án đã hiện thực hóa thành công một hệ thống phân loại văn bản Naive Bayes chuẩn mực: không rò rỉ dữ liệu, tối ưu bằng cross-validation, kiểm thử tự động 27 ca kiểm thử, có tính năng giải thích đặc trưng và sẵn sàng triển khai. Nhóm em xin cảm ơn quý thầy cô và kính mời thầy cô đặt câu hỏi ạ!"*

@@ -1,11 +1,12 @@
-# Danh mục kiểm tra đóng gói hồ sơ nộp bài (Checklist Plan 6 - Final)
+# Danh mục kiểm tra hồ sơ nộp đồ án môn Trí tuệ nhân tạo
 
 - **Đề tài**: Phân loại văn bản đa lớp bằng Multinomial Naive Bayes
 - **Học phần**: Trí tuệ nhân tạo (AI)
 - **Nhóm tác giả**: 3 thành viên
 - **Mã nguồn GitHub**: [thinh204/phan-loai-van-ban-naive-bayes](https://github.com/thinh204/phan-loai-van-ban-naive-bayes)
-- **Phiên bản đóng gói**: `v1.0.3` (Phiên bản khóa nộp bài và bảo vệ chính thức)
-- **Ngày đóng gói**: 30/09/2026
+- **Nguồn gói nộp hiện tại**: commit ghi trong `submission/MANIFEST.json`; bản Release v1.0.4 cũ giữ nguyên.
+- **Ngày rà soát**: 01/10/2026
+- **Bìa**: đã điền nhóm/lớp; cần bổ sung tên giảng viên trước khi nộp.
 
 ---
 
@@ -17,15 +18,15 @@
 | **2** | **Pipeline tiền xử lý & huấn luyện** | `src/prepare_data.py`, `src/tfidf_pipeline.py`, `src/tune_alpha.py` | ✅ Đầy đủ | Chia train/test nghiêm ngặt, không rò rỉ dữ liệu test. |
 | **3** | **Artifacts mô hình & vectorizer** | `models/naive_bayes_model.joblib`, `models/tfidf_vectorizer.joblib`, `models/class_names.joblib` | ✅ Đầy đủ | Mô hình `MultinomialNB(alpha=0.1)`, 13.068 đặc trưng TF-IDF. |
 | **4** | **Kết quả thực nghiệm động** | `results/evaluation_summary.json`, `results/alpha_tuning.json`, `results/error_analysis.json` | ✅ Đầy đủ | Test Accuracy 88,52%, Macro F1 88,33%, CV Macro F1: 88,55% (alpha=1.0) và 90,28% (alpha=0.1). |
-| **5** | **Bộ kiểm thử tự động** | `tests/test_pipeline.py`, `tests/test_inference.py`, `tests/test_release_consistency.py` | ✅ Đầy đủ | 21/21 kiểm thử pytest đạt 100% (xử lý rỗng, OOV, độ tin cậy thấp, kiểm tra tính nhất quán số liệu). |
+| **5** | **Bộ kiểm thử tự động** | `tests/` gồm pipeline, inference, release consistency và UI behavior | ✅ Đầy đủ | 27/27 tests đạt; nhập rỗng, OOV, đoạn trích và CSV có kiểm tra hồi quy. |
 | **6** | **Tự động hóa CI Pipeline** | `.github/workflows/ci.yml`, `docs/CI_VERIFICATION.md` | ✅ Đầy đủ | Chạy thành công trên cả Python 3.10 và Python 3.11. |
-| **7** | **Báo cáo lý thuyết & kỹ thuật** | `docs/bao-cao.md` | ✅ Đầy đủ | Báo cáo chuyên sâu: định lý Bayes, làm trơn Laplace, TF-IDF, phân tích lỗi. |
-| **8** | **Slide thuyết trình bảo vệ** | `presentation/phan-loai-van-ban-naive-bayes-v2.pptx` | ✅ Đầy đủ | 10 slide chuẩn hóa, có biểu đồ kết quả thực nghiệm và speaker notes. |
+| **7** | **Báo cáo lý thuyết & kỹ thuật** | `docs/bao-cao.md`, `docs/bao-cao-do-an.pdf` | ✅ Đầy đủ | Báo cáo có bìa, lý thuyết, ví dụ tính tay, thực nghiệm và tài liệu tham khảo. |
+| **8** | **Slide thuyết trình bảo vệ** | `presentation/phan-loai-van-ban-naive-bayes-v3.pptx` | ✅ Đầy đủ | 10 slide chuẩn hóa, có biểu đồ kết quả thực nghiệm và speaker notes. |
 | **9** | **Kịch bản thuyết trình & Demo** | `docs/thuyet-trinh.md`, `docs/DEMO_SCRIPT.md`, `docs/DIEN_TAP_BAO_VE.md` | ✅ Đầy đủ | Phân bổ thời lượng chi tiết 9 phút cho 3 thành viên, câu thoại gợi ý và thao tác UI. |
 | **10** | **Bộ câu hỏi phản biện (Q&A)** | `docs/DEFENSE_QA.md` | ✅ Đầy đủ | 12 nhóm câu hỏi trọng tâm thường gặp từ hội đồng giảng viên. |
 | **11** | **Biên bản nghiệm thu chức năng** | `docs/NGHIEM_THU.md` | ✅ Đầy đủ | Nghiệm thu 11 ca kiểm thử thực tế (TC01 - TC11) đạt 100%. |
 | **12** | **URL ứng dụng trực tuyến** | [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app) | ✅ Hoạt động & Đã nghiệm thu | Triển khai công khai thành công trên Streamlit Cloud, nghiệm thu 13/13 ca trong Plan 9. Sẵn sàng chạy nội bộ `localhost:8501`. |
-| **13** | **Gói nộp bài nén (ZIP)** | `release/phan-loai-van-ban-naive-bayes-final-submission.zip` | ✅ Đã nén | Gói nén chứa trọn vẹn toàn bộ dự án, vượt qua kiểm tra toàn vẹn môi trường sạch. |
+| **13** | **Gói nộp bài nén (ZIP)** | `submission/phan-loai-van-ban-naive-bayes-nop-bai.zip` | Kiểm tra theo manifest | Có nguồn hiện tại, báo cáo PDF, slide v3 và thông tin commit; không gồm virtual environment hoặc cache dữ liệu. |
 
 ---
 

@@ -1,0 +1,2 @@
+# Optional dependencies for exporting the report; not needed to run Streamlit.
+reportlab>=4.0

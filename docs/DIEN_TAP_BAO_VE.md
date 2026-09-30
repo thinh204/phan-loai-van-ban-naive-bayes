@@ -3,7 +3,7 @@
 - **Đề tài**: Phân loại văn bản đa lớp bằng Multinomial Naive Bayes
 - **Học phần**: Trí tuệ nhân tạo (AI)
 - **Tổng thời lượng diễn tập chuẩn**: **9 phút** (Khung quy định: 7 – 10 phút)
-- **Tệp trình chiếu**: [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/presentation/phan-loai-van-ban-naive-bayes-v2.pptx)
+- **Tệp trình chiếu**: [`presentation/phan-loai-van-ban-naive-bayes-v3.pptx`](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/presentation/phan-loai-van-ban-naive-bayes-v3.pptx)
 - **Ứng dụng Demo**: Trực tuyến tại [Streamlit Cloud](https://phan-loai-van-ban-naive-bayes.streamlit.app) / Ngoại tuyến tại `http://localhost:8501`
 
 ---
@@ -60,20 +60,20 @@
   - *Lời thoại*: "Nhóm không thử sai trên tập test mà áp dụng **Stratified 5-Fold Cross-Validation hoàn toàn trên 2.239 mẫu train** qua 8 giá trị alpha. Kết quả thực nghiệm khẳng định `alpha = 0.1` đạt điểm Macro F1 cao nhất là **90,28%**."
 
 - **Slide 8: Kết quả đánh giá trên tập kiểm thử Test (5:40 - 6:20)**
-  - *Lời thoại*: "Khi đánh giá mô hình cuối cùng trên 1.490 mẫu test: Mô hình đạt **Accuracy 88,52%** (tăng +1,34% so với mô hình cơ sở $\alpha=1.0$) và **Macro F1 đạt 88,33%** (tăng +1,46%). Độ nhạy Recall của lớp Chính trị tăng vọt từ 75,8% lên 85,16%."
+  - *Lời thoại*: "Trên 1.490 mẫu test, mô hình đạt **Accuracy 88,52%** và **Macro F1 88,33%**, tăng lần lượt 1,34 và 1,46 điểm phần trăm so với baseline alpha=1.0. Tham số alpha=0.1 được chọn bằng cross-validation trên train."
 
 - **Slide 9: Phân tích lỗi thực nghiệm (6:20 - 7:00)**
-  - *Lời thoại*: "Phân tích 171 mẫu dự đoán sai chỉ ra: 60 văn bản quá ngắn (dưới 2 từ vựng TF-IDF) có tỷ lệ lỗi lên tới 53,33%. Đặc biệt, nhóm thiết lập ngưỡng cảnh báo độ tin cậy thấp (< 60%), nơi tỷ lệ lỗi chiếm tới 44,36% để cảnh báo người dùng cuối."
+  - *Lời thoại*: "Có 171 mẫu sai trên 1.490 mẫu test. Trong đó, 25 mẫu Vũ trụ bị dự đoán thành Chính trị và 23 mẫu theo chiều ngược lại. Trên toàn tập test, 60 văn bản có không quá 2 từ trong từ điển TF-IDF có tỷ lệ sai 53,33%. Cần xem từng văn bản để giải thích nguyên nhân; số đếm chưa đủ chứng minh một nguyên nhân cụ thể."
 
 - **Trình diễn ứng dụng Demo thực tế (7:00 - 8:30)**:
   - *Thao tác*: Mở trình duyệt tại [Streamlit Cloud](https://phan-loai-van-ban-naive-bayes.streamlit.app) (hoặc localhost:8501).
-  - *Bước 1 (Dự đoán chuẩn)*: Chọn bài mẫu 'Khoa học vũ trụ' $\rightarrow$ Bấm **🚀 Phân loại** $\rightarrow$ Hệ thống phản hồi tức thì trong **2,4 ms**, độ tin cậy **99,9%**.
+  - *Bước 1 (Dự đoán)*: Chọn bài mẫu 'Khoa học vũ trụ', bấm **Phân loại** và đọc nhãn, xác suất, độ trễ thực tế trên màn hình. Không hứa trước một giá trị thời gian hoặc xác suất cố định.
   - *Bước 2 (Giải thích đặc trưng)*: Cuộn xuống bảng Explainability, chỉ cho hội đồng thấy các từ khóa đóng góp biên log-odds như `space`, `satellite`, `orbit`.
   - *Bước 3 (Cảnh báo thông minh)*: Thử nhập câu mơ hồ ngắn hoặc từ OOV để hệ thống hiển thị cảnh báo UX màu vàng.
   - *Bước 4 (Xuất dữ liệu)*: Nhấn nút **Tải file CSV lịch sử dự đoán**.
 
 - **Slide 10: Kết luận & Đóng gói sản phẩm (8:30 - 9:00)**
-  - *Lời thoại*: "Dự án đã vượt qua toàn bộ **16/16 kiểm thử tự động pytest**, tích hợp CI Pipeline xanh trên GitHub Actions, xuất bản phiên bản phát hành chính thức `v1.0.2` kèm gói nộp độc lập 660 KB. Nhóm em xin chân thành cảm ơn quý thầy cô và xin sẵn sàng lắng nghe câu hỏi phản biện!"
+  - *Lời thoại*: "Bộ kiểm thử phần mềm đạt **27/27**. Nhóm có ứng dụng Streamlit công khai, nguồn Python, báo cáo PDF, slide v3 và gói nộp với manifest/checksum. Mô hình giới hạn ở văn bản tiếng Anh thuộc bốn chủ đề. Nhóm em xin cảm ơn thầy cô và sẵn sàng trả lời câu hỏi."
 
 ---
 

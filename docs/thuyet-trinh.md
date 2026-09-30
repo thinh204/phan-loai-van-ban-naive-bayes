@@ -1,6 +1,6 @@
 # Kịch bản thuyết trình 10 slide
 
-Tệp PowerPoint: [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](../presentation/phan-loai-van-ban-naive-bayes-v2.pptx). Các slide có ghi chú người nói và nguồn tham khảo. Nhóm có thể thay tên ba thành viên trên slide bìa trước khi nộp.
+Tệp PowerPoint: [`presentation/phan-loai-van-ban-naive-bayes-v3.pptx`](../presentation/phan-loai-van-ban-naive-bayes-v3.pptx). Các slide có ghi chú người nói và nguồn tham khảo. Bìa đã điền tên và MSSV do nhóm cung cấp; giảng viên để trống để nhóm bổ sung.
 
 ## Phân chia lời nói đề xuất
 
@@ -21,14 +21,14 @@ Tệp PowerPoint: [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](../pres
 7. **Thiết kế thực nghiệm:** 2.239 mẫu train, 1.490 mẫu test, bốn lớp, trích xuất 13.068 đặc trưng TF-IDF, tối ưu hóa siêu tham số `α = 0.1` qua Stratified 5-Fold Cross-Validation trên tập train. Loại header, chữ ký, phần trích dẫn để giảm tín hiệu rò rỉ metadata.
 8. **Kết quả:** Sau khi tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation trên tập train (chọn `alpha=0.1`), Accuracy trên tập test đạt 88,52% (tăng từ 87,18% ban đầu) và Macro F1 đạt 88,33% (tăng từ 86,87%). Số liệu lấy trực tiếp từ `results/evaluation_summary.json`.
 9. **Phân tích lỗi:** Trên 1.490 mẫu test có 1.319 mẫu đúng và 171 mẫu sai. Các văn bản có ít từ vựng TF-IDF (<= 2 từ) có tỷ lệ sai lên tới 53,33%. Ngưỡng tin cậy thấp (< 60%) có tỷ lệ sai 44,36%, đóng vai trò cảnh báo quan trọng trong ứng dụng.
-10. **Kết luận & Demo sản phẩm:** MNB học nhanh và dễ giải thích. Hệ thống đã chuẩn hóa kiến trúc hướng dịch vụ với `TextClassifierService`, bộ kiểm thử tự động 16 test cases (`pytest -v`), CI Pipeline tự động trên GitHub Actions, giải thích từ khóa đặc trưng TF-IDF, chẩn đoán cảnh báo UX thông minh, và giao diện web Streamlit triển khai trực tuyến trên Streamlit Cloud kèm tùy chọn chạy ngoại tuyến.
+10. **Kết luận & Demo sản phẩm:** MNB học nhanh và dễ giải thích. Hệ thống đã chuẩn hóa kiến trúc hướng dịch vụ với `TextClassifierService`, bộ kiểm thử tự động 27 ca kiểm thử (`pytest -v`), CI Pipeline tự động trên GitHub Actions, giải thích từ khóa đặc trưng TF-IDF, chẩn đoán cảnh báo UX thông minh, và giao diện web Streamlit triển khai trực tuyến trên Streamlit Cloud kèm tùy chọn chạy ngoại tuyến.
 
 
 ## Câu hỏi có thể gặp
 
 - **Vì sao gọi là “naive”?** Vì mô hình xấp xỉ các đặc trưng là độc lập khi đã biết lớp, dù từ ngữ thực tế có liên hệ với nhau.
 - **Vì sao thêm `α=1`?** Để một từ chưa thấy ở một lớp không làm xác suất của cả tài liệu bằng 0.
-- **Vì sao TF-IDF có điểm chung cao hơn nhưng lớp Chính trị giảm recall?** Trọng số đặc trưng thay đổi ranh giới dự đoán; ma trận nhầm lẫn cho thấy lỗi đã chuyển giữa hai lớp. Thử nghiệm này chưa đủ để khẳng định một nguyên nhân duy nhất.
+- **Ma trận nhầm lẫn cho biết gì?** Hàng là nhãn thật, cột là nhãn dự đoán. Mô hình cuối có 25 mẫu Vũ trụ bị dự đoán thành Chính trị và 23 mẫu theo chiều ngược lại. Số đếm không tự chứng minh nguyên nhân; cần xem từng văn bản sai.
 - **Có thể áp dụng trực tiếp cho tiếng Việt không?** Thuật toán có thể dùng, nhưng cần dữ liệu tiếng Việt có nhãn và bước tách từ phù hợp để đánh giá riêng.
 
 Tài liệu tham khảo và phương pháp chi tiết nằm trong [`bao-cao.md`](bao-cao.md).

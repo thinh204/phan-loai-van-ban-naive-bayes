@@ -13,7 +13,17 @@
 | Ngôn ngữ trình bày | Tiếng Việt |
 | Giao diện demo | Streamlit |
 
-**[Mở website demo](https://phan-loai-van-ban-naive-bayes.streamlit.app/)** · **[Đọc báo cáo](docs/bao-cao.md)** · **[Tải slide thuyết trình](presentation/phan-loai-van-ban-naive-bayes-v2.pptx)**
+**Học viện Công nghệ Bưu chính Viễn thông** · Lớp **D23VHCN01-N**
+
+| Thành viên | MSSV |
+| --- | --- |
+| Lại Huy Thịnh | N23DVCN057 |
+| Nguyễn Trần Mạnh Dũng | N23DVCN01 |
+| Nguyễn Hữu Đức | N23DVCN012 |
+
+Giảng viên: ........................................................
+
+**[Mở website demo](https://phan-loai-van-ban-naive-bayes.streamlit.app/)** · **[Đọc báo cáo PDF](docs/bao-cao-do-an.pdf)** · **[Tải slide thuyết trình](presentation/phan-loai-van-ban-naive-bayes-v3.pptx)**
 
 ## 1. Mục tiêu đề tài
 
@@ -156,8 +166,9 @@ phan-loai-van-ban-naive-bayes/
 
 | Tài liệu | Đường dẫn |
 | --- | --- |
+| Báo cáo PDF để nộp | [docs/bao-cao-do-an.pdf](docs/bao-cao-do-an.pdf) |
 | Báo cáo lý thuyết và thực nghiệm | [docs/bao-cao.md](docs/bao-cao.md) |
-| Slide thuyết trình | [presentation/phan-loai-van-ban-naive-bayes-v2.pptx](presentation/phan-loai-van-ban-naive-bayes-v2.pptx) |
+| Slide thuyết trình | [presentation/phan-loai-van-ban-naive-bayes-v3.pptx](presentation/phan-loai-van-ban-naive-bayes-v3.pptx) |
 | Nội dung thuyết trình | [docs/thuyet-trinh.md](docs/thuyet-trinh.md) |
 | Kịch bản demo | [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) |
 | Diễn tập nhóm 3 thành viên | [docs/DIEN_TAP_BAO_VE.md](docs/DIEN_TAP_BAO_VE.md) |
@@ -168,7 +179,11 @@ phan-loai-van-ban-naive-bayes/
 
 **Phân công đề xuất:** thành viên 1 trình bày bài toán và lý thuyết; thành viên 2 trình bày dữ liệu, thực nghiệm và đánh giá; thành viên 3 demo ứng dụng, phân tích lỗi và giới hạn. Phân công chi tiết trong [kịch bản diễn tập](docs/DIEN_TAP_BAO_VE.md).
 
-### Phiên bản và gói nộp
+### Gói nộp hiện tại
+
+[Gói nguồn và tài liệu đã rà soát](submission/phan-loai-van-ban-naive-bayes-nop-bai.zip) chứa báo cáo PDF, slide v3 và nguồn hiện tại; [manifest](submission/MANIFEST.json) ghi commit nguồn cùng SHA-256 từng tệp. [Checksum](submission/CHECKSUMS.sha256) dùng để kiểm tra gói nộp này. Giảng viên cần được bổ sung trước khi nộp; MSSV được giữ theo thông tin nhóm cung cấp.
+
+### Phiên bản và gói phát hành trước
 
 - [GitHub Release v1.0.4](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/releases/tag/v1.0.4) chứa ZIP, manifest và checksum của commit phát hành `14e88a2`.
 - SHA-256 của ZIP: `189918bdc3acaca2bc1e19f22ff370f475ad260b7b9b219ff9fe9ceb3a20d975`.

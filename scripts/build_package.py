@@ -57,7 +57,7 @@ def is_excluded(path: Path) -> bool:
     """Check if a given path contains any excluded pattern or extension."""
     parts = set(path.parts)
     for p in EXCLUDED_PATTERNS:
-        if p in parts or any(p in part for part in path.parts):
+        if p in parts:
             return True
     if path.suffix in [".pyc", ".pyo", ".pyd", ".tmp", ".log"]:
         return True

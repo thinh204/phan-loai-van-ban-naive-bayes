@@ -58,4 +58,14 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
   - Chi tiết lưu tại tài liệu: [CI_VERIFICATION.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/CI_VERIFICATION.md).
 - **Kết quả bàn giao**: Workflow CI có trạng thái xanh hoàn chỉnh trên GitHub.
 
+### Giai đoạn 3 – Triển khai trực tuyến (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **URL triển khai chính thức**: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
+- **Kết quả kiểm tra**:
+  - Máy chủ Streamlit Community Cloud phản hồi trực tiếp mã định tuyến và trạng thái hoạt động với máy chủ `nginx/1.31.3` trên hạ tầng đám mây.
+  - Cập nhật đầy đủ URL truy cập trực tiếp vào [README.md](file:///d:/phan-loai-van-ban-naive-bayes/README.md) và [docs/DEPLOYMENT.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/DEPLOYMENT.md).
+  - Cung cấp song song phương án chạy thử nghiệm cục bộ với `streamlit run app.py` (cổng 8501) phục vụ chấm điểm ngoại tuyến.
+- **Kết quả bàn giao**: URL demo Streamlit hoạt động và được ghi nhận thống nhất trong toàn bộ tài liệu.
+
+
 

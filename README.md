@@ -54,16 +54,19 @@ python src/error_analysis.py
 
 ### 4. Khởi chạy giao diện web Streamlit
 
-```powershell
-streamlit run app.py
-```
+- **Trải nghiệm trực tuyến (Cloud Demo):** Truy cập ngay tại [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
+- **Chạy cục bộ trên máy (Local Server):**
+  ```powershell
+  streamlit run app.py
+  ```
+  Truy cập ứng dụng tại: `http://localhost:8501`. Ứng dụng cung cấp:
+  - Ô nhập văn bản tiếng Anh hoặc chọn bài viết mẫu theo 4 chủ đề.
+  - Phân loại chủ đề và hiển thị phân bố xác suất trực quan (`predict_proba`).
+  - Cảnh báo đầu vào thông minh (độ tin cậy thấp < 60%, văn bản quá ngắn, từ ngoài từ điển OOV).
+  - Trích xuất top từ khóa TF-IDF tiêu biểu giải thích cho nhãn dự đoán.
+  - Đo lường độ trễ suy diễn (ms) và lưu trữ lịch sử phiên làm việc.
+  - Tải toàn bộ bảng lịch sử dự đoán dưới định dạng tệp CSV.
 
-Truy cập ứng dụng tại: `http://localhost:8501`. Ứng dụng cung cấp:
-- Ô nhập văn bản tiếng Anh hoặc chọn bài viết mẫu.
-- Phân loại chủ đề và hiển thị xác suất của 4 lớp kèm biểu đồ trực quan.
-- Trích xuất top từ khóa TF-IDF đóng góp vào quyết định của mô hình.
-- Theo dõi thời gian xử lý (độ trễ ms) và lưu vết lịch sử các lần phân loại.
-- Tải toàn bộ lịch sử dự đoán trong phiên về máy dưới định dạng file CSV.
 
 ---
 

@@ -1,11 +1,11 @@
 {
   "project": "phan-loai-van-ban-naive-bayes",
   "archive_name": "phan-loai-van-ban-naive-bayes-final-submission.zip",
-  "archive_size_bytes": 673099,
-  "archive_sha256": "c23a328f48b01ebe4c6609a8a38b587e062f2a4dfa8983b5e9c3fd09457e1842",
-  "generated_at_utc": "2026-09-30T13:50:38.773154+00:00",
-  "total_files": 46,
-  "total_uncompressed_bytes": 1403852,
+  "archive_size_bytes": 700810,
+  "archive_sha256": "1a0b16822a998c3520db6bd3725faf4ca8499022d72cfcd81a2f59003c61bf7e",
+  "generated_at_utc": "2026-09-30T15:03:58.737530+00:00",
+  "total_files": 59,
+  "total_uncompressed_bytes": 1467689,
   "integrity_status": "VALID",
   "files": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 9688,
-      "compressed_bytes": 3928,
-      "sha256": "4ebb98e0199150fa10346803a14864bbf618bdfbda6d16204e83ff7dd94ec6bd"
+      "size_bytes": 9869,
+      "compressed_bytes": 3993,
+      "sha256": "af99aa8734baf6e5c30ffc755a1e554473c4837725c5150aa038fd53beebab7e"
     },
     {
       "path": "app.py",
@@ -27,10 +27,22 @@
       "sha256": "ddd4b9d8868d45c5edc69434a7c353591ec9cc6b4395ab41e897ec57c4b0da60"
     },
     {
+      "path": "docs/CHAN_DOAN_STREAMLIT.md",
+      "size_bytes": 4129,
+      "compressed_bytes": 1950,
+      "sha256": "126eb881ab8e478a0753fccc7bfe353aba7e47bec01296941c9bbfc6c9376ea3"
+    },
+    {
+      "path": "docs/CHECKLIST_NGAY_BAO_VE.md",
+      "size_bytes": 5318,
+      "compressed_bytes": 2480,
+      "sha256": "d66ab8f3a74d2ea3b38ec65afd948e2177fb6d89eb6978b6b347881d2dc9fa3c"
+    },
+    {
       "path": "docs/CHECKLIST_NOP_BAI.md",
-      "size_bytes": 5766,
-      "compressed_bytes": 2612,
-      "sha256": "429c24083648646e0a2ab883b656d3d0bad3e631d795d8602137a8f5d24f52d6"
+      "size_bytes": 5998,
+      "compressed_bytes": 2677,
+      "sha256": "19b6d626cb16513d31fe8b4ef5047ece684136f410cc8b50611915cd0e3ef900"
     },
     {
       "path": "docs/CI_VERIFICATION.md",
@@ -40,9 +52,9 @@
     },
     {
       "path": "docs/CLEAN_ENV_TEST.md",
-      "size_bytes": 3339,
-      "compressed_bytes": 1580,
-      "sha256": "e91eea7967040be8032ae8aaa7e6bcfad3d64ca1fac443a703f476e6e4525b2d"
+      "size_bytes": 4584,
+      "compressed_bytes": 1981,
+      "sha256": "e009db39dcdd4e539dd458c4cf08e9976cb657c57d467f4ec9a4b605d7e4e049"
     },
     {
       "path": "docs/DEFENSE_QA.md",
@@ -58,9 +70,9 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "size_bytes": 3569,
-      "compressed_bytes": 1690,
-      "sha256": "b41357b6a99ae78a1d64510bb0695fd614554d475d20cf19e54be6398a079a7c"
+      "size_bytes": 3610,
+      "compressed_bytes": 1701,
+      "sha256": "b280d812389cc18dbd902a67ca79954732e7cf9c1fd6426becb514304f679787"
     },
     {
       "path": "docs/DIEN_TAP_BAO_VE.md",
@@ -81,6 +93,24 @@
       "sha256": "fc3930b20739203507a34a7af1f012b476b4cf5f3c94416b36904ade21789fe8"
     },
     {
+      "path": "docs/NGHIEM_THU_WEB_CONG_KHAI.md",
+      "size_bytes": 3859,
+      "compressed_bytes": 1758,
+      "sha256": "9271fd0447825a7c4d1a30cefe41af20696070d1d4e8752c03317be7d230ea32"
+    },
+    {
+      "path": "docs/RA_SOAT_V1.0.3.md",
+      "size_bytes": 3645,
+      "compressed_bytes": 1740,
+      "sha256": "9255ae1e0775895827ba6d27253d014bab422dfec3316ccbef67e293dc298da7"
+    },
+    {
+      "path": "docs/RELEASE_ASSET_VERIFICATION.md",
+      "size_bytes": 1825,
+      "compressed_bytes": 796,
+      "sha256": "d642f52343adfafffaac125fd72b52977543971370f3dde1e36212a6e9637a09"
+    },
+    {
       "path": "docs/RELEASE_NOTES_v1.0.0.md",
       "size_bytes": 4476,
       "compressed_bytes": 2244,
@@ -95,8 +125,14 @@
     {
       "path": "docs/RELEASE_NOTES_v1.0.2.md",
       "size_bytes": 9481,
-      "compressed_bytes": 3553,
-      "sha256": "69d34cff703c52ce04dfd1a0d5ef383fa1741b4ead94b8d64fe0c45ed5a16383"
+      "compressed_bytes": 3549,
+      "sha256": "73a2e865d49de0c70163ef0ffc8a34a70d8776f6299f9bfd7052d257a942c629"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_v1.0.3.md",
+      "size_bytes": 7874,
+      "compressed_bytes": 2952,
+      "sha256": "f8ed5148fb83b955ea90f65c19747e43bb2f054158573f4b245b4605d921ea8e"
     },
     {
       "path": "docs/bao-cao.md",
@@ -133,6 +169,18 @@
       "size_bytes": 14308,
       "compressed_bytes": 4862,
       "sha256": "8fc1bed79b274b43b8489056df1cca55ca477018a3800684c0a40d5eb6cfa7a9"
+    },
+    {
+      "path": "docs/plan-6.md",
+      "size_bytes": 7068,
+      "compressed_bytes": 2796,
+      "sha256": "9d311f2355466a973d20a1ce41abcb0e0a730a39fa509c93ee4497414e6d9784"
+    },
+    {
+      "path": "docs/plan-7.md",
+      "size_bytes": 6055,
+      "compressed_bytes": 2314,
+      "sha256": "81d374b537d40170937e3ae830fc1d4db96796ed24ef72c26f751d32c48b8c86"
     },
     {
       "path": "docs/thuyet-trinh.md",
@@ -225,6 +273,30 @@
       "sha256": "35b2df4f65bbd4fcbf9d0a0a17d6a76d76a69a95f9ed8e6a5262ff87d04714fa"
     },
     {
+      "path": "scripts/build_package.py",
+      "size_bytes": 3694,
+      "compressed_bytes": 1670,
+      "sha256": "50e29496c85ff50caf7e99ad82348dd8daae4ddfc56d571394fc5aa3f26c7958"
+    },
+    {
+      "path": "scripts/generate_manifest.py",
+      "size_bytes": 3858,
+      "compressed_bytes": 1602,
+      "sha256": "102ea55d993a790f8eaa71434e0cfa46c53a6296bdc8180322624205d2175945"
+    },
+    {
+      "path": "scripts/verify_clean_package.py",
+      "size_bytes": 7875,
+      "compressed_bytes": 2705,
+      "sha256": "d972d097b6cc9b303bb36adadd1a9392529cf006ca2ed08f0cd14dbed23454f1"
+    },
+    {
+      "path": "scripts/verify_release_asset.py",
+      "size_bytes": 2621,
+      "compressed_bytes": 1203,
+      "sha256": "244d4bda14c3585a8dd76934dedd27c6f74f17c7995294e4966e1baa293c1897"
+    },
+    {
       "path": "src/classifier_service.py",
       "size_bytes": 11842,
       "compressed_bytes": 3491,
@@ -234,7 +306,7 @@
       "path": "src/config.py",
       "size_bytes": 3553,
       "compressed_bytes": 1834,
-      "sha256": "1e2d4d71c986c8d63b3165c754d660556ba82b5fbb315efe5ac503f7c5306bd7"
+      "sha256": "1d156039a9799549e513c99add2945a8a7a168585c9aac62417ef7076c3d3aed"
     },
     {
       "path": "src/error_analysis.py",
@@ -283,6 +355,12 @@
       "size_bytes": 7306,
       "compressed_bytes": 2737,
       "sha256": "ee63e40d4851f9b6abd39b9dd9eedd2af145ebe41f55fabfe8cd32c1195dc418"
+    },
+    {
+      "path": "tests/test_release_consistency.py",
+      "size_bytes": 4317,
+      "compressed_bytes": 1525,
+      "sha256": "4522080bfab4901b0bdbafa9c4e622444d1cd4151e770e26e646d14629796c9a"
     }
   ]
 }

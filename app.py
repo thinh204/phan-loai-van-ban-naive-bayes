@@ -1,8 +1,9 @@
-"""Streamlit Web Application for Text Classification with Session History & Analytics."""
+"""Streamlit Web Application for Text Classification with Dynamic Metrics & Session History."""
 
 from __future__ import annotations
 
 from datetime import datetime
+import json
 import sys
 from pathlib import Path
 import pandas as pd
@@ -13,13 +14,34 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from src.classifier_service import get_classifier_service
-from src.config import CLASS_ICONS, CLASS_LABELS_VN, SAMPLE_TEXTS
+from src.config import (
+    CLASS_ICONS,
+    CLASS_LABELS_VN,
+    EVALUATION_SUMMARY_PATH,
+    SAMPLE_TEXTS,
+)
 
 
 @st.cache_resource
 def get_service():
     """Load and cache the classifier service instance (no refitting)."""
     return get_classifier_service()
+
+
+def load_evaluation_metrics() -> dict | None:
+    """Dynamically load metrics from results/evaluation_summary.json with error handling."""
+    if not EVALUATION_SUMMARY_PATH.exists():
+        return None
+    try:
+        with open(EVALUATION_SUMMARY_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            # Basic validation
+            if isinstance(data, dict) and "accuracy" in data and "f1_macro" in data:
+                return data
+    except Exception as exc:
+        st.sidebar.error(f"Lỗi đọc kết quả thực nghiệm: {exc}")
+        return None
+    return None
 
 
 def init_session_state():
@@ -63,12 +85,12 @@ def main():
             margin-top: 15px;
             margin-bottom: 20px;
         }
-        .history-card {
-            background-color: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 10px;
+        .metric-badge {
+            background-color: #F1F5F9;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
         }
         </style>
         """,
@@ -82,22 +104,57 @@ def main():
         st.error(f"Lỗi nạp mô hình: {exc}. Vui lòng chạy huấn luyện mô hình trước!")
         st.stop()
 
+    # Load dynamic evaluation metrics
+    metrics_data = load_evaluation_metrics()
+
     # Sidebar
     with st.sidebar:
         st.header("⚙️ Cấu hình & Thông tin")
         st.markdown("**Thuật toán:** Multinomial Naive Bayes (`MultinomialNB`)")
         st.markdown("**Đặc trưng:** TF-IDF (`TfidfVectorizer`)")
-        st.markdown("**Làm trơn (Laplace):** `alpha = 1.0`")
         st.markdown(f"**Số lượng từ vựng:** `{len(service.vectorizer.get_feature_names_out()):,}` đặc trưng")
         st.markdown(f"**Số lớp bài toán:** `{len(service.class_names)}` lớp")
 
         st.markdown("---")
-        st.subheader("📊 Hiệu năng thực nghiệm")
-        col_s1, col_s2 = st.columns(2)
-        with col_s1:
-            st.metric("Accuracy", "87.18%")
-        with col_s2:
-            st.metric("Macro F1", "86.87%")
+        st.subheader("📊 Hiệu năng thực nghiệm (Động)")
+
+        if metrics_data is not None:
+            acc_val = metrics_data["accuracy"] * 100
+            f1_val = metrics_data["f1_macro"] * 100
+            prec_val = metrics_data.get("precision_macro", 0.0) * 100
+            rec_val = metrics_data.get("recall_macro", 0.0) * 100
+            n_test = metrics_data.get("n_test", 1490)
+
+            col_s1, col_s2 = st.columns(2)
+            with col_s1:
+                st.metric("Accuracy", f"{acc_val:.2f}%")
+            with col_s2:
+                st.metric("Macro F1", f"{f1_val:.2f}%")
+
+            col_s3, col_s4 = st.columns(2)
+            with col_s3:
+                st.metric("Precision", f"{prec_val:.2f}%")
+            with col_s4:
+                st.metric("Recall", f"{rec_val:.2f}%")
+
+            st.caption(f"Trích xuất từ `results/evaluation_summary.json` (Tập test: {n_test:,} mẫu)")
+
+            with st.expander("🔍 Chi tiết chỉ số từng lớp"):
+                rep = metrics_data.get("classification_report", {})
+                rep_rows = []
+                for c in service.class_names:
+                    if c in rep:
+                        rep_rows.append({
+                            "Lớp": c,
+                            "Precision": f"{rep[c]['precision'] * 100:.2f}%",
+                            "Recall": f"{rep[c]['recall'] * 100:.2f}%",
+                            "F1": f"{rep[c]['f1-score'] * 100:.2f}%",
+                            "Mẫu": int(rep[c]["support"]),
+                        })
+                if rep_rows:
+                    st.dataframe(pd.DataFrame(rep_rows), hide_index=True, use_container_width=True)
+        else:
+            st.warning("⚠️ Chưa tìm thấy file `results/evaluation_summary.json` hợp lệ. Chạy `python src/train_evaluate.py` để cập nhật số liệu.")
 
         st.markdown("---")
         st.subheader("💡 Văn bản mẫu thử nghiệm")

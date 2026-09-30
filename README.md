@@ -7,7 +7,8 @@
 - [Kế hoạch và phân công](docs/ke-hoach.md)
 - [Báo cáo lý thuyết, ví dụ tính tay và kết quả](docs/bao-cao.md)
 - [Mã thực nghiệm và cách chạy](docs/chay-thu-nghiem.md) trên bộ dữ liệu 20 Newsgroups
-- [Kết quả máy đọc được](results/metrics.json) và nội dung thuyết trình
+- [Kết quả máy đọc được](results/metrics.json)
+- [Slide PowerPoint 10 trang](presentation/phan-loai-van-ban-naive-bayes-v2.pptx) và [kịch bản thuyết trình](docs/thuyet-trinh.md)
 
 ## Nguyên tắc thực nghiệm
 

@@ -14,7 +14,7 @@ Chọn bốn chủ đề trong 20 Newsgroups: `comp.graphics`, `rec.sport.baseba
 | 2. Nghiên cứu | Giải thích Bayes, giả định độc lập, làm trơn Laplace, biểu diễn Bag of Words và TF-IDF; ví dụ tính tay | Báo cáo lý thuyết, nguồn tham khảo | `docs: hoàn thành cơ sở lý thuyết Naive Bayes` |
 | 3. Thực nghiệm | Viết mã tải dữ liệu, huấn luyện, dự đoán và xuất kết quả | Mã Python, hướng dẫn chạy, tệp phụ thuộc | `feat: xây dựng thực nghiệm phân loại văn bản` |
 | 4. Đánh giá | Chạy thực nghiệm và phân tích accuracy, precision, recall, F1, nhầm lẫn giữa lớp và ví dụ sai | Kết quả có số liệu thật | `results: ghi kết quả và phân tích lỗi` |
-| 5. Trình bày | Tóm lược lý thuyết và kết quả thành bài trình bày 8–10 slide | Nội dung thuyết trình và ghi chú người nói | `docs: hoàn thiện nội dung thuyết trình` |
+| 5. Trình bày | Tóm lược lý thuyết và kết quả thành bài trình bày 10 slide | PowerPoint, kịch bản và ghi chú người nói | `docs: hoàn thiện nội dung thuyết trình` |
 
 ## Phân công đề xuất cho 3 thành viên
 

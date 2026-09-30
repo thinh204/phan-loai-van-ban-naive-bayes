@@ -3,3 +3,7 @@ __pycache__/
 *.py[cod]
 data/
 .pytest_cache/
+tools/node_modules/
+.build/
+.codex-finalizer/
+.chart-data-*/

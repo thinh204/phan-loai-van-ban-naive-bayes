@@ -109,6 +109,16 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
   - Soạn thảo hướng dẫn chạy lại từ gói nộp và phương án demo ngoại tuyến độc lập không cần mạng Internet.
 - **Kết quả bàn giao**: Bộ hồ sơ nộp đầy đủ, có thể mở, kiểm thử và chạy lại ngay lập tức.
 
+### Giai đoạn 8 – Phát hành (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Phiên bản phát hành chính thức**: `v1.0.1` (Kế thừa tag `v1.0.0`, không di chuyển tag cũ).
+- **Tài liệu phát hành**:
+  - Biên soạn ghi chú phát hành: [docs/RELEASE_NOTES_v1.0.1.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/RELEASE_NOTES_v1.0.1.md).
+  - Tạo tag `v1.0.1` và đẩy lên remote GitHub repository `thinh204/phan-loai-van-ban-naive-bayes`.
+  - Xuất bản GitHub Release công khai cho phiên bản `v1.0.1` với đầy đủ mô tả, tệp đính kèm và hướng dẫn khởi chạy.
+- **Kết quả bàn giao**: Phiên bản phát hành `v1.0.1` hoàn tất, công khai và sẵn sàng bàn giao cho người dùng.
+
+
 
 
 

@@ -77,5 +77,16 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
   - Cập nhật trực tiếp nội dung mô tả phiên bản phát hành `v1.0.1` trên GitHub qua API (`PATCH /repos/thinh204/phan-loai-van-ban-naive-bayes/releases/{id}`).
 - **Kết quả bàn giao**: 100% liên kết trên trang phát hành GitHub Release và tài liệu điều hướng chính xác tới tệp đích.
 
+### Giai đoạn 4 – Tự động hóa gói nộp (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Mã nguồn tự động hóa**: [scripts/build_package.py](file:///d:/phan-loai-van-ban-naive-bayes/scripts/build_package.py).
+- **Quy tắc đóng gói**:
+  - Áp dụng danh sách cho phép (whitelist) nghiêm ngặt gồm các thư mục: `src/`, `models/`, `results/`, `docs/`, `tests/`, `presentation/`, `.streamlit/` và các tệp gốc `app.py`, `requirements.txt`, `README.md`.
+  - Loại trừ tuyệt đối mọi thư mục môi trường ảo (`.venv`), bộ nhớ đệm (`__pycache__`, `.pytest_cache`), tệp nhị phân tạm và dữ liệu nhạy cảm.
+  - Tự động bao gồm đầy đủ tài liệu ghi chú phát hành mới nhất (`docs/RELEASE_NOTES_v1.0.1.md`).
+  - Đóng gói có sắp xếp xác định (deterministic) 42 tệp tin vào [release/phan-loai-van-ban-naive-bayes-final-submission.zip](file:///d:/phan-loai-van-ban-naive-bayes/release/phan-loai-van-ban-naive-bayes-final-submission.zip) (660 KB).
+- **Kết quả bàn giao**: Gói bài nộp có thể tái tạo hoàn toàn bằng một câu lệnh: `python scripts/build_package.py`.
+
+
 
 

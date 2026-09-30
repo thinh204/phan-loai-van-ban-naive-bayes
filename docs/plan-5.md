@@ -87,6 +87,16 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
   - Đóng gói có sắp xếp xác định (deterministic) 42 tệp tin vào [release/phan-loai-van-ban-naive-bayes-final-submission.zip](file:///d:/phan-loai-van-ban-naive-bayes/release/phan-loai-van-ban-naive-bayes-final-submission.zip) (660 KB).
 - **Kết quả bàn giao**: Gói bài nộp có thể tái tạo hoàn toàn bằng một câu lệnh: `python scripts/build_package.py`.
 
+### Giai đoạn 5 – Kiểm tra toàn vẹn (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Mã nguồn kiểm tra**: [scripts/generate_manifest.py](file:///d:/phan-loai-van-ban-naive-bayes/scripts/generate_manifest.py).
+- **Kết quả kiểm tra toàn vẹn**:
+  - Đã thực thi kiểm tra `testzip()` trên toàn bộ tệp nén: trạng thái `VALID`, 100% không phát hiện hỏng dữ liệu hay lỗi CRC-32.
+  - Tính toán và lưu trữ mã băm SHA-256 chính xác của tệp ZIP (`1599c3e379f3af2df1059ed5ea6fb216da2d20a7e9f500a3b3e0a5b0b4f2be26`).
+  - Xuất tệp manifest chuẩn [release/MANIFEST.json](file:///d:/phan-loai-van-ban-naive-bayes/release/MANIFEST.json), tệp đối chiếu [release/CHECKSUMS.sha256](file:///d:/phan-loai-van-ban-naive-bayes/release/CHECKSUMS.sha256) và tài liệu đối chiếu [docs/MANIFEST.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/MANIFEST.md).
+- **Kết quả bàn giao**: Manifest và checksum SHA-256 đầy đủ, phục vụ đối chiếu và kiểm tra tính nguyên vẹn của bài nộp.
+
+
 
 
 

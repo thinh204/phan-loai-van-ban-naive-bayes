@@ -1,0 +1,264 @@
+{
+  "project": "phan-loai-van-ban-naive-bayes",
+  "archive_name": "phan-loai-van-ban-naive-bayes-final-submission.zip",
+  "archive_size_bytes": 660517,
+  "archive_sha256": "1599c3e379f3af2df1059ed5ea6fb216da2d20a7e9f500a3b3e0a5b0b4f2be26",
+  "generated_at_utc": "2026-09-30T13:40:40.889754+00:00",
+  "total_files": 42,
+  "total_uncompressed_bytes": 1372824,
+  "integrity_status": "VALID",
+  "files": [
+    {
+      "path": ".streamlit/config.toml",
+      "size_bytes": 213,
+      "compressed_bytes": 150,
+      "sha256": "90c9641f9491bd3d1f3248b6938a83b9dd142cea1b7dbde4c353bdcf7270a9e1"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 9600,
+      "compressed_bytes": 3892,
+      "sha256": "28fc70150e0f056afd35a427e9ed58d50b614d7ba0d1a70ac0751ba1af511eab"
+    },
+    {
+      "path": "app.py",
+      "size_bytes": 23621,
+      "compressed_bytes": 7418,
+      "sha256": "ddd4b9d8868d45c5edc69434a7c353591ec9cc6b4395ab41e897ec57c4b0da60"
+    },
+    {
+      "path": "docs/CHECKLIST_NOP_BAI.md",
+      "size_bytes": 5766,
+      "compressed_bytes": 2612,
+      "sha256": "429c24083648646e0a2ab883b656d3d0bad3e631d795d8602137a8f5d24f52d6"
+    },
+    {
+      "path": "docs/CI_VERIFICATION.md",
+      "size_bytes": 3368,
+      "compressed_bytes": 1542,
+      "sha256": "07b7bba60c519adcdc74abe1fb20729e2ec1b4c7168f9d241ce385c92d1d9aeb"
+    },
+    {
+      "path": "docs/DEFENSE_QA.md",
+      "size_bytes": 12906,
+      "compressed_bytes": 5269,
+      "sha256": "2d79be27203b2b9d11c91136bf702ced320721f56caf40f7d99127f1861cc518"
+    },
+    {
+      "path": "docs/DEMO_SCRIPT.md",
+      "size_bytes": 8470,
+      "compressed_bytes": 3528,
+      "sha256": "f53e0ae9501270adc2106b00ee5667d4b1c3711a911e2f2c5527b7c585125efa"
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "size_bytes": 3569,
+      "compressed_bytes": 1690,
+      "sha256": "b41357b6a99ae78a1d64510bb0695fd614554d475d20cf19e54be6398a079a7c"
+    },
+    {
+      "path": "docs/NGHIEM_THU.md",
+      "size_bytes": 6464,
+      "compressed_bytes": 2699,
+      "sha256": "fc3930b20739203507a34a7af1f012b476b4cf5f3c94416b36904ade21789fe8"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_v1.0.0.md",
+      "size_bytes": 4476,
+      "compressed_bytes": 2244,
+      "sha256": "b005572cbd879655c3b6420acf02938df0827e5b371cf8c0a58cb1d722a767a6"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_v1.0.1.md",
+      "size_bytes": 6677,
+      "compressed_bytes": 2484,
+      "sha256": "1855c959ccc57e38f53f6d60e3410e550f97aaaefdb7677bc948bc8723ed7bb8"
+    },
+    {
+      "path": "docs/bao-cao.md",
+      "size_bytes": 14951,
+      "compressed_bytes": 5758,
+      "sha256": "c1fe0c54775b4e2ae2d607e61c78747516eb4d6227f16ced5eab84f85015a1c2"
+    },
+    {
+      "path": "docs/chay-thu-nghiem.md",
+      "size_bytes": 5695,
+      "compressed_bytes": 2532,
+      "sha256": "7ad4de869698aba155b9389a4395c331872828bb15feca0235e50d49a01b1a5a"
+    },
+    {
+      "path": "docs/ke-hoach.md",
+      "size_bytes": 3682,
+      "compressed_bytes": 1661,
+      "sha256": "07dc12f168831f51bbcc24d3b561586ef88671f7b06faab4e274f2433c70930a"
+    },
+    {
+      "path": "docs/plan-3.md",
+      "size_bytes": 4106,
+      "compressed_bytes": 1658,
+      "sha256": "658a815b20fc1828929d7ea5388f3cde8bde1d6eb5009fe6c0450a559e4a659a"
+    },
+    {
+      "path": "docs/plan-4.md",
+      "size_bytes": 11797,
+      "compressed_bytes": 4075,
+      "sha256": "3746fe67d434381d1569bb3f5b73893b1190b87334bc9ce5e3e1487895cc9264"
+    },
+    {
+      "path": "docs/plan-5.md",
+      "size_bytes": 8458,
+      "compressed_bytes": 3177,
+      "sha256": "bcb3aa9fc4e8bf5936acc78a57306ac184820d5e1a1452176bbb5706a04f8a9e"
+    },
+    {
+      "path": "docs/thuyet-trinh.md",
+      "size_bytes": 4193,
+      "compressed_bytes": 2095,
+      "sha256": "e2c8b9691471101300d30bde841bfc44bbf2816b70225220b7f4018800d25427"
+    },
+    {
+      "path": "models/class_names.joblib",
+      "size_bytes": 86,
+      "compressed_bytes": 81,
+      "sha256": "274be78859ff02d0b9cd8d3f700f0975c0474f607333091d044adfdae245bc38"
+    },
+    {
+      "path": "models/naive_bayes_model.joblib",
+      "size_bytes": 837191,
+      "compressed_bytes": 423901,
+      "sha256": "c6736c461251be58bea2535a34baa72614bd674e9f368f8ee8a6a7abfb680245"
+    },
+    {
+      "path": "models/tfidf_vectorizer.joblib",
+      "size_bytes": 270438,
+      "compressed_bytes": 113897,
+      "sha256": "0302e4eb4899f8a6a05a60fc06c43c7d54f7283601e41ca3775d676e9b101d44"
+    },
+    {
+      "path": "presentation/phan-loai-van-ban-naive-bayes-v2.pptx",
+      "size_bytes": 42765,
+      "compressed_bytes": 34225,
+      "sha256": "6907067a9bc33d416736269e0c4110dc44dd641430d1d96d5cd5aad047ed8e3b"
+    },
+    {
+      "path": "requirements.txt",
+      "size_bytes": 107,
+      "compressed_bytes": 86,
+      "sha256": "b42156f03d058df0a534c0279afe17c1b2428867baa3f5bd3097992ace1d908c"
+    },
+    {
+      "path": "results/alpha_tuning.csv",
+      "size_bytes": 1099,
+      "compressed_bytes": 536,
+      "sha256": "a4c0b8ba8a81dbbe1254512a0625b74072c317d50d5cba33e82e08a02786a398"
+    },
+    {
+      "path": "results/alpha_tuning.json",
+      "size_bytes": 2496,
+      "compressed_bytes": 627,
+      "sha256": "8fca31364bbee1b3b7cf3c3e33911c907213b0fd86d7d33d7e0cbfa397753189"
+    },
+    {
+      "path": "results/confusion_count.csv",
+      "size_bytes": 188,
+      "compressed_bytes": 118,
+      "sha256": "9bd0fd608fbaa23256e092040b536bb2cdecf9af84ee22191d6c3a6f47bcdf7b"
+    },
+    {
+      "path": "results/confusion_tfidf.csv",
+      "size_bytes": 187,
+      "compressed_bytes": 117,
+      "sha256": "75111cb9e482092564c62df84ed5b2d86d5ec4290ea9ff077c5b6fe501b9c570"
+    },
+    {
+      "path": "results/error_analysis.json",
+      "size_bytes": 5437,
+      "compressed_bytes": 1589,
+      "sha256": "105f448bc91df49dedb489334275db214444ef5253cdb463c5966375849304bf"
+    },
+    {
+      "path": "results/errors_count.json",
+      "size_bytes": 1117,
+      "compressed_bytes": 211,
+      "sha256": "69211dc61e69908aec8a9f45d8de5e20bc1f4764a05f19d1f4871e4254f6489a"
+    },
+    {
+      "path": "results/errors_tfidf.json",
+      "size_bytes": 1115,
+      "compressed_bytes": 199,
+      "sha256": "2c93d823e2ac5312d6128eb3f85ef33e7e8f90630277e3b01fd65494fb3de96c"
+    },
+    {
+      "path": "results/evaluation_summary.json",
+      "size_bytes": 1897,
+      "compressed_bytes": 615,
+      "sha256": "0c07b97d36694adb74237b5bd01f0c17ef9127f22d71b7b2da47f9e0fce83d81"
+    },
+    {
+      "path": "results/metrics.json",
+      "size_bytes": 4412,
+      "compressed_bytes": 1121,
+      "sha256": "35b2df4f65bbd4fcbf9d0a0a17d6a76d76a69a95f9ed8e6a5262ff87d04714fa"
+    },
+    {
+      "path": "src/classifier_service.py",
+      "size_bytes": 11842,
+      "compressed_bytes": 3491,
+      "sha256": "1d5500805a956836cfedae190b0d48c461c864538fd952e8bfff62ab49ef69ea"
+    },
+    {
+      "path": "src/config.py",
+      "size_bytes": 3553,
+      "compressed_bytes": 1834,
+      "sha256": "1e2d4d71c986c8d63b3165c754d660556ba82b5fbb315efe5ac503f7c5306bd7"
+    },
+    {
+      "path": "src/error_analysis.py",
+      "size_bytes": 7798,
+      "compressed_bytes": 2870,
+      "sha256": "87a1553460808918ad4cf73c9249f443ac0040cb65194728e63939a2de157318"
+    },
+    {
+      "path": "src/prepare_data.py",
+      "size_bytes": 5000,
+      "compressed_bytes": 1908,
+      "sha256": "c227dc8d520eb5700622cb617a7eabdc6f6491c6d4cf5fe8907367b9d8d99ccb"
+    },
+    {
+      "path": "src/run_experiment.py",
+      "size_bytes": 5174,
+      "compressed_bytes": 1896,
+      "sha256": "c3c8a2705d9d52a7aa89b36889fb7b6636648d4d348d35cf1a910a772260b068"
+    },
+    {
+      "path": "src/tfidf_pipeline.py",
+      "size_bytes": 5635,
+      "compressed_bytes": 2151,
+      "sha256": "3b307017b80d8c10068a8a7ff461275c48daae3e5d654a59bee0acbc0af8b93f"
+    },
+    {
+      "path": "src/train_evaluate.py",
+      "size_bytes": 7507,
+      "compressed_bytes": 2481,
+      "sha256": "98cfb8b80fe0ae9d7b0b7af3142014bbab3366adc2e379faf45a02b12b66fad8"
+    },
+    {
+      "path": "src/tune_alpha.py",
+      "size_bytes": 10094,
+      "compressed_bytes": 3304,
+      "sha256": "c49025c46b5b97a99f5b65390768c9c4f52bd18b6f18cf614a1b74947cb27831"
+    },
+    {
+      "path": "tests/test_inference.py",
+      "size_bytes": 2368,
+      "compressed_bytes": 992,
+      "sha256": "608f364c70dc1065e1904b74b6de6f96f7f85666a034cc6258fbaa4633514151"
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "size_bytes": 7306,
+      "compressed_bytes": 2737,
+      "sha256": "ee63e40d4851f9b6abd39b9dd9eedd2af145ebe41f55fabfe8cd32c1195dc418"
+    }
+  ]
+}

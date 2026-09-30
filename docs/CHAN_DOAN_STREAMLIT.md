@@ -14,6 +14,10 @@
 > 3. Nguyên nhân duy nhất khiến khách chưa đăng nhập nhận mã 404 (`/errors/not_found`) là do cài đặt **Viewer authorization** trên Streamlit Community Cloud chưa được chuyển sang **Public (Anyone with the link can view)**.
 > Toàn bộ log mạng và bằng chứng thực tế được lưu tại [`docs/evidence/plan-8/`](evidence/plan-8/) và [`docs/NGHIEM_THU_PLAN_8.md`](NGHIEM_THU_PLAN_8.md).
 
+> [!TIP]
+> **Kết luận khắc phục và nghiệm thu thành công (30/09/2026 - Plan 9):**
+> Ứng dụng đã chính thức mở công khai thành công tại [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app) cho phiên khách không đăng nhập. Toàn bộ 13 ca kiểm thử chức năng (dự đoán 4 chủ đề, ca biên rỗng/ngắn/OOV, giải thích TF-IDF và tải CSV) đã được nghiệm thu đạt 100%. Xem chi tiết tại [`docs/NGHIEM_THU_PLAN_9.md`](NGHIEM_THU_PLAN_9.md).
+
 ---
 
 ## 1. Hiện tượng ghi nhận từ kiểm tra mạng thực tế

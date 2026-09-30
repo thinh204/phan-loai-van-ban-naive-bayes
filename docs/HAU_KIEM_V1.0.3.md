@@ -29,10 +29,14 @@
 > **ĐÍNH CHÍNH HẬU KIỂM WEBSITE CÔNG KHAI (30/09/2026 - Plan 8):**
 > Ghi nhận mục 2 về "Truy cập trực tuyến mở trực tiếp từ phiên ẩn danh" trong phiên bản trước chưa phản ánh đúng quan sát mạng thực tế. Thực tế kiểm tra độc lập ngày 30/09/2026 cho thấy container phản hồi `200 OK` tại `/healthz`, nhưng trang gốc `/` yêu cầu xác thực OAuth do cài đặt **Viewer authorization** trên Streamlit Community Cloud chưa chuyển sang **Public**. Gói phát hành `v1.0.3` (tệp ZIP, mã băm SHA-256, 21 bài test `pytest`) vẫn giữ nguyên tính hợp lệ kỹ thuật, nhưng trạng thái website công khai chưa đạt và được theo dõi xử lý trong Plan 8. Xem chi tiết tại [`docs/NGHIEM_THU_PLAN_8.md`](NGHIEM_THU_PLAN_8.md).
 
+> [!NOTE]
+> **XÁC NHẬN NGHIỆM THU WEBSITE CÔNG KHAI THÀNH CÔNG (30/09/2026 - Plan 9):**
+> Website công khai `https://phan-loai-van-ban-naive-bayes.streamlit.app` đã chính thức mở thành công và hoàn thành trọn vẹn 13/13 ca kiểm thử chức năng trực tiếp trên Cloud không cần đăng nhập. Toàn bộ tài sản phát hành `v1.0.3` (tệp nén ZIP, SHA-256, 21 bài kiểm thử) hoàn toàn nhất quán và sẵn sàng nộp bài. Chi tiết xem tại [`docs/NGHIEM_THU_PLAN_9.md`](NGHIEM_THU_PLAN_9.md).
+
 1. **Truy cập trực tuyến**:
    - Địa chỉ: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
-   - Tình trạng: Container phản hồi `200 OK` trên `/healthz`, truy cập `/` công khai đang chờ bật phân quyền Viewer Public (xem đính chính Plan 8).
-   - Giao diện (kiểm thử nội bộ): Hiển thị đúng phiên bản `v1.0.3 – Plan 6` tại thanh bên và chân trang.
+   - Tình trạng: Mở thành công cho mọi khách truy cập, không cần đăng nhập; đã nghiệm thu toàn diện 13/13 ca trong Plan 9.
+   - Giao diện: Hiển thị đúng phiên bản `v1.0.3 – Plan 6` tại thanh bên và chân trang.
 2. **Kiểm tra suy diễn cuối (Live Prediction Test trên Localhost)**:
    - **Văn bản đầu vào**: *"James Webb Space Telescope observes distant galaxy formation and cosmic stellar evolution mission."*
    - **Chủ đề dự đoán**: **`sci.space` (Khoa học vũ trụ)**.

@@ -34,10 +34,10 @@ Repository đã được chuẩn hóa 100% để tương thích với môi trư�
 
 5. **Xác nhận hoạt động và URL chính thức:**
    - **URL triển khai chính thức**: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
-   - **Kết quả kiểm tra & khắc phục quyền truy cập (Plan 7)**:
-     - **Chuyển đổi Repository**: Đã chuyển repository GitHub `thinh204/phan-loai-van-ban-naive-bayes` sang chế độ **Public** công khai qua GitHub REST API.
-     - **Cấu hình chia sẻ công khai**: Trên bảng điều khiển `https://share.streamlit.io`, cấu hình quyền truy cập **Viewer authorization** chuyển sang **Public** (cho phép người dùng truy cập trực tiếp không cần đăng nhập tài khoản).
-     - **Kiểm thử thực tế từ phiên ẩn danh**: Ứng dụng đã được kiểm tra trực tiếp từ phiên khách ẩn danh (Incognito), hiển thị trọn vẹn giao diện `v1.0.3 – Plan 6` và thực hiện phân loại văn bản tức thì.
+   - **Kết quả kiểm tra & nghiệm thu trực tuyến (Plan 9)**:
+     - **Cấu hình chia sẻ công khai**: Quyền xem (**Viewer authorization**) hoạt động công khai cho mọi người dùng không cần đăng nhập tài khoản.
+     - **Nghiệm thu toàn diện 13 ca kiểm thử**: Thực hiện thành công 13 ca kiểm thử (dự đoán 4 chủ đề, xử lý ca biên rỗng/ngắn/OOV, hiển thị bảng giải thích TF-IDF, tải và đối chiếu tệp CSV, tải lại trang).
+     - Chi tiết báo cáo và ảnh chụp thực tế xem tại [`docs/NGHIEM_THU_PLAN_9.md`](NGHIEM_THU_PLAN_9.md) và thư mục [`docs/evidence/plan-9/`](evidence/plan-9/).
 
 ---
 

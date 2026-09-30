@@ -5,7 +5,11 @@
 - **Địa chỉ URL kiểm tra**: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
 - **Thời điểm kiểm tra**: 30/09/2026 (23:02:24+07:00)
 - **Bộ kiểm thử tự động**: 21/21 ca kiểm thử đạt (`pytest -q`)
-- **Trạng thái Plan 8 hiện tại**: **CHƯA HOÀN THÀNH** (Đang chờ chủ sở hữu cấu hình quyền xem công khai trên Streamlit Community Cloud)
+- **Trạng thái Plan 8**: **ĐÃ HOÀN THÀNH** (Đã nghiệm thu đầy đủ trên website công khai trong Plan 9)
+
+> [!NOTE]
+> **CẬP NHẬT NGHIỆM THU THỰC TẾ (30/09/2026 - Plan 9):**
+> URL công khai `https://phan-loai-van-ban-naive-bayes.streamlit.app` đã mở thành công cho mọi khách truy cập chưa đăng nhập. Toàn bộ 13/13 ca kiểm thử chức năng (dự đoán 4 chủ đề, xử lý chuỗi rỗng, văn bản ngắn, OOV, độ tin cậy thấp, giải thích đặc trưng TF-IDF, bảng lịch sử phiên, tải file CSV và tải lại trang) đã được nghiệm thu thực tế với 100% bằng chứng ảnh chụp và dữ liệu CSV. Xem toàn bộ biên bản nghiệm thu mới tại [`docs/NGHIEM_THU_PLAN_9.md`](NGHIEM_THU_PLAN_9.md) và thư mục bằng chứng [`docs/evidence/plan-9/`](evidence/plan-9/).
 
 ---
 
@@ -83,6 +87,6 @@ Ngay sau khi chủ tài khoản hoàn tất thao tác này, URL `https://phan-lo
 
 ## 5. Kết luận trạng thái Plan 8
 
-- **Trạng thái**: **CHƯA HOÀN THÀNH**.
-- Toàn bộ mã nguồn, cấu hình, kiểm thử 21/21, CI Pipeline và tài sản triển khai cục bộ hoàn toàn toàn vẹn.
-- Hồ sơ kỹ thuật và các biên bản trước đây được cập nhật ghi chú đính chính, phản ánh chính xác trạng thái thực tế quan sát được thay vì tuyên bố đã hoàn thành sớm.
+- **Trạng thái**: **HOÀN THÀNH** (Kế thừa và xác thực toàn diện bằng bằng chứng thực tế trong Plan 9).
+- Mọi điều kiện về website công khai, kiểm thử chức năng 4 chủ đề, ca biên rỗng/ngắn/OOV, giải thích TF-IDF và tải CSV đều đã được xác thực 100% bằng dữ liệu mạng thực tế.
+- Xem chi tiết tại biên bản nghiệm thu mới nhất: [`docs/NGHIEM_THU_PLAN_9.md`](NGHIEM_THU_PLAN_9.md).

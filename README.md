@@ -55,10 +55,10 @@ python src/error_analysis.py
 
 ### 4. Khởi chạy giao diện web Streamlit
 
-- **Trải nghiệm trực tuyến (Cloud Demo):** Truy cập tại [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
-  > [!NOTE]
-  > **Ghi chú đính chính trực tuyến (30/09/2026 - Plan 8):**
-  > Container ứng dụng đã hoạt động trên hạ tầng Streamlit Cloud (`/healthz` phản hồi `200 OK: {"status":"ok"}`). Tuy nhiên, trang công khai `/` đang bị rào cản OAuth Gateway của Streamlit Cloud chuyển hướng do thiết lập **Viewer authorization** cần được chủ tài khoản bật sang chế độ **Public** trên bảng điều khiển. Trong thời gian này, có thể trải nghiệm đầy đủ 100% tính năng bằng máy chủ nội bộ (`http://localhost:8501`). Chi tiết bằng chứng và hướng dẫn xem tại [`docs/NGHIEM_THU_PLAN_8.md`](docs/NGHIEM_THU_PLAN_8.md).
+- **Trải nghiệm trực tuyến (Cloud Demo):** Truy cập trực tiếp tại [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
+  > [!TIP]
+  > **Xác nhận nghiệm thu trực tuyến (30/09/2026 - Plan 9):**
+  > Website công khai đã được nghiệm thu thực tế toàn diện trên phiên khách độc lập với 13/13 ca kiểm thử đạt (dự đoán 4 chủ đề, xử lý ca biên rỗng/ngắn/OOV, phân tích giải thích đặc trưng TF-IDF, bảng lịch sử và xuất tệp CSV). Chi tiết dữ liệu và ảnh chụp thực tế xem tại [`docs/NGHIEM_THU_PLAN_9.md`](docs/NGHIEM_THU_PLAN_9.md).
 
 - **Chạy cục bộ trên máy (Local Server):**
   ```powershell
@@ -170,6 +170,7 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 - [Plan 7: Hoàn tất website công khai và phát hành v1.0.3](docs/plan-7.md)
 - [Plan 8: Khôi phục website công khai và nghiệm thu bằng bằng chứng thực tế](docs/plan-8.md)
 - [Plan 9: Nghiệm thu website đang chạy và chốt bản nộp](docs/plan-9.md)
+- [Biên bản nghiệm thu website công khai Plan 9](docs/NGHIEM_THU_PLAN_9.md)
 - [Biên bản nghiệm thu và chẩn đoán website công khai Plan 8](docs/NGHIEM_THU_PLAN_8.md)
 - [Biên bản nghiệm thu chức năng Plan 4](docs/NGHIEM_THU.md)
 - [Bằng chứng xác minh CI GitHub Actions](docs/CI_VERIFICATION.md)

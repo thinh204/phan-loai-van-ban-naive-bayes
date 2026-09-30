@@ -13,6 +13,10 @@
 > - Tuy nhiên, truy cập trang web công khai `/` hiện chưa mở được cho khách chưa đăng nhập do quyền xem (**Viewer authorization**) trên bảng điều khiển Streamlit Cloud cần được chủ tài khoản chuyển sang chế độ **Public (Anyone with the link can view)**.
 > - Do đó, trạng thái nghiệm thu website công khai thực tế được theo dõi tại [`docs/NGHIEM_THU_PLAN_8.md`](NGHIEM_THU_PLAN_8.md) kèm toàn bộ dữ liệu mạng tại [`docs/evidence/plan-8/`](evidence/plan-8/).
 
+> [!NOTE]
+> **XÁC NHẬN NGHIỆM THU WEBSITE TRỰC TUYẾN CHÍNH THỨC (30/09/2026 - Plan 9):**
+> Website công khai tại `https://phan-loai-van-ban-naive-bayes.streamlit.app` đã chính thức mở thành công cho mọi khách truy cập và đã hoàn tất nghiệm thu đầy đủ 13/13 ca kiểm thử bằng phiên khách chưa đăng nhập, bao gồm cả tải và đối chiếu tệp CSV thật từ Cloud. Xem biên bản nghiệm thu trực tuyến chính thức tại [`docs/NGHIEM_THU_PLAN_9.md`](NGHIEM_THU_PLAN_9.md).
+
 ---
 
 ## 1. Bảng kết quả nghiệm thu chi tiết 10 ca kiểm thử trên giao diện

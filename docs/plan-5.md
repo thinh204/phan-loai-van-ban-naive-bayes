@@ -107,6 +107,17 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
   - Lập biên bản xác thực chi tiết tại [docs/CLEAN_ENV_TEST.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/CLEAN_ENV_TEST.md).
 - **Kết quả bàn giao**: Biên bản tái lập từ gói bài nộp chứng minh ứng dụng có thể chạy hoàn toàn độc lập mà không gặp bất kỳ lỗi phụ thuộc nào.
 
+### Giai đoạn 7 – Diễn tập ba thành viên (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Tài liệu kịch bản diễn tập**: [docs/DIEN_TAP_BAO_VE.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/DIEN_TAP_BAO_VE.md).
+- **Phân bổ vai trò và thời lượng chuẩn (9 phút)**:
+  - **Thành viên 1** (2 phút 15 giây): Mở đầu, bối cảnh bài toán, 4 chủ đề 20 Newsgroups, tiền xử lý loại metadata chống rò rỉ dữ liệu.
+  - **Thành viên 2** (2 phút 45 giây): Lý thuyết TF-IDF 13.068 chiều, định lý Bayes, tính toán miền Log-sum, làm trơn Laplace và ví dụ tính tay.
+  - **Thành viên 3** (4 phút 00 giây): Tối ưu hóa siêu tham số alpha qua 5-Fold CV (`alpha=0.1`), kết quả Test Accuracy 88,52%, Macro F1 88,33%, phân tích lỗi, thao tác trực tiếp trên giao diện Streamlit và kết luận.
+- **Phương án dự phòng ngoại tuyến**: Chuẩn bị sẵn kịch bản chuyển sang localhost:8501 trong 3 giây nếu mạng Internet gặp sự cố tại hội trường bảo vệ.
+- **Kết quả bàn giao**: Kịch bản diễn tập chi tiết từng phút, câu thoại gợi ý và quy tắc phối hợp chuyển phần nhuần nhuyễn.
+
+
 
 
 

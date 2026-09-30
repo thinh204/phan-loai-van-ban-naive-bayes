@@ -169,7 +169,9 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 - [Bộ câu hỏi và trả lời phản biện (Q&A)](docs/DEFENSE_QA.md)
 - [Báo cáo lý thuyết và kết quả mở rộng](docs/bao-cao.md)
 - [Kịch bản thuyết trình và slide bảo vệ](docs/thuyet-trinh.md)
+- [Kịch bản diễn tập nhóm bảo vệ (7–10 phút)](docs/DIEN_TAP_BAO_VE.md)
 - [Danh mục kiểm tra đóng gói bài nộp](docs/CHECKLIST_NOP_BAI.md)
 - [Ghi chú phát hành phiên bản v1.0.1](docs/RELEASE_NOTES_v1.0.1.md)
+
 
 

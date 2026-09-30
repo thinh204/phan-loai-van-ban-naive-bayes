@@ -1,42 +1,42 @@
-# Danh mục toàn vẹn và mã băm gói bài nộp (Submission Manifest & Checksums)
+# Danh mục toàn vẹn và mã băm gói bài nộp (Submission Manifest & Checksums v1.0.2)
 
 - **Tệp lưu trữ chính thức**: `release/phan-loai-van-ban-naive-bayes-final-submission.zip`
-- **Dung lượng tệp nén**: `660.517 bytes` (~645.0 KB)
-- **Mã băm SHA-256 tệp nén**:
-  ```text
-  1599c3e379f3af2df1059ed5ea6fb216da2d20a7e9f500a3b3e0a5b0b4f2be26
-  ```
-- **Tổng số tệp tin đóng gói**: 42 tệp tin (bao gồm toàn bộ mã nguồn, dữ liệu mô hình nạp sẵn, slide PowerPoint, tài liệu báo cáo và kết quả thực nghiệm).
+- **Phiên bản phát hành**: `v1.0.2` (Bản bảo vệ đề tài chính thức)
+- **Tổng số tệp tin đóng gói**: 46 tệp tin (bao gồm toàn bộ mã nguồn, dữ liệu mô hình nạp sẵn, slide PowerPoint, tài liệu báo cáo và kết quả thực nghiệm).
 - **Kiểm tra tính toàn vẹn (testzip)**: `VALID` (100% không lỗi dữ liệu, không hỏng CRC-32).
+- **Danh mục chi tiết và mã băm từng tệp**: [release/MANIFEST.json](file:///d:/phan-loai-van-ban-naive-bayes/release/MANIFEST.json) và [release/CHECKSUMS.sha256](file:///d:/phan-loai-van-ban-naive-bayes/release/CHECKSUMS.sha256).
 
 ---
 
-## 1. Bảng đối chiếu mã băm SHA-256 các tệp thành phần
+## 1. Bảng đối chiếu mã băm SHA-256 các tệp thành phần tiêu biểu
 
-| Đường dẫn tệp trong gói | Dung lượng (bytes) | Mã băm SHA-256 (Tóm lược 16 ký tự đầu) |
-| :--- | :---: | :--- |
-| `.streamlit/config.toml` | 213 | `21b5695beee3cff3...` |
-| `README.md` | 9.600 | `f22f778d91b402eb...` |
-| `app.py` | 23.621 | `d2d9ec224f8dbe8c...` |
-| `requirements.txt` | 107 | `4f3ce23577319087...` |
-| `models/naive_bayes_model.joblib` | 837.191 | `c5fae4ca58f553f4...` |
-| `models/tfidf_vectorizer.joblib` | 270.438 | `e5bc68846fd253b2...` |
-| `models/class_names.joblib` | 86 | `ef09a5bebe816823...` |
-| `presentation/phan-loai-van-ban-naive-bayes-v2.pptx` | 42.765 | `63b8606ffc6b5412...` |
-| `results/evaluation_summary.json` | 1.897 | `ba6f29910d6a4574...` |
-| `results/alpha_tuning.json` | 2.496 | `321484be7b38d35e...` |
-| `results/error_analysis.json` | 5.437 | `8e030b42fbb1bf4f...` |
-| `src/classifier_service.py` | 11.842 | `001da66eb3e6d1eb...` |
-| `src/config.py` | 3.553 | `1bfa11b93f77341d...` |
-| `tests/test_pipeline.py` | 7.306 | `86ca8e14e134b225...` |
-| `tests/test_inference.py` | 2.368 | `2e04e9c70014b2d5...` |
-| `docs/bao-cao.md` | 14.951 | `ec62b083c5098ffb...` |
-| `docs/thuyet-trinh.md` | 4.193 | `5f0b5d03831b7ad2...` |
-| `docs/NGHIEM_THU.md` | 6.464 | `11603baefdfc1110...` |
-| `docs/CI_VERIFICATION.md` | 3.368 | `a5f8ee4a938c5d2c...` |
-| `docs/RELEASE_NOTES_v1.0.1.md` | 6.677 | `dd069612c9bf20c3...` |
+| Đường dẫn tệp trong gói | Dung lượng (bytes) | Trạng thái toàn vẹn |
+| :--- | :---: | :---: |
+| `.streamlit/config.toml` | 213 | ✅ Đã băm SHA-256 |
+| `README.md` | 9.688 | ✅ Đã băm SHA-256 |
+| `app.py` | 23.621 | ✅ Đã băm SHA-256 |
+| `requirements.txt` | 107 | ✅ Đã băm SHA-256 |
+| `models/naive_bayes_model.joblib` | 837.191 | ✅ Đã băm SHA-256 |
+| `models/tfidf_vectorizer.joblib` | 270.438 | ✅ Đã băm SHA-256 |
+| `models/class_names.joblib` | 86 | ✅ Đã băm SHA-256 |
+| `presentation/phan-loai-van-ban-naive-bayes-v2.pptx` | 42.765 | ✅ Đã băm SHA-256 |
+| `results/evaluation_summary.json` | 1.897 | ✅ Đã băm SHA-256 |
+| `results/alpha_tuning.json` | 2.496 | ✅ Đã băm SHA-256 |
+| `results/error_analysis.json` | 5.437 | ✅ Đã băm SHA-256 |
+| `src/classifier_service.py` | 11.842 | ✅ Đã băm SHA-256 |
+| `src/config.py` | 3.553 | ✅ Đã băm SHA-256 |
+| `tests/test_pipeline.py` | 7.306 | ✅ Đã băm SHA-256 |
+| `tests/test_inference.py` | 2.368 | ✅ Đã băm SHA-256 |
+| `docs/bao-cao.md` | 14.951 | ✅ Đã băm SHA-256 |
+| `docs/thuyet-trinh.md` | 4.193 | ✅ Đã băm SHA-256 |
+| `docs/DIEN_TAP_BAO_VE.md` | 9.076 | ✅ Đã băm SHA-256 |
+| `docs/DEMO_SCRIPT.md` | 8.470 | ✅ Đã băm SHA-256 |
+| `docs/NGHIEM_THU.md` | 6.464 | ✅ Đã băm SHA-256 |
+| `docs/CI_VERIFICATION.md` | 3.368 | ✅ Đã băm SHA-256 |
+| `docs/CLEAN_ENV_TEST.md` | 3.302 | ✅ Đã băm SHA-256 |
+| `docs/RELEASE_NOTES_v1.0.2.md` | 9.481 | ✅ Đã băm SHA-256 |
 
-*(Chi tiết đầy đủ 42 tệp được lưu trữ tại `release/MANIFEST.json` và `release/CHECKSUMS.sha256`)*.
+*(Chi tiết đầy đủ 46 tệp được lưu trữ đồng bộ tại `release/MANIFEST.json` và `release/CHECKSUMS.sha256`)*.
 
 ---
 
@@ -48,7 +48,7 @@ Người dùng hoặc hội đồng chấm thi có thể kiểm tra tính toàn 
 ```powershell
 Get-FileHash -Path release\phan-loai-van-ban-naive-bayes-final-submission.zip -Algorithm SHA256
 ```
-So sánh chuỗi mã băm hiển thị với giá trị đã công bố ở trên.
+So sánh chuỗi mã băm hiển thị với giá trị dòng đầu tiên trong `release/CHECKSUMS.sha256`.
 
 ### Trên Linux / macOS:
 ```bash

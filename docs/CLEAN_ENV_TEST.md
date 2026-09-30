@@ -1,7 +1,7 @@
 # Biên bản xác minh gói bài nộp trong môi trường sạch độc lập
 
 - **Gói bài nộp kiểm tra**: `release/phan-loai-van-ban-naive-bayes-final-submission.zip`
-- **Mã băm SHA-256**: `1599c3e379f3af2df1059ed5ea6fb216da2d20a7e9f500a3b3e0a5b0b4f2be26`
+- **Mã băm SHA-256**: Xem tệp [release/CHECKSUMS.sha256](file:///d:/phan-loai-van-ban-naive-bayes/release/CHECKSUMS.sha256)
 - **Thời điểm kiểm tra**: 30/09/2026
 - **Script tự động hóa**: [scripts/verify_clean_package.py](file:///d:/phan-loai-van-ban-naive-bayes/scripts/verify_clean_package.py)
 - **Mục tiêu**: Chứng minh gói nộp bài hoàn toàn độc lập, có thể giải nén và vận hành ngay trên máy tính của hội đồng chấm thi mà không phụ thuộc vào môi trường phát triển hiện tại.
@@ -14,7 +14,7 @@
    - Vị trí: `C:\Users\THINH\AppData\Local\Temp\clean_pkg_test_*`
    - Đảm bảo thư mục ban đầu rỗng 100%, không kế thừa file cache hay git metadata.
 2. **Giải nén gói bài nộp**:
-   - Giải nén thành công toàn bộ **42 tệp tin** (mã nguồn, mô hình nạp sẵn `.joblib`, cấu hình, kiểm thử, tài liệu, kết quả thực nghiệm và slide PowerPoint).
+   - Giải nén thành công toàn bộ **46 tệp tin** (mã nguồn, mô hình nạp sẵn `.joblib`, cấu hình, kiểm thử, tài liệu, kết quả thực nghiệm và slide PowerPoint).
 3. **Kiểm tra biên dịch cú pháp Python (compileall)**:
    - Lệnh thực thi: `python -m compileall -q app.py src tests`
    - Kết quả: Mã thoát `0`, không có lỗi cú pháp hay cảnh báo import.
@@ -34,7 +34,7 @@
 | Tiêu chí kiểm tra | Yêu cầu kỹ thuật | Kết quả thực tế | Trạng thái |
 | :--- | :--- | :--- | :---: |
 | **Tính toàn vẹn tệp nén** | Không lỗi CRC-32 (`testzip`) | Hợp lệ 100% | **ĐẠT** |
-| **Số lượng tệp giải nén** | Đầy đủ 42 tệp tin theo whitelist | 42/42 tệp tin | **ĐẠT** |
+| **Số lượng tệp giải nén** | Đầy đủ 46 tệp tin theo whitelist | 46/46 tệp tin | **ĐẠT** |
 | **Biên dịch mã nguồn** | Không có lỗi cú pháp Python | Return code: `0` | **ĐẠT** |
 | **Kiểm thử tự động** | Vượt qua toàn bộ 16 ca kiểm thử | **16/16 PASSED** | **ĐẠT** |
 | **Tự chủ nạp mô hình** | Nạp thành công không cần huấn luyện lại | Hoàn thành | **ĐẠT** |

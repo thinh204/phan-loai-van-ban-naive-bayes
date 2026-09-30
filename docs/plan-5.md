@@ -117,6 +117,18 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
 - **Phương án dự phòng ngoại tuyến**: Chuẩn bị sẵn kịch bản chuyển sang localhost:8501 trong 3 giây nếu mạng Internet gặp sự cố tại hội trường bảo vệ.
 - **Kết quả bàn giao**: Kịch bản diễn tập chi tiết từng phút, câu thoại gợi ý và quy tắc phối hợp chuyển phần nhuần nhuyễn.
 
+### Giai đoạn 8 – Đóng băng bản cuối (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Tài liệu phát hành**: [docs/RELEASE_NOTES_v1.0.2.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/RELEASE_NOTES_v1.0.2.md).
+- **Quy trình hoàn tất**:
+  - Tự động hóa tạo gói bài nộp chính thức `release/phan-loai-van-ban-naive-bayes-final-submission.zip` chứa đầy đủ 46 tệp sạch sẽ.
+  - Cập nhật bảng kiểm kê [release/MANIFEST.json](file:///d:/phan-loai-van-ban-naive-bayes/release/MANIFEST.json) và mã băm [release/CHECKSUMS.sha256](file:///d:/phan-loai-van-ban-naive-bayes/release/CHECKSUMS.sha256).
+  - Tạo tag Git `v1.0.2` trỏ chính xác vào commit nghiệm thu cuối cùng và push lên GitHub.
+  - Xuất bản GitHub Release `v1.0.2` kèm tệp lưu trữ gói nộp bài và liên kết kiểm chứng.
+  - Đạt 100% các điều kiện hoàn thành của đề tài và sẵn sàng bảo vệ trước hội đồng.
+- **Kết quả bàn giao**: Bản phát hành cuối cùng v1.0.2 đã được kiểm định từ đầu đến cuối.
+
+
 
 
 

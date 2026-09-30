@@ -1,11 +1,11 @@
 {
   "project": "phan-loai-van-ban-naive-bayes",
   "archive_name": "phan-loai-van-ban-naive-bayes-final-submission.zip",
-  "archive_size_bytes": 660517,
-  "archive_sha256": "1599c3e379f3af2df1059ed5ea6fb216da2d20a7e9f500a3b3e0a5b0b4f2be26",
-  "generated_at_utc": "2026-09-30T13:40:40.889754+00:00",
-  "total_files": 42,
-  "total_uncompressed_bytes": 1372824,
+  "archive_size_bytes": 673099,
+  "archive_sha256": "c23a328f48b01ebe4c6609a8a38b587e062f2a4dfa8983b5e9c3fd09457e1842",
+  "generated_at_utc": "2026-09-30T13:50:38.773154+00:00",
+  "total_files": 46,
+  "total_uncompressed_bytes": 1403852,
   "integrity_status": "VALID",
   "files": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 9600,
-      "compressed_bytes": 3892,
-      "sha256": "28fc70150e0f056afd35a427e9ed58d50b614d7ba0d1a70ac0751ba1af511eab"
+      "size_bytes": 9688,
+      "compressed_bytes": 3928,
+      "sha256": "4ebb98e0199150fa10346803a14864bbf618bdfbda6d16204e83ff7dd94ec6bd"
     },
     {
       "path": "app.py",
@@ -39,6 +39,12 @@
       "sha256": "07b7bba60c519adcdc74abe1fb20729e2ec1b4c7168f9d241ce385c92d1d9aeb"
     },
     {
+      "path": "docs/CLEAN_ENV_TEST.md",
+      "size_bytes": 3339,
+      "compressed_bytes": 1580,
+      "sha256": "e91eea7967040be8032ae8aaa7e6bcfad3d64ca1fac443a703f476e6e4525b2d"
+    },
+    {
       "path": "docs/DEFENSE_QA.md",
       "size_bytes": 12906,
       "compressed_bytes": 5269,
@@ -57,6 +63,18 @@
       "sha256": "b41357b6a99ae78a1d64510bb0695fd614554d475d20cf19e54be6398a079a7c"
     },
     {
+      "path": "docs/DIEN_TAP_BAO_VE.md",
+      "size_bytes": 9076,
+      "compressed_bytes": 3852,
+      "sha256": "fe6a6274dafe8d2e562fb6e4e9f32ed0fcaf0c8d3a6cb7e278e02ee72646a6c2"
+    },
+    {
+      "path": "docs/MANIFEST.md",
+      "size_bytes": 3194,
+      "compressed_bytes": 1394,
+      "sha256": "aa919f147aca091b1d2d1fd711cb83ec31e2835fd542f79474a8f42d19e652ea"
+    },
+    {
       "path": "docs/NGHIEM_THU.md",
       "size_bytes": 6464,
       "compressed_bytes": 2699,
@@ -73,6 +91,12 @@
       "size_bytes": 6677,
       "compressed_bytes": 2484,
       "sha256": "1855c959ccc57e38f53f6d60e3410e550f97aaaefdb7677bc948bc8723ed7bb8"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_v1.0.2.md",
+      "size_bytes": 9481,
+      "compressed_bytes": 3553,
+      "sha256": "69d34cff703c52ce04dfd1a0d5ef383fa1741b4ead94b8d64fe0c45ed5a16383"
     },
     {
       "path": "docs/bao-cao.md",
@@ -106,9 +130,9 @@
     },
     {
       "path": "docs/plan-5.md",
-      "size_bytes": 8458,
-      "compressed_bytes": 3177,
-      "sha256": "bcb3aa9fc4e8bf5936acc78a57306ac184820d5e1a1452176bbb5706a04f8a9e"
+      "size_bytes": 14308,
+      "compressed_bytes": 4862,
+      "sha256": "8fc1bed79b274b43b8489056df1cca55ca477018a3800684c0a40d5eb6cfa7a9"
     },
     {
       "path": "docs/thuyet-trinh.md",

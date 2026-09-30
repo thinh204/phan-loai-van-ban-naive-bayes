@@ -13,9 +13,9 @@ DOCS_DIR = ROOT / "docs"
 
 # Central version and release metadata (Nguồn duy nhất cho thông tin phiên bản)
 APP_NAME = "Phân loại văn bản bằng Naive Bayes đa thức"
-APP_VERSION = "v1.0.3"
-PLAN_VERSION = "Plan 6"
-RELEASE_VERSION = "v1.0.3"
+APP_VERSION = "v1.0.4"
+PLAN_VERSION = "Plan 10"
+RELEASE_VERSION = "v1.0.4"
 FOOTER_CAPTION = f"Khoa Công nghệ Thông tin • Đề tài: Phân loại văn bản bằng Multinomial Naive Bayes ({APP_VERSION} - {PLAN_VERSION})"
 
 # Artifact file paths

@@ -8,3 +8,4 @@ tools/node_modules/
 .build/
 .codex-finalizer/
 .chart-data-*/
+.chrome_profile*/

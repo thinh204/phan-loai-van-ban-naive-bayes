@@ -1,0 +1,11 @@
+﻿timestamp,text_preview,predicted_class,confidence_percent,in_vocab_tokens,is_uncertain,latency_ms
+2026-09-30 17:11:19,"The graphics software renders three dimensional images using polygons, textures ...",comp.graphics,99.6,13,Không,21.76
+2026-09-30 17:11:25,The baseball pitcher threw the ball and the batter hit a home run during the gam...,rec.sport.baseball,99.87,12,Không,46.15
+2026-09-30 17:11:27,NASA launched a spacecraft into orbit to study distant planets and explore the s...,sci.space,99.44,14,Không,19.22
+2026-09-30 17:11:30,"The government and parliament debated public policy, elections and political ref...",talk.politics.misc,87.02,9,Không,21.54
+2026-09-30 17:11:32,space,sci.space,92.55,1,Có,29.83
+2026-09-30 17:11:35,zxqvbnm qqqzxvv,rec.sport.baseball,26.66,0,Có,18.85
+2026-09-30 17:11:38,baseball game software render satellite government debate,sci.space,45.56,7,Có,17.56
+2026-09-30 17:11:40,Hubble space telescope orbit astronaut cosmic galaxy exploration,sci.space,99.65,8,Không,22.57
+2026-09-30 17:11:43,The space shuttle orbited the planet Earth and deployed scientific instruments!!,sci.space,98.77,10,Không,47.71
+2026-09-30 17:11:45,The space shuttle orbited the planet Earth and deployed scientific instruments!!...,sci.space,98.77,10,Không,29.58

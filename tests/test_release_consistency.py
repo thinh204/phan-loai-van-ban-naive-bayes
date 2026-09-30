@@ -59,7 +59,7 @@ def test_ground_truth_metrics_integrity():
 
 def test_no_stale_cv_metrics_in_release_notes():
     """Ensure release notes and active documentation do not cite false/stale CV F1 numbers."""
-    for note_name in ["RELEASE_NOTES_v1.0.2.md", "RELEASE_NOTES_v1.0.3.md"]:
+    for note_name in ["RELEASE_NOTES_v1.0.2.md", "RELEASE_NOTES_v1.0.3.md", "RELEASE_NOTES_v1.0.4.md"]:
         notes_file = ROOT / "docs" / note_name
         if notes_file.exists():
             content = notes_file.read_text(encoding="utf-8")

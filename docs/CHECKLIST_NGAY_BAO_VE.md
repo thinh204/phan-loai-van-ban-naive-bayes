@@ -5,7 +5,7 @@
 - **Nhóm sinh viên**: 3 thành viên
 - **Thời gian diễn tập & kiểm tra chéo**: 30/09/2026
 - **Thiết bị trình chiếu**: Laptop Windows 11 (kết nối HDMI/Type-C)
-- **Phiên bản mã nguồn**: `v1.0.3` (Commit cuối nhánh `main`)
+- **Phiên bản mã nguồn**: `v1.0.4` (Commit cuối nhánh `main`)
 
 ---
 
@@ -14,9 +14,9 @@
 | Hạng mục kiểm tra | Tiêu chuẩn đánh giá | Kết quả thực tế trên máy trình chiếu | Xác nhận (Ký duyệt) |
 | :--- | :--- | :--- | :---: |
 | **1. Slide PowerPoint** | Tệp [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](file:///d:/phan-loai-van-ban-naive-bayes/presentation/phan-loai-van-ban-naive-bayes-v2.pptx) hiển thị trọn vẹn 10 slide; đồ thị kết quả rõ nét; font chữ không lỗi Unicode tiếng Việt. | Đạt 10/10 slide, tỷ lệ 16:9, hình ảnh sắc nét, speaker notes đầy đủ. | **ĐÃ DUYỆT** |
-| **2. Demo Trực tuyến (Online)** | Mở ứng dụng trên nền tảng [Streamlit Community Cloud](https://phan-loai-van-ban-naive-bayes.streamlit.app); giao diện hiển thị phiên bản `Plan 6 - Release v1.0.3`. | Thử nghiệm dự đoán tức thì câu văn bản mẫu, thời gian phản hồi < 0,5 giây. | **ĐÃ DUYỆT** |
+| **2. Demo Trực tuyến (Online)** | Mở ứng dụng trên nền tảng [Streamlit Community Cloud](https://phan-loai-van-ban-naive-bayes.streamlit.app); giao diện hiển thị phiên bản `Plan 10 - Release v1.0.4`. | Thử nghiệm dự đoán tức thì câu văn bản mẫu, thời gian phản hồi < 0,5 giây. | **ĐÃ DUYỆT** |
 | **3. Demo Ngoại tuyến (Offline Fallback)** | Khởi động Streamlit cục bộ tại `http://localhost:8501`; tự chủ nạp mô hình từ `models/naive_bayes_model.joblib`. | Chạy độc lập 100% không cần kết nối Internet, thời gian chuyển đổi khi mất mạng < 3 giây. | **ĐÃ DUYỆT** |
-| **4. Kiểm thử tự động (pytest)** | Chạy toàn bộ bộ kiểm thử tự động `pytest -v` (gồm 16 test cốt lõi + 5 test tính nhất quán phát hành = 21 tests). | **21/21 passed (100% ĐẠT)**, không có cảnh báo hay lỗi phụ thuộc. | **ĐÃ DUYỆT** |
+| **4. Kiểm thử tự động (pytest)** | Chạy toàn bộ bộ kiểm thử tự động `pytest -v` (gồm 16 test cốt lõi + 5 test tính nhất quán + 6 test hành vi người dùng/CSV = 27 tests). | **27/27 passed (100% ĐẠT)**, không có cảnh báo hay lỗi phụ thuộc. | **ĐÃ DUYỆT** |
 | **5. Cú pháp toàn diện (compileall)** | Chạy lệnh `python -m compileall -q app.py src tests scripts`. | Return code: `0`, không có lỗi cú pháp hay import sai đường dẫn. | **ĐÃ DUYỆT** |
 | **6. Gói bài nộp & Checksum** | Tệp `release/phan-loai-van-ban-naive-bayes-final-submission.zip` khớp SHA-256 với `CHECKSUMS.sha256` và asset GitHub Release. | Mã băm SHA-256 khớp tuyệt đối 100%, cấu trúc 46+ tệp sạch, không chứa `.venv` hay cache. | **ĐÃ DUYỆT** |
 

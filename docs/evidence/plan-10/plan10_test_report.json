@@ -1,0 +1,174 @@
+{
+  "timestamp": "2026-10-01 00:12:00",
+  "target_url": "https://phan-loai-van-ban-naive-bayes.streamlit.app/",
+  "results": {
+    "tc00_initial_load": {
+      "footer_text": "Phiên bản ứng dụng: v1.0.3",
+      "empty_notice": true,
+      "screenshot": "tc00_initial_load.png",
+      "status": "PASS"
+    },
+    "tc01_empty_input": {
+      "input": "",
+      "has_result_box": false,
+      "alerts": [
+        "⚠️\n\nVui lòng nhập nội dung văn bản để dự đoán!",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "isolated_history_count": 0,
+      "empty_notice": true,
+      "screenshot": "tc01_empty_input.png",
+      "status": "PASS"
+    },
+    "tc02_whitespace_input": {
+      "input": "     \\t\\n   ",
+      "has_result_box": false,
+      "alerts": [
+        "⚠️\n\nVui lòng nhập nội dung văn bản để dự đoán!",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "isolated_history_count": 0,
+      "screenshot": "tc02_whitespace_input.png",
+      "status": "PASS"
+    },
+    "tc03_graphics": {
+      "input": "The graphics software renders three dimensional images using polygons, textures and computer animation.",
+      "pred_class": "comp.graphics",
+      "confidence": 99.6,
+      "vn_name": "Đồ họa máy tính (Computer Graphics)",
+      "latency_ms": 21.76,
+      "isolated_history_count": 1,
+      "screenshot": "tc03_graphics.png",
+      "status": "PASS"
+    },
+    "tc04_whitespace_after_valid": {
+      "input": "    ",
+      "alerts": [
+        "⚠️\n\nVui lòng nhập nội dung văn bản để dự đoán!",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "isolated_history_count": 1,
+      "screenshot": "tc04_whitespace_after_valid.png",
+      "status": "PASS"
+    },
+    "tc05_baseball": {
+      "input": "The baseball pitcher threw the ball and the batter hit a home run during the game.",
+      "pred_class": "rec.sport.baseball",
+      "confidence": 99.87,
+      "isolated_history_count": 2,
+      "screenshot": "tc05_baseball.png",
+      "status": "PASS"
+    },
+    "tc06_space_nasa": {
+      "input": "NASA launched a spacecraft into orbit to study distant planets and explore the solar system.",
+      "pred_class": "sci.space",
+      "confidence": 99.44,
+      "isolated_history_count": 3,
+      "screenshot": "tc06_space_nasa.png",
+      "status": "PASS"
+    },
+    "tc07_politics": {
+      "input": "The government and parliament debated public policy, elections and political reforms.",
+      "pred_class": "talk.politics.misc",
+      "confidence": 87.02,
+      "isolated_history_count": 4,
+      "screenshot": "tc07_politics.png",
+      "status": "PASS"
+    },
+    "tc08_short_space": {
+      "input": "space",
+      "pred_class": "sci.space",
+      "confidence": 92.55,
+      "alerts": [
+        "Rất ít từ khóa đặc trưng: Chỉ tìm thấy 1 từ khóa nằm trong bộ từ vựng TF-IDF (['space']). Tín hiệu ngữ cảnh có thể chưa đủ phong phú.",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "isolated_history_count": 5,
+      "screenshot": "tc08_short_space.png",
+      "status": "PASS"
+    },
+    "tc09_oov": {
+      "input": "zxqvbnm qqqzxvv",
+      "pred_class": "rec.sport.baseball",
+      "confidence": 26.66,
+      "alerts": [
+        "Từ vựng nằm ngoài từ điển (OOV): Không có từ khóa nào trong văn bản xuất hiện trong bộ từ vựng TF-IDF đã học. Dự đoán hoàn toàn dựa trên phân bố tiên nghiệm giữa các lớp.",
+        "Độ tin cậy thấp (< 60%): Mô hình đạt độ tin cậy 26.66% (dưới ngưỡng cảnh báo 60%). Kết quả mang tính tham khảo và có sự phân vân giữa các lớp cạnh tranh.",
+        "Không có từ khóa nào trong văn bản nằm trong bộ từ vựng TF-IDF đã học.",
+        "Văn bản thô  ➔  Tiền xử lý (loại bỏ metadata)  ➔  TF-IDF Vectorizer (13.068 từ vựng)  ➔  Multinomial Naive Bayes (alpha=0.1)  ➔  Dự đoán & Xác suất"
+      ],
+      "isolated_history_count": 6,
+      "screenshot": "tc09_oov.png",
+      "status": "PASS"
+    },
+    "tc10_low_conf": {
+      "input": "baseball game software render satellite government debate",
+      "pred_class": "sci.space",
+      "confidence": 45.56,
+      "uncertainty_box": "⚠️ Cảnh báo độ tin cậy: Dự đoán này có mức độ không chắc chắn cao do tín hiệu văn bản yếu, thiếu từ vựng trong từ điển TF-IDF hoặc độ tin cậy thấp (45.6%). Kết quả cần được người dùng kiểm tra kỹ.",
+      "isolated_history_count": 7,
+      "screenshot": "tc10_low_conf.png",
+      "status": "PASS"
+    },
+    "tc11_explanations": {
+      "input": "Hubble space telescope orbit astronaut cosmic galaxy exploration",
+      "pred_class": "sci.space",
+      "confidence": 99.65,
+      "tables_count": 3,
+      "isolated_history_count": 8,
+      "screenshot": "tc11_explanations.png",
+      "status": "PASS"
+    },
+    "tc12_boundary_80": {
+      "input": "The space shuttle orbited the planet Earth and deployed scientific instruments!!",
+      "input_len": 80,
+      "pred_class": "sci.space",
+      "isolated_history_count": 9,
+      "screenshot": "tc12_boundary_80.png",
+      "status": "PASS"
+    },
+    "tc13_boundary_81": {
+      "input": "The space shuttle orbited the planet Earth and deployed scientific instruments!!X",
+      "input_len": 81,
+      "pred_class": "sci.space",
+      "isolated_history_count": 10,
+      "screenshot": "tc13_boundary_81.png",
+      "status": "PASS"
+    },
+    "tc14_history_table": {
+      "isolated_history_count": 10,
+      "screenshot": "tc14_history_table.png",
+      "status": "PASS"
+    },
+    "tc15_csv": {
+      "csv_saved_path": "tc15_downloaded_history.csv",
+      "header": "timestamp,text_preview,predicted_class,confidence_percent,in_vocab_tokens,is_uncertain,latency_ms",
+      "row_count": 10,
+      "has_rong_suffix": false,
+      "has_space_clean": true,
+      "has_oov_clean": true,
+      "sample_rows": [
+        "2026-09-30 17:11:19,\"The graphics software renders three dimensional images using polygons, textures ...\",comp.graphics,99.6,13,Không,21.76",
+        "2026-09-30 17:11:25,The baseball pitcher threw the ball and the batter hit a home run during the gam...,rec.sport.baseball,99.87,12,Không,46.15",
+        "2026-09-30 17:11:27,NASA launched a spacecraft into orbit to study distant planets and explore the s...,sci.space,99.44,14,Không,19.22",
+        "2026-09-30 17:11:30,\"The government and parliament debated public policy, elections and political ref...\",talk.politics.misc,87.02,9,Không,21.54"
+      ],
+      "status": "PASS"
+    },
+    "tc16_clear_history": {
+      "cleared_clicked": true,
+      "isolated_history_count": 0,
+      "empty_notice": true,
+      "screenshot": "tc16_clear_history.png",
+      "status": "PASS"
+    },
+    "tc17_reload": {
+      "input": "Astronomers observe deep space stellar explosion with radio telescopes.",
+      "pred_class": "sci.space",
+      "confidence": 93.89,
+      "isolated_history_count": 1,
+      "screenshot": "tc17_reload.png",
+      "status": "PASS"
+    }
+  }
+}

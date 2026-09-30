@@ -2,7 +2,7 @@
 
 Đề tài môn Trí tuệ nhân tạo của nhóm 3 thành viên. Dự án nghiên cứu phương pháp Multinomial Naive Bayes kết hợp trích xuất đặc trưng TF-IDF trên bài toán phân loại chủ đề văn bản (bộ dữ liệu 20 Newsgroups).
 
-Dự án đã hoàn thành toàn diện các giai đoạn phát triển và nghiệm thu: kiến trúc hướng dịch vụ tách biệt, tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation, kiểm thử tự động toàn diện với 21 ca kiểm thử `pytest`, tích hợp CI Pipeline trên GitHub Actions, chẩn đoán cảnh báo UX thông minh, giải thích đặc trưng TF-IDF và chuẩn bị triển khai trên nền tảng **Streamlit Community Cloud** kèm gói phát hành chính thức.
+Dự án đã hoàn thành toàn diện các giai đoạn phát triển và nghiệm thu: kiến trúc hướng dịch vụ tách biệt, tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation, kiểm thử tự động toàn diện với 27 ca kiểm thử `pytest`, tích hợp CI Pipeline trên GitHub Actions, chẩn đoán cảnh báo UX thông minh, giải thích đặc trưng TF-IDF, bộ kiểm thử hành vi giao diện người dùng và triển khai trên nền tảng **Streamlit Community Cloud** kèm gói phát hành chính thức `v1.0.4`.
 
 ---
 
@@ -16,7 +16,7 @@ Dự án đã hoàn thành toàn diện các giai đoạn phát triển và nghi
 - `src/train_evaluate.py`: Huấn luyện và đánh giá mô hình Multinomial Naive Bayes cơ sở (`alpha=1.0`).
 - `src/error_analysis.py`: Phân tích lỗi chuyên sâu trên tập test (độ tin cậy thấp, văn bản ít từ vựng, các cặp lớp nhầm lẫn).
 - `app.py`: Giao diện web Streamlit nâng cao (phân loại tức thì, hiển thị xác suất, top từ khóa, cảnh báo thông minh, lịch sử phiên, tải file CSV).
-- `tests/`: Bộ kiểm thử tự động toàn diện với `pytest` gồm 21 test cases (5 trong `test_pipeline.py`, 16 trong `test_inference.py`, tích hợp kiểm tra tính nhất quán số liệu và tính toàn vẹn phát hành).
+- `tests/`: Bộ kiểm thử tự động toàn diện với `pytest` gồm 27 test cases (gồm `test_pipeline.py`, `test_inference.py`, `test_ui_behavior.py` kiểm thử hành vi nhập liệu/CSV và `test_release_consistency.py` kiểm tra tính nhất quán số liệu và cấu trúc phát hành).
 - `results/`: Chứa các kết quả thực nghiệm động (`evaluation_summary.json`, `alpha_tuning.json`, `alpha_tuning.csv`, `error_analysis.json`, `confusion_tfidf.csv`).
 - `docs/`: Báo cáo lý thuyết, kế hoạch thực hiện, biên bản nghiệm thu, bằng chứng CI, tài liệu triển khai và kịch bản thuyết trình.
 
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ### 2. Chạy kiểm thử tự động với pytest
 
-Kiểm tra toàn bộ 21 test cases cho pipeline, mô hình, độ trễ, trường hợp biên và tính nhất quán số liệu:
+Kiểm tra toàn bộ 27 test cases cho pipeline, mô hình, độ trễ, trường hợp biên, hành vi giao diện người dùng và tính nhất quán số liệu:
 
 ```powershell
 pytest -v
@@ -171,6 +171,8 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 - [Plan 8: Khôi phục website công khai và nghiệm thu bằng bằng chứng thực tế](docs/plan-8.md)
 - [Plan 9: Nghiệm thu website đang chạy và chốt bản nộp](docs/plan-9.md)
 - [Plan 10: Sửa nhập liệu rỗng, lịch sử CSV và phát hành bản sửa lỗi](docs/plan-10.md)
+- [Biên bản nghiệm thu Plan 10 (Cloud Live & CSV Audit)](docs/NGHIEM_THU_PLAN_10.md)
+- [Ghi chú phát hành phiên bản v1.0.4](docs/RELEASE_NOTES_v1.0.4.md)
 - [Biên bản nghiệm thu website công khai Plan 9](docs/NGHIEM_THU_PLAN_9.md)
 - [Biên bản nghiệm thu và chẩn đoán website công khai Plan 8](docs/NGHIEM_THU_PLAN_8.md)
 - [Biên bản nghiệm thu chức năng Plan 4](docs/NGHIEM_THU.md)

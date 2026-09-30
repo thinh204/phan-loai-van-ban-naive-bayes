@@ -1,6 +1,18 @@
 # Biên bản nghiệm thu website công khai và chốt bản nộp - Plan 9
 
+> [!WARNING]
+> **ĐÍNH CHÍNH HẬU KIỂM PLAN 9 (Ngày 01/10/2026):**
+> 1. **Đính chính kết luận 13/13 ca đạt:**
+>    - **Lỗi đoạn trích (TC-06, TC-07, TC-08, TC-09):** `app.py` phiên bản trước đã nối hậu tố `(Rỗng)` vào mọi văn bản có độ dài $\le 80$ ký tự do lỗi điều kiện toán tử 3 ngôi (`clean_input[:80] + ("..." if len(clean_input) > 80 else "(Rỗng)")`). Minh chứng: tệp CSV cũ lưu `space(Rỗng)` và `zxqvbnm qqqzxvv(Rỗng)`.
+>    - **Lỗi nhập liệu rỗng (TC-05):** Khi nhấn phân loại với chuỗi rỗng hoặc chỉ chứa khoảng trắng, hệ thống vẫn phân loại theo xác suất tiên nghiệm và thêm 1 dòng vào lịch sử. Đúng yêu cầu phải là: chỉ hiển thị thông báo yêu cầu nhập văn bản, không phân loại và không thêm lịch sử.
+> 2. **Đính chính chỉ số `history_rows_count: 24` trong `plan9_test_report.json`:**
+>    - Con số 24 hàng trong báo cáo JSON cũ là do bộ đếm DOM truy vấn toàn bộ thẻ `tr` của cả bảng phân bố xác suất và bảng giải thích đặc trưng, thay vì đếm riêng bảng lịch sử. Số dòng dữ liệu lịch sử thực tế trong CSV cũ là 9 dòng (kèm 1 dòng tiêu đề = 10 dòng).
+> 3. **Bảo tồn bằng chứng và liên kết Plan 10:**
+>    - Các tệp ảnh chụp và CSV cũ tại [`docs/evidence/plan-9/`](evidence/plan-9/) được giữ nguyên vẹn để làm lịch sử kiểm thử, không xóa hay chỉnh sửa để che lỗi.
+>    - Cả hai lỗi trên đã được sửa triệt để và nghiệm thu thành công trên Cloud trong **Plan 10**. Xem chi tiết tại [Biên bản nghiệm thu Plan 10](NGHIEM_THU_PLAN_10.md) và thư mục bằng chứng [`docs/evidence/plan-10/`](evidence/plan-10/).
+
 - **Dự án**: Phân loại văn bản bằng Naive Bayes đa thức (Multinomial Naive Bayes)
+
 - **Kho lưu trữ**: [thinh204/phan-loai-van-ban-naive-bayes](https://github.com/thinh204/phan-loai-van-ban-naive-bayes)
 - **Địa chỉ URL website công khai**: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
 - **Thời điểm nghiệm thu**: 30/09/2026 (23:41:45+07:00)

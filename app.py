@@ -13,6 +13,12 @@ ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+import importlib
+import src.config
+importlib.reload(src.config)
+import src.classifier_service
+importlib.reload(src.classifier_service)
+
 from src.classifier_service import get_classifier_service
 from src.config import (
     ALPHA_TUNING_PATH,

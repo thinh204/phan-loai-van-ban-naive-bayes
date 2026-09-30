@@ -21,7 +21,7 @@ Tệp PowerPoint: [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](../pres
 7. **Thiết kế thực nghiệm:** 2.239 mẫu train, 1.490 mẫu test, bốn lớp, hai pipeline có cùng MNB. Loại header, chữ ký, phần trích dẫn để giảm tín hiệu nhãn ngoài nội dung.
 8. **Kết quả:** Sau khi tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation trên tập train (chọn `alpha=0.1`), Accuracy trên tập test đạt 88,52% (tăng từ 87,18% ban đầu) và Macro F1 đạt 88,33% (tăng từ 86,87%). Số liệu lấy trực tiếp từ `results/evaluation_summary.json`.
 9. **Phân tích lỗi:** Trên 1.490 mẫu test có 1.319 mẫu đúng và 171 mẫu sai. Các văn bản có ít từ vựng TF-IDF (<= 2 từ) có tỷ lệ sai lên tới 53,33%. Ngưỡng tin cậy thấp (< 60%) có tỷ lệ sai 44,36%, đóng vai trò cảnh báo quan trọng trong ứng dụng.
-10. **Kết luận & Demo sản phẩm:** MNB học nhanh và dễ giải thích. Hệ thống đã chuẩn hóa kiến trúc hướng dịch vụ với `TextClassifierService`, bộ kiểm thử tự động 14 test cases (`pytest -v`), và giao diện web Streamlit nâng cao (`streamlit run app.py`) hỗ trợ đo độ trễ xử lý, phân bố xác suất và tải lịch sử dự đoán ra CSV.
+10. **Kết luận & Demo sản phẩm:** MNB học nhanh và dễ giải thích. Hệ thống đã chuẩn hóa kiến trúc hướng dịch vụ với `TextClassifierService`, bộ kiểm thử tự động 16 test cases (`pytest -v`), CI Pipeline tự động trên GitHub Actions, giải thích từ khóa đặc trưng TF-IDF, chẩn đoán cảnh báo UX thông minh, và giao diện web Streamlit triển khai trực tuyến trên Streamlit Cloud kèm tùy chọn chạy ngoại tuyến.
 
 ## Câu hỏi có thể gặp
 

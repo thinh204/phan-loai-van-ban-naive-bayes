@@ -144,17 +144,23 @@ Hệ thống được chuẩn hóa kiến trúc hướng dịch vụ (**Service-
 
 ## 9. Kiểm thử tự động với pytest
 
-Dự án trang bị bộ kiểm thử tự động 14 test cases (`tests/test_pipeline.py`):
-1. Nạp mô hình MultinomialNB thành công.
+Dự án trang bị bộ kiểm thử tự động toàn diện gồm 16 test cases (`tests/test_pipeline.py` và `tests/test_inference.py`):
+1. Nạp mô hình MultinomialNB thành công từ file `.joblib`.
 2. Nạp bộ véc-tơ TF-IDF thành công (13.068 đặc trưng).
 3. Dự đoán trả về nhãn hợp lệ trong 4 chủ đề.
-4. Xử lý an toàn chuỗi rỗng, khoảng trắng và giá trị None.
-5. Văn bản chứa từ ngữ ngoài từ điển (OOV) không gây lỗi crash ứng dụng.
+4. Xử lý an toàn chuỗi rỗng (`""`), khoảng trắng (`"   "`) và giá trị `None` (tham số hóa 4 ca kiểm thử).
+5. Văn bản chứa từ ngữ ngoài từ điển (OOV) không gây lỗi crash ứng dụng và kích hoạt fallback/cảnh báo an toàn.
 6. Xác suất `predict_proba` nằm trong khoảng hợp lệ [0, 1].
 7. Tổng xác suất các lớp xấp xỉ 1.0.
 8. Mô hình nhận diện chính xác 4 lớp của bài toán.
 9. Khả năng dự đoán chính xác văn bản mới chưa từng xuất hiện.
-Lệnh thực thi kiểm thử: `pytest -v` (100% passed).
+10. Kiểm tra cảnh báo giao diện UX khi gặp đầu vào bất thường (văn bản ngắn, OOV, độ tin cậy thấp).
+11. Trích xuất giải thích đặc trưng TF-IDF tiêu biểu kèm mức độ ủng hộ cho lớp dự đoán.
+12. Xác thực tính toàn vẹn của các file artifact mô hình (`test_inference.py`).
+13. Đảm bảo độ chính xác trên các mẫu suy diễn thực tế chưa từng thấy (`test_inference.py`).
+
+Lệnh thực thi kiểm thử: `pytest -v` (16/16 passed 100%).
+
 
 ## Tài liệu tham khảo
 

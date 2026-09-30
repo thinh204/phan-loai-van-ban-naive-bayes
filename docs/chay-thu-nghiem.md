@@ -17,21 +17,22 @@ pip install -r requirements.txt
 
 ## 2. Kiểm thử tự động với pytest
 
-Hệ thống tích hợp bộ kiểm thử tự động 14 test cases kiểm tra từ việc nạp mô hình, trích xuất đặc trưng, tính xác suất đến xử lý ngoại lệ (văn bản rỗng, từ vựng ngoài từ điển OOV):
+Hệ thống tích hợp bộ kiểm thử tự động 16 test cases kiểm tra từ việc nạp mô hình, trích xuất đặc trưng, tính xác suất, đo độ trễ suy diễn đến xử lý ngoại lệ (văn bản rỗng, văn bản ngắn, từ vựng ngoài từ điển OOV, cảnh báo độ tin cậy thấp và giải thích từ khóa):
 
 ```powershell
 pytest -v
 ```
 
-Kết quả mong đợi: `14 passed`.
+Kết quả mong đợi: `16 passed`.
 
 ## 3. Xác thực khả năng tái lập độc lập (Reproducible Setup)
 
 Dự án đã được kiểm chứng độc lập trên môi trường ảo sạch hoàn toàn (`clean environment`) mà không dựa vào bất kỳ thư viện nào cài đặt sẵn ngoài hệ thống:
 - **Phiên bản Python xác thực:** Python `3.10.11` (tương thích Python 3.10+).
 - **Cài đặt phụ thuộc:** Toàn bộ thư viện được cài đặt tự động từ `requirements.txt` (`scikit-learn==1.7.2`, `pandas>=2.2.0`, `streamlit>=1.40.0`, `pytest>=8.0.0`, `joblib>=1.4.0`, `numpy>=2.0.0`, `scipy>=1.14.0`).
-- **Kiểm thử tự động:** `pytest -v` thực thi thành công 14/14 test cases.
+- **Kiểm thử tự động:** `pytest -v` thực thi thành công 16/16 test cases.
 - **Khởi động ứng dụng:** Nạp thành công mô hình (`naive_bayes_model.joblib`), vectorizer (`tfidf_vectorizer.joblib`) và tệp kết quả (`evaluation_summary.json`).
+
 
 ## 4. Quy trình thực nghiệm và tối ưu mô hình
 

@@ -2,23 +2,23 @@
 
 Đề tài môn Trí tuệ nhân tạo của nhóm 3 thành viên. Dự án nghiên cứu phương pháp Multinomial Naive Bayes kết hợp trích xuất đặc trưng TF-IDF trên bài toán phân loại chủ đề văn bản (bộ dữ liệu 20 Newsgroups).
 
-Dự án đã được hoàn thiện và nâng cấp toàn diện (**Plan 1 & Plan 2**): kiến trúc module hóa tách biệt dịch vụ dự đoán, tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation, kiểm thử tự động với `pytest`, phân tích lỗi chi tiết và giao diện web **Streamlit** tương tác hỗ trợ lịch sử phiên làm việc cùng tính năng xuất CSV.
+Dự án đã hoàn thành toàn diện toàn bộ 4 giai đoạn phát triển và nghiệm thu (**Plan 1 đến Plan 4**): kiến trúc hướng dịch vụ tách biệt, tối ưu siêu tham số bằng Stratified 5-Fold Cross-Validation, kiểm thử tự động toàn diện với 16 ca kiểm thử `pytest`, tích hợp CI Pipeline trên GitHub Actions, chẩn đoán cảnh báo UX thông minh, giải thích đặc trưng TF-IDF và triển khai chính thức trên nền tảng **Streamlit Community Cloud** kèm gói phát hành chính thức.
 
 ---
 
 ## Cấu trúc mã nguồn
 
 - `src/config.py`: Quản lý tập trung đường dẫn, nhãn lớp và cấu hình hệ thống.
-- `src/classifier_service.py`: Service dự đoán độc lập (nạp mô hình, tiền xử lý, trích xuất TF-IDF, tính xác suất `predict_proba`, trích xuất từ khóa tiêu biểu).
+- `src/classifier_service.py`: Service dự đoán độc lập (nạp mô hình, tiền xử lý, trích xuất TF-IDF, tính xác suất `predict_proba`, trích xuất từ khóa tiêu biểu và chẩn đoán cảnh báo).
 - `src/prepare_data.py`: Đọc dataset bằng Pandas, kiểm tra phân bố nhãn, dữ liệu thiếu và trùng lặp.
 - `src/tfidf_pipeline.py`: Phân chia train/test và vector hóa TF-IDF nghiêm ngặt không rò rỉ dữ liệu (`fit_transform` chỉ trên train, `transform` trên test).
 - `src/tune_alpha.py`: Tối ưu hóa siêu tham số `alpha` bằng Stratified 5-Fold Cross-Validation trên tập train và khóa tham số để đánh giá mô hình cuối cùng trên test set.
 - `src/train_evaluate.py`: Huấn luyện và đánh giá mô hình Multinomial Naive Bayes cơ sở (`alpha=1.0`).
 - `src/error_analysis.py`: Phân tích lỗi chuyên sâu trên tập test (độ tin cậy thấp, văn bản ít từ vựng, các cặp lớp nhầm lẫn).
-- `app.py`: Giao diện web Streamlit nâng cao (phân loại tức thì, hiển thị xác suất, top từ khóa, lịch sử phiên, tải file CSV).
-- `tests/test_pipeline.py`: Bộ kiểm thử tự động toàn diện với `pytest` (14 test cases).
+- `app.py`: Giao diện web Streamlit nâng cao (phân loại tức thì, hiển thị xác suất, top từ khóa, cảnh báo thông minh, lịch sử phiên, tải file CSV).
+- `tests/`: Bộ kiểm thử tự động toàn diện với `pytest` gồm 16 test cases (`test_pipeline.py` và `test_inference.py`).
 - `results/`: Chứa các kết quả thực nghiệm động (`evaluation_summary.json`, `alpha_tuning.json`, `alpha_tuning.csv`, `error_analysis.json`, `confusion_tfidf.csv`).
-- `docs/`: Báo cáo lý thuyết, kế hoạch thực hiện, phân tích lỗi và kịch bản thuyết trình.
+- `docs/`: Báo cáo lý thuyết, kế hoạch thực hiện, biên bản nghiệm thu, bằng chứng CI, tài liệu triển khai và kịch bản thuyết trình.
 
 ---
 
@@ -36,11 +36,12 @@ pip install -r requirements.txt
 
 ### 2. Chạy kiểm thử tự động với pytest
 
-Kiểm tra toàn bộ 14 test cases cho pipeline, mô hình và các trường hợp biên:
+Kiểm tra toàn bộ 16 test cases cho pipeline, mô hình, độ trễ và các trường hợp biên:
 
 ```powershell
 pytest -v
 ```
+
 
 ### 3. Tối ưu hóa mô hình và phân tích lỗi
 
@@ -156,10 +157,16 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 ---
 
 ## Tài liệu liên quan
-
+ 
 - [Kế hoạch và phân công](docs/ke-hoach.md)
 - [Plan 3: Đóng gói, triển khai và chuẩn bị bảo vệ](docs/plan-3.md)
 - [Plan 4: Nghiệm thu, triển khai chính thức và đóng gói bài nộp](docs/plan-4.md)
+- [Biên bản nghiệm thu chức năng Plan 4](docs/NGHIEM_THU.md)
+- [Bằng chứng xác minh CI GitHub Actions](docs/CI_VERIFICATION.md)
+- [Hướng dẫn triển khai Streamlit Cloud](docs/DEPLOYMENT.md)
+- [Kịch bản Demo tương tác](docs/DEMO_SCRIPT.md)
+- [Bộ câu hỏi và trả lời phản biện (Q&A)](docs/DEFENSE_QA.md)
 - [Báo cáo lý thuyết và kết quả mở rộng](docs/bao-cao.md)
 - [Hướng dẫn chạy thực nghiệm](docs/chay-thu-nghiem.md)
-- [Kịch bản thuyết trình](docs/thuyet-trinh.md) và Slide PowerPoint
+- [Kịch bản thuyết trình và slide bảo vệ](docs/thuyet-trinh.md)
+

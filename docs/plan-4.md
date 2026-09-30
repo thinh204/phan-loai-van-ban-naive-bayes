@@ -75,6 +75,23 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
   - Biên bản nghiệm thu chi tiết được lập tại: [docs/NGHIEM_THU.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/NGHIEM_THU.md).
 - **Kết quả bàn giao**: Biên bản nghiệm thu chức năng đầy đủ, có số liệu và thời gian phản hồi cho từng trường hợp.
 
+### Giai đoạn 5 – Đồng bộ tài liệu (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Nội dung rà soát và chỉnh sửa**:
+  - Rà soát toàn bộ các tệp tài liệu: `README.md`, `docs/bao-cao.md`, `docs/chay-thu-nghiem.md`, `docs/thuyet-trinh.md`.
+  - Thay thế toàn bộ các đề cập cũ ("Plan 1 & Plan 2", "14 test cases", "14 passed") thành trạng thái thực tế của dự án: **Plan 4** và **16 kiểm thử tự động** (`pytest -v`).
+  - Đối chiếu và xác thực tính đồng nhất 100% của các số liệu thực nghiệm:
+    - Mô hình: `MultinomialNB(alpha=0.1)`
+    - Tập kiểm thử: 1.490 mẫu test (sau khi học 2.239 mẫu train)
+    - Test Accuracy: **88,52%** (0.8852)
+    - Macro Precision: **88,41%** (0.8841)
+    - Macro Recall: **88,35%** (0.8835)
+    - Macro F1: **88,33%** (0.8833)
+    - Weighted F1: **88,49%** (0.8849)
+  - Bổ sung cây liên kết đến tất cả các tài liệu nghiệm thu mới (`NGHIEM_THU.md`, `CI_VERIFICATION.md`, `DEPLOYMENT.md`, `DEMO_SCRIPT.md`, `DEFENSE_QA.md`).
+- **Kết quả bàn giao**: Toàn bộ hệ thống tài liệu đồng nhất tuyệt đối về số liệu, phương pháp và phiên bản kiểm thử.
+
+
 
 
 

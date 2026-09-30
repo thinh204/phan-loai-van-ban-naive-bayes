@@ -95,6 +95,17 @@ MNB học nhanh, cần ít tham số và có thể giải thích ảnh hưởng 
 
 Nếu mở rộng, nhóm có thể dùng một tập dữ liệu tiếng Việt có nhãn rõ nguồn, thử đặc trưng n-gram hoặc so sánh với một mô hình khác. Các thử nghiệm mở rộng phải dùng một tập validation riêng thay vì điều chỉnh theo test.
 
+## 8. Triển khai giao diện Web tương tác (Streamlit)
+
+Để trực quan hóa và kiểm chứng khả năng phân loại trên các văn bản mới trong thực tế, nhóm xây dựng ứng dụng web tương tác bằng thư viện **Streamlit** (`app.py`).
+
+- **Cơ chế hoạt động:** Ứng dụng nạp mô hình `MultinomialNB` và bộ véc-tơ hóa `TfidfVectorizer` đã huấn luyện sẵn từ thư mục `models/` (được lưu bằng `joblib`), tránh việc huấn luyện lại khi người dùng gửi yêu cầu.
+- **Quy trình xử lý:** Văn bản người dùng nhập vào được chuyển đổi qua `vectorizer.transform()` (chỉ thực hiện phép chiếu không gian từ vựng train, chống rò rỉ dữ liệu). Mô hình tính điểm và trả về:
+  1. Nhãn chủ đề có xác suất hậu nghiệm cao nhất.
+  2. Phân bố xác suất của cả bốn lớp (`predict_proba`) kèm biểu đồ trực quan.
+  3. Danh sách các từ khóa có trọng số TF-IDF cao nhất trong câu đầu vào giúp giải thích kết quả dự đoán.
+- **Cách khởi chạy:** Thực hiện lệnh `streamlit run app.py` và truy cập cổng mặc định `http://localhost:8501`.
+
 ## Tài liệu tham khảo
 
 [1] scikit-learn, [fetch_20newsgroups](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html).

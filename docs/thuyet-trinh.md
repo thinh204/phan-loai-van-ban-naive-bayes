@@ -21,7 +21,7 @@ Tệp PowerPoint: [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](../pres
 7. **Thiết kế thực nghiệm:** 2.239 mẫu train, 1.490 mẫu test, bốn lớp, hai pipeline có cùng MNB. Loại header, chữ ký, phần trích dẫn để giảm tín hiệu nhãn ngoài nội dung.
 8. **Kết quả:** Accuracy là 85,44% với Bag of Words và 87,18% với TF-IDF. Macro F1 lần lượt là 85,20% và 86,87%. Số liệu lấy trực tiếp từ `results/metrics.json`.
 9. **Phân tích lỗi:** TF-IDF giảm nhầm lẫn Không gian sang Chính trị từ 62 xuống 14, nhưng tăng nhầm lẫn chiều ngược từ 15 lên 45. Vì thế cần xem chỉ số từng lớp, không chỉ nhìn accuracy chung.
-10. **Kết luận:** MNB dễ giải thích và cho kết quả hữu ích trong phạm vi thử nghiệm. Nhóm chưa kiểm tra trên tiếng Việt hay nhiều bộ dữ liệu; hướng tiếp theo là dùng dữ liệu tiếng Việt có nhãn và validation riêng.
+10. **Kết luận & Demo sản phẩm:** MNB dễ giải thích và cho kết quả hữu ích trong phạm vi thử nghiệm. Nhóm đã xây dựng hoàn chỉnh ứng dụng web bằng Streamlit (`streamlit run app.py`) để minh họa phân loại văn bản trực tiếp theo thời gian thực. Hướng mở rộng tiếp theo là thử nghiệm dữ liệu tiếng Việt có nhãn và validation riêng.
 
 ## Câu hỏi có thể gặp
 

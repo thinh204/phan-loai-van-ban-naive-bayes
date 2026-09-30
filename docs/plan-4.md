@@ -91,6 +91,17 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
   - Bổ sung cây liên kết đến tất cả các tài liệu nghiệm thu mới (`NGHIEM_THU.md`, `CI_VERIFICATION.md`, `DEPLOYMENT.md`, `DEMO_SCRIPT.md`, `DEFENSE_QA.md`).
 - **Kết quả bàn giao**: Toàn bộ hệ thống tài liệu đồng nhất tuyệt đối về số liệu, phương pháp và phiên bản kiểm thử.
 
+### Giai đoạn 6 – Rà soát slide bảo vệ (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Tệp slide nghiệm thu**: `presentation/phan-loai-van-ban-naive-bayes-v2.pptx` kết hợp kịch bản chi tiết [docs/thuyet-trinh.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/thuyet-trinh.md).
+- **Kết quả cập nhật nội dung slide**:
+  - **Slide 7 (Thiết kế thực nghiệm)**: Cập nhật quy trình Stratified 5-Fold Cross-Validation lựa chọn `alpha=0.1` trên 2.239 mẫu train; 13.068 đặc trưng TF-IDF chống rò rỉ dữ liệu test.
+  - **Slide 8 (Kết quả thực nghiệm & Biểu đồ)**: Cập nhật biểu đồ cột so sánh mô hình cơ sở (`alpha=1.0`: Accuracy 87,18%, Macro F1 86,87%) với mô hình tối ưu (`alpha=0.1`: Accuracy 88,52%, Macro F1 88,33%).
+  - **Slide 10 (Kết luận & Bàn giao)**: Khẳng định 16/16 kiểm thử `pytest` đạt, CI Pipeline GitHub Actions xanh, hệ thống chẩn đoán cảnh báo UX thông minh và triển khai Streamlit Community Cloud song song chế độ ngoại tuyến.
+  - Speaker notes của tất cả các slide được cập nhật chính xác theo số liệu thực nghiệm mới nhất.
+- **Kết quả bàn giao**: Tệp PowerPoint hoàn chỉnh và sẵn sàng cho buổi bảo vệ đề tài.
+
+
 
 
 

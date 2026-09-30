@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.classifier_service import format_text_preview, get_classifier_service
+from src.classifier_service import get_classifier_service
 from src.config import (
     ALPHA_TUNING_PATH,
     APP_VERSION,
@@ -25,6 +25,25 @@ from src.config import (
     LOW_CONFIDENCE_THRESHOLD,
     SAMPLE_TEXTS,
 )
+
+
+def format_text_preview(text: str | None, max_len: int = 80) -> str:
+    """Format text preview for UI history display and CSV export.
+
+    - Strips leading and trailing whitespaces.
+    - If text is empty, all-whitespace, or None, returns '(Rỗng)'.
+    - If length > max_len, returns first max_len characters with '...'.
+    - If length <= max_len, returns the cleaned string unchanged without '(Rỗng)'.
+    """
+    if text is None:
+        return "(Rỗng)"
+    clean = text.strip()
+    if not clean:
+        return "(Rỗng)"
+    if len(clean) > max_len:
+        return clean[:max_len] + "..."
+    return clean
+
 
 
 

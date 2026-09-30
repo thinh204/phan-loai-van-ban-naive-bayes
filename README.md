@@ -156,6 +156,7 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 
 - [Kế hoạch và phân công](docs/ke-hoach.md)
 - [Plan 3: Đóng gói, triển khai và chuẩn bị bảo vệ](docs/plan-3.md)
+- [Plan 4: Nghiệm thu, triển khai chính thức và đóng gói bài nộp](docs/plan-4.md)
 - [Báo cáo lý thuyết và kết quả mở rộng](docs/bao-cao.md)
 - [Hướng dẫn chạy thực nghiệm](docs/chay-thu-nghiem.md)
 - [Kịch bản thuyết trình](docs/thuyet-trinh.md) và Slide PowerPoint

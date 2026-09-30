@@ -170,6 +170,7 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 - [Plan 7: Hoàn tất website công khai và phát hành v1.0.3](docs/plan-7.md)
 - [Plan 8: Khôi phục website công khai và nghiệm thu bằng bằng chứng thực tế](docs/plan-8.md)
 - [Plan 9: Nghiệm thu website đang chạy và chốt bản nộp](docs/plan-9.md)
+- [Plan 10: Sửa nhập liệu rỗng, lịch sử CSV và phát hành bản sửa lỗi](docs/plan-10.md)
 - [Biên bản nghiệm thu website công khai Plan 9](docs/NGHIEM_THU_PLAN_9.md)
 - [Biên bản nghiệm thu và chẩn đoán website công khai Plan 8](docs/NGHIEM_THU_PLAN_8.md)
 - [Biên bản nghiệm thu chức năng Plan 4](docs/NGHIEM_THU.md)

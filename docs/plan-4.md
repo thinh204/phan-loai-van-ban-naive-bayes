@@ -39,6 +39,13 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
 7. GitHub Release được xuất bản từ đúng commit đã nghiệm thu.
 8. Mỗi giai đoạn có commit riêng với chú thích nêu rõ thay đổi và kết quả kiểm tra.
 
-## Prompt giao cho AI
+## Tiến độ thực hiện Plan 4
 
-> Hãy thực hiện Plan 4 trong repo `thinh204/phan-loai-van-ban-naive-bayes`. Trước tiên đồng bộ toàn bộ commit và tag `v1.0.0` lên GitHub, sau đó kiểm tra GitHub Actions chạy thành công trên Python 3.10 và 3.11. Triển khai ứng dụng trên Streamlit Community Cloud, tự kiểm tra URL thật và cập nhật URL đó vào README cùng tài liệu triển khai. Nghiệm thu đủ bốn lớp dự đoán và các trường hợp văn bản rỗng, quá ngắn, OOV, độ tin cậy thấp, giải thích từ khóa và tải CSV; ghi kết quả vào tài liệu nghiệm thu. Rà soát toàn bộ README, báo cáo, kịch bản và slide để sửa các nội dung cũ như “Plan 1 & Plan 2” và “14 test cases” thành trạng thái thực tế của dự án là Plan 4 và 16 kiểm thử. Đối chiếu slide với mô hình `MultinomialNB(alpha=0.1)`, Test Accuracy 88,52% và Macro F1 88,33%. Sau đó tạo checklist, đóng gói bộ bài nộp và xuất bản GitHub Release từ đúng commit đã nghiệm thu. Nếu phải sửa lỗi sau tag `v1.0.0`, hãy phát hành `v1.0.1`; không di chuyển tag cũ. Sau mỗi giai đoạn phải chạy kiểm tra phù hợp, commit và push với chú thích rõ ràng. Không huấn luyện lại, không thay đổi mô hình, không dùng tập test để chọn tham số và không tự tạo số liệu hoặc URL triển khai.
+### Giai đoạn 1 – Đồng bộ GitHub (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Trạng thái đồng bộ**:
+  - Nhánh `main` trên máy cục bộ đồng bộ hoàn toàn với `origin/main` tại GitHub repo `thinh204/phan-loai-van-ban-naive-bayes`.
+  - Tag phát hành `v1.0.0` trỏ chính xác đến commit `b9777fe` (`release: chuẩn bị phiên bản v1.0.0`) và đã được push lên `origin`.
+  - Kiểm tra `git push origin main` và `git push origin --tags`: kết quả `Everything up-to-date`.
+- **Kết quả bàn giao**: Nhánh `main` và tag `v1.0.0` trên GitHub khớp 100% với môi trường cục bộ.
+

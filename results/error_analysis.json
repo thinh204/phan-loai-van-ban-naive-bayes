@@ -1,0 +1,176 @@
+{
+  "dataset": "20 Newsgroups (4 categories)",
+  "model": "MultinomialNB (Tuned alpha=0.1)",
+  "n_test": 1490,
+  "n_correct": 1319,
+  "n_wrong": 171,
+  "accuracy": 0.885234899328859,
+  "confusion_matrix": [
+    [
+      357,
+      12,
+      14,
+      6
+    ],
+    [
+      7,
+      370,
+      5,
+      15
+    ],
+    [
+      16,
+      25,
+      328,
+      25
+    ],
+    [
+      4,
+      19,
+      23,
+      264
+    ]
+  ],
+  "top_confused_pairs": [
+    {
+      "true_class": "sci.space",
+      "predicted_class": "rec.sport.baseball",
+      "count": 25,
+      "rate_of_true_class": 0.06345177664974619
+    },
+    {
+      "true_class": "sci.space",
+      "predicted_class": "talk.politics.misc",
+      "count": 25,
+      "rate_of_true_class": 0.06345177664974619
+    },
+    {
+      "true_class": "talk.politics.misc",
+      "predicted_class": "sci.space",
+      "count": 23,
+      "rate_of_true_class": 0.07419354838709677
+    },
+    {
+      "true_class": "talk.politics.misc",
+      "predicted_class": "rec.sport.baseball",
+      "count": 19,
+      "rate_of_true_class": 0.06129032258064516
+    },
+    {
+      "true_class": "sci.space",
+      "predicted_class": "comp.graphics",
+      "count": 16,
+      "rate_of_true_class": 0.04060913705583756
+    },
+    {
+      "true_class": "rec.sport.baseball",
+      "predicted_class": "talk.politics.misc",
+      "count": 15,
+      "rate_of_true_class": 0.037783375314861464
+    }
+  ],
+  "vocabulary_analysis": {
+    "total_vocab_size": 13068,
+    "samples_with_few_or_no_tokens": 60,
+    "error_rate_few_tokens": 0.5333333333333333,
+    "error_rate_normal_tokens": 0.0972027972027972
+  },
+  "confidence_analysis": {
+    "threshold": 0.6,
+    "samples_below_threshold": 266,
+    "error_rate_below_threshold": 0.44360902255639095,
+    "error_rate_above_threshold": 0.04330065359477124
+  },
+  "representative_errors": [
+    {
+      "test_index": 1,
+      "true_class": "sci.space",
+      "predicted_class": "rec.sport.baseball",
+      "confidence": 0.266636891469406,
+      "char_length": 0,
+      "in_vocab_tokens": 0,
+      "snippet": ""
+    },
+    {
+      "test_index": 22,
+      "true_class": "talk.politics.misc",
+      "predicted_class": "rec.sport.baseball",
+      "confidence": 0.4966120027940664,
+      "char_length": 788,
+      "in_vocab_tokens": 45,
+      "snippet": "When did the BATF say this? Everything I've seen from the BATF, \tfrom the official version to the dissident statements of BATF \tofficers who conducted the raid claims that the Davi"
+    },
+    {
+      "test_index": 32,
+      "true_class": "rec.sport.baseball",
+      "predicted_class": "talk.politics.misc",
+      "confidence": 0.5408947950233378,
+      "char_length": 1987,
+      "in_vocab_tokens": 249,
+      "snippet": "(Eric Roush) writes...     Funny.  I didn't realize Mr. Tanner brought up Bob Knepper v. Pam Postema in the first place.  Thought it was someone named Jacobs.   Why?  If a statemen"
+    },
+    {
+      "test_index": 33,
+      "true_class": "sci.space",
+      "predicted_class": "talk.politics.misc",
+      "confidence": 0.5522824709156181,
+      "char_length": 706,
+      "in_vocab_tokens": 98,
+      "snippet": "This was all badly reported in the news.  There is no evidence that signs of life found in old rock predate putative planet-sterilizing events.  Rather, the argument was that if li"
+    },
+    {
+      "test_index": 36,
+      "true_class": "sci.space",
+      "predicted_class": "rec.sport.baseball",
+      "confidence": 0.43060162845035127,
+      "char_length": 8,
+      "in_vocab_tokens": 1,
+      "snippet": "exit"
+    },
+    {
+      "test_index": 38,
+      "true_class": "talk.politics.misc",
+      "predicted_class": "sci.space",
+      "confidence": 0.5821419290373012,
+      "char_length": 86,
+      "in_vocab_tokens": 13,
+      "snippet": "As does the idea that a CS gas canister can get hot enough to ignite dry baled hay."
+    },
+    {
+      "test_index": 40,
+      "true_class": "comp.graphics",
+      "predicted_class": "sci.space",
+      "confidence": 0.334158095021392,
+      "char_length": 115,
+      "in_vocab_tokens": 17,
+      "snippet": "What is the copyright status of this data?  Are there restrictions regarding the uses they can be put to?  Kaveh"
+    },
+    {
+      "test_index": 42,
+      "true_class": "talk.politics.misc",
+      "predicted_class": "rec.sport.baseball",
+      "confidence": 0.6775035674474363,
+      "char_length": 49,
+      "in_vocab_tokens": 4,
+      "snippet": "dead? I saw David Koresh at a local 7-11......"
+    },
+    {
+      "test_index": 65,
+      "true_class": "talk.politics.misc",
+      "predicted_class": "rec.sport.baseball",
+      "confidence": 0.3112203821415039,
+      "char_length": 91,
+      "in_vocab_tokens": 15,
+      "snippet": "You might as well have.  You certainly would not have been in error if you would have."
+    },
+    {
+      "test_index": 67,
+      "true_class": "rec.sport.baseball",
+      "predicted_class": "talk.politics.misc",
+      "confidence": 0.7717947802804773,
+      "char_length": 379,
+      "in_vocab_tokens": 55,
+      "snippet": "I was in fact going to suggest that Roger take his way of discussion over to r.s.football.pro. There this kind of hormone-only reasoning is the standard. Being he canadian, and hoc"
+    }
+  ]
+}

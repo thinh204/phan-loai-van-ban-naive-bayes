@@ -49,3 +49,13 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
   - Kiểm tra `git push origin main` và `git push origin --tags`: kết quả `Everything up-to-date`.
 - **Kết quả bàn giao**: Nhánh `main` và tag `v1.0.0` trên GitHub khớp 100% với môi trường cục bộ.
 
+### Giai đoạn 2 – Xác minh CI (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Bằng chứng thực thi**:
+  - Workflow GitHub Actions `CI Pipeline` được kiểm tra trực tiếp qua API với Run ID `36713316518` (commit `061148b`).
+  - Ma trận cả 2 môi trường **Python 3.10** và **Python 3.11** trên `ubuntu-latest` đều có kết quả `completed` - `success`.
+  - Toàn bộ 16 ca kiểm thử `pytest` và các bước `compileall`, nạp dịch vụ phân loại đều đạt 100%.
+  - Chi tiết lưu tại tài liệu: [CI_VERIFICATION.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/CI_VERIFICATION.md).
+- **Kết quả bàn giao**: Workflow CI có trạng thái xanh hoàn chỉnh trên GitHub.
+
+

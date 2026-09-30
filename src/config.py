@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "src"
 DATA_DIR = ROOT / "data"
 CACHE_DIR = DATA_DIR / "cache"
+DEFAULT_DATA_DIR = CACHE_DIR
 MODELS_DIR = ROOT / "models"
 RESULTS_DIR = ROOT / "results"
 DOCS_DIR = ROOT / "docs"

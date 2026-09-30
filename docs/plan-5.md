@@ -69,4 +69,13 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
   - Đảm bảo không còn tồn tại chuỗi ký tự Plan 3 / v1.0.0 trong mã nguồn giao diện đang hoạt động.
 - **Kết quả bàn giao**: Giao diện và cấu hình hệ thống đồng bộ 100% về phiên bản hiện tại `v1.0.2`.
 
+### Giai đoạn 3 – Sửa liên kết phát hành (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Nội dung rà soát và chỉnh sửa**:
+  - Rà soát toàn bộ liên kết tài liệu trong [docs/RELEASE_NOTES_v1.0.1.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/RELEASE_NOTES_v1.0.1.md) và [README.md](file:///d:/phan-loai-van-ban-naive-bayes/README.md).
+  - Sửa các đường dẫn relative thiếu tiền tố `docs/` hoặc không thể điều hướng trên trang GitHub Release thành URL repo đầy đủ (`https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/...`).
+  - Cập nhật trực tiếp nội dung mô tả phiên bản phát hành `v1.0.1` trên GitHub qua API (`PATCH /repos/thinh204/phan-loai-van-ban-naive-bayes/releases/{id}`).
+- **Kết quả bàn giao**: 100% liên kết trên trang phát hành GitHub Release và tài liệu điều hướng chính xác tới tệp đích.
+
+
 

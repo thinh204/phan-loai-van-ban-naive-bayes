@@ -16,9 +16,9 @@ Phiên bản **v1.0.1** đánh dấu sự hoàn thiện trọn vẹn của đề
 ## 2. Các điểm nổi bật và cải tiến trong v1.0.1
 
 ### 1. Đồng bộ mã nguồn và xác minh CI tự động
-- Thiết lập quy trình **Continuous Integration (CI)** trên GitHub Actions qua tệp `.github/workflows/ci.yml`.
+- Thiết lập quy trình **Continuous Integration (CI)** trên GitHub Actions qua tệp [.github/workflows/ci.yml](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/.github/workflows/ci.yml).
 - Xác minh chạy thành công tự động trên cả hai môi trường **Python 3.10** và **Python 3.11** trên Ubuntu.
-- Lưu trữ đầy đủ bằng chứng kiểm thử tại [docs/CI_VERIFICATION.md](CI_VERIFICATION.md).
+- Lưu trữ đầy đủ bằng chứng kiểm thử tại [docs/CI_VERIFICATION.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/CI_VERIFICATION.md).
 
 ### 2. Triển khai ứng dụng trực tuyến
 - Ứng dụng Streamlit được triển khai chính thức trên nền tảng **Streamlit Community Cloud** tại địa chỉ:  
@@ -33,12 +33,12 @@ Phiên bản **v1.0.1** đánh dấu sự hoàn thiện trọn vẹn của đề
   - Cảnh báo độ tin cậy thấp (< 60%) cho các văn bản mơ hồ.
   - Trích xuất top từ khóa giải thích theo mức đóng góp biên log-odds.
   - Xuất toàn bộ bảng lịch sử phân loại trong phiên ra tệp CSV.
-- Biên bản nghiệm thu chi tiết được lập tại [docs/NGHIEM_THU.md](NGHIEM_THU.md).
+- Biên bản nghiệm thu chi tiết được lập tại [docs/NGHIEM_THU.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/NGHIEM_THU.md).
 
 ### 4. Đồng bộ hệ thống tài liệu và số liệu thực nghiệm
 - Đồng bộ toàn bộ README, báo cáo khoa học, kịch bản thuyết trình và hướng dẫn thực thi:
   - Cập nhật số lượng kiểm thử tự động chính xác là **16 test cases** (`pytest -v`).
-  - Đối chiếu số liệu thực nghiệm gốc từ `results/evaluation_summary.json`:
+  - Đối chiếu số liệu thực nghiệm gốc từ [results/evaluation_summary.json](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/results/evaluation_summary.json):
     - Mô hình: `MultinomialNB(alpha=0.1)`
     - Tập kiểm thử: 1.490 mẫu test (sau khi học 2.239 mẫu train)
     - Test Accuracy: **88,52%** (+1,34% so với mô hình cơ sở)
@@ -46,14 +46,14 @@ Phiên bản **v1.0.1** đánh dấu sự hoàn thiện trọn vẹn của đề
     - Weighted F1: **88,49%**
 
 ### 5. Rà soát hoàn thiện Slide thuyết trình PowerPoint
-- Cập nhật tệp slide bảo vệ [`presentation/phan-loai-van-ban-naive-bayes-v2.pptx`](../presentation/phan-loai-van-ban-naive-bayes-v2.pptx):
+- Cập nhật tệp slide bảo vệ [presentation/phan-loai-van-ban-naive-bayes-v2.pptx](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/presentation/phan-loai-van-ban-naive-bayes-v2.pptx):
   - Slide 7: Quy trình Stratified 5-Fold Cross-Validation chọn `alpha=0.1` trên tập train.
   - Slide 8: Biểu đồ kết quả trực quan so sánh mô hình cơ sở (`alpha=1.0`) và mô hình tối ưu (`alpha=0.1`).
   - Slide 10: Khẳng định 16 kiểm thử tự động, CI Pipeline xanh, tính năng giải thích và web demo.
-  - Toàn bộ speaker notes được rà soát đồng bộ với kịch bản bảo vệ [docs/thuyet-trinh.md](thuyet-trinh.md).
+  - Toàn bộ speaker notes được rà soát đồng bộ với kịch bản bảo vệ [docs/thuyet-trinh.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/thuyet-trinh.md).
 
 ### 6. Đóng gói bài nộp chính thức
-- Lập bảng checklist hồ sơ đầy đủ tại [docs/CHECKLIST_NOP_BAI.md](CHECKLIST_NOP_BAI.md).
+- Lập bảng checklist hồ sơ đầy đủ tại [docs/CHECKLIST_NOP_BAI.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/CHECKLIST_NOP_BAI.md).
 - Tạo tệp lưu trữ nén sẵn sàng nộp lên LMS: `release/phan-loai-van-ban-naive-bayes-final-submission.zip` (655 KB).
 
 ---
@@ -62,10 +62,11 @@ Phiên bản **v1.0.1** đánh dấu sự hoàn thiện trọn vẹn của đề
 
 - **Mã nguồn ứng dụng**: `app.py`, `src/classifier_service.py`, `src/config.py`
 - **Mô hình nạp sẵn**: `models/naive_bayes_model.joblib`, `models/tfidf_vectorizer.joblib`
-- **Kết quả thực nghiệm**: `results/evaluation_summary.json`, `results/alpha_tuning.json`, `results/error_analysis.json`
-- **Slide thuyết trình**: `presentation/phan-loai-van-ban-naive-bayes-v2.pptx`
+- **Kết quả thực nghiệm**: [results/evaluation_summary.json](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/results/evaluation_summary.json), `results/alpha_tuning.json`, `results/error_analysis.json`
+- **Slide thuyết trình**: [presentation/phan-loai-van-ban-naive-bayes-v2.pptx](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/presentation/phan-loai-van-ban-naive-bayes-v2.pptx)
 - **Gói nộp bài**: `release/phan-loai-van-ban-naive-bayes-final-submission.zip`
-- **Báo cáo & Hướng dẫn**: `docs/bao-cao.md`, `docs/thuyet-trinh.md`, `docs/DEMO_SCRIPT.md`, `docs/DEFENSE_QA.md`, `docs/NGHIEM_THU.md`, `docs/CI_VERIFICATION.md`
+- **Báo cáo & Hướng dẫn**: [docs/bao-cao.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/bao-cao.md), [docs/thuyet-trinh.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/thuyet-trinh.md), [docs/DEMO_SCRIPT.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/DEMO_SCRIPT.md), [docs/DEFENSE_QA.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/DEFENSE_QA.md), [docs/NGHIEM_THU.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/NGHIEM_THU.md), [docs/CI_VERIFICATION.md](https://github.com/thinh204/phan-loai-van-ban-naive-bayes/blob/main/docs/CI_VERIFICATION.md)
+
 
 ---
 

@@ -2,86 +2,23 @@
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
-import joblib
-import numpy as np
 import pandas as pd
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
-MODELS_DIR = ROOT / "models"
-RESULTS_DIR = ROOT / "results"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-CLASS_LABELS_VN = {
-    "comp.graphics": "Đồ họa máy tính (Computer Graphics)",
-    "rec.sport.baseball": "Thể thao - Bóng chày (Baseball)",
-    "sci.space": "Khoa học vũ trụ (Space Science)",
-    "talk.politics.misc": "Chính trị tổng hợp (Politics)",
-}
-
-CLASS_ICONS = {
-    "comp.graphics": "🖥️",
-    "rec.sport.baseball": "⚾",
-    "sci.space": "🚀",
-    "talk.politics.misc": "🏛️",
-}
-
-SAMPLE_TEXTS = {
-    "Đồ họa máy tính (3D Rendering)": (
-        "I am looking for a 3D graphics rendering library with ray tracing and OpenGL shader support. "
-        "The polygon mesh needs to render at 60 fps with texture mapping and antialiasing."
-    ),
-    "Bóng chày (Baseball game)": (
-        "The pitcher threw a 95 mph fastball right down the strike zone for the strikeout. "
-        "The batter swung and missed, leaving runners on first and third base in the bottom of the ninth inning."
-    ),
-    "Khoa học không gian (Space mission)": (
-        "NASA and ESA have announced a new deep space robotic mission to explore the icy moons of Jupiter. "
-        "The satellite orbit will utilize gravitational assists to study atmospheric solar radiation and planetary magnetic fields."
-    ),
-    "Chính trị (Government policy)": (
-        "The Senate committee held an intensive debate regarding federal tax reform, individual liberty, and civil rights legislation. "
-        "Both parties presented opposing viewpoints on government regulation and constitutional amendments."
-    ),
-}
+from src.classifier_service import get_classifier_service
+from src.config import CLASS_ICONS, CLASS_LABELS_VN, SAMPLE_TEXTS
 
 
 @st.cache_resource
-def load_classification_pipeline():
-    """Load pre-trained TF-IDF vectorizer, MultinomialNB model, and class names."""
-    vec_path = MODELS_DIR / "tfidf_vectorizer.joblib"
-    model_path = MODELS_DIR / "naive_bayes_model.joblib"
-    classes_path = MODELS_DIR / "class_names.joblib"
-
-    if not vec_path.exists() or not model_path.exists() or not classes_path.exists():
-        st.error("Chưa tìm thấy mô hình hoặc vectorizer đã huấn luyện trong thư mục 'models/'. "
-                 "Vui lòng chạy 'python src/train_evaluate.py' trước!")
-        st.stop()
-
-    vectorizer = joblib.load(vec_path)
-    model = joblib.load(model_path)
-    class_names = joblib.load(classes_path)
-    return vectorizer, model, class_names
-
-
-def classify_text(text: str, vectorizer, model, class_names: list[str]):
-    """Transform text using fitted TF-IDF vectorizer and predict with MultinomialNB."""
-    # Data leakage safe: strictly transform only
-    X_vec = vectorizer.transform([text])
-    pred_idx = model.predict(X_vec)[0]
-    pred_class = class_names[pred_idx] if isinstance(pred_idx, (int, np.integer)) else pred_idx
-
-    # Probabilities
-    probs = model.predict_proba(X_vec)[0]
-    prob_dict = {class_names[i]: float(probs[i]) for i in range(len(class_names))}
-
-    # Significant TF-IDF tokens in input
-    feature_names = vectorizer.get_feature_names_out()
-    non_zero_indices = X_vec.nonzero()[1]
-    tokens_tfidf = [(feature_names[i], X_vec[0, i]) for i in non_zero_indices]
-    tokens_tfidf.sort(key=lambda x: x[1], reverse=True)
-
-    return pred_class, prob_dict, tokens_tfidf
+def get_service():
+    """Load and cache the classifier service instance."""
+    return get_classifier_service()
 
 
 def main():
@@ -127,8 +64,12 @@ def main():
         unsafe_allow_html=True,
     )
 
-    # Load artifacts
-    vectorizer, model, class_names = load_classification_pipeline()
+    # Get cached service
+    try:
+        service = get_service()
+    except Exception as exc:
+        st.error(f"Lỗi nạp mô hình: {exc}. Vui lòng chạy huấn luyện mô hình trước!")
+        st.stop()
 
     # Sidebar
     with st.sidebar:
@@ -136,7 +77,7 @@ def main():
         st.markdown("**Thuật toán:** Multinomial Naive Bayes (`MultinomialNB`)")
         st.markdown("**Đặc trưng:** TF-IDF (`TfidfVectorizer`)")
         st.markdown("**Làm trơn (Smoothing):** Laplace (`alpha = 1.0`)")
-        st.markdown(f"**Số lượng từ vựng:** `{len(vectorizer.get_feature_names_out()):,}` đặc trưng")
+        st.markdown(f"**Số lượng từ vựng:** `{len(service.vectorizer.get_feature_names_out()):,}` đặc trưng")
         st.markdown("**Dữ liệu kiểm thử:** 20 Newsgroups (4 lớp)")
 
         st.markdown("---")
@@ -189,11 +130,14 @@ def main():
             st.warning("⚠️ Vui lòng nhập nội dung văn bản trước khi nhấn nút Phân loại!")
         else:
             with st.spinner("Đang tính toán ma trận TF-IDF và dự đoán xác suất Naive Bayes..."):
-                pred_class, prob_dict, tokens_tfidf = classify_text(clean_input, vectorizer, model, class_names)
+                result = service.classify(clean_input)
 
-            vn_name = CLASS_LABELS_VN.get(pred_class, pred_class)
-            icon = CLASS_ICONS.get(pred_class, "📌")
-            max_prob = prob_dict[pred_class] * 100
+            pred_class = result["predicted_class"]
+            vn_name = result["predicted_class_vn"]
+            icon = result["icon"]
+            max_prob = result["confidence_percent"]
+            prob_dict = result["probabilities"]
+            tokens_tfidf = result["top_features"]
 
             st.markdown(
                 f"""
@@ -214,10 +158,10 @@ def main():
             with col_left:
                 st.subheader("📈 Phân bố xác suất các lớp")
                 prob_df = pd.DataFrame({
-                    "Chủ đề": [f"{CLASS_ICONS.get(c, '')} {c}" for c in class_names],
-                    "Tên tiếng Việt": [CLASS_LABELS_VN.get(c, c) for c in class_names],
-                    "Xác suất": [prob_dict[c] for c in class_names],
-                    "Tỷ lệ (%)": [f"{prob_dict[c] * 100:.2f}%" for c in class_names],
+                    "Chủ đề": [f"{CLASS_ICONS.get(c, '')} {c}" for c in service.class_names],
+                    "Tên tiếng Việt": [CLASS_LABELS_VN.get(c, c) for c in service.class_names],
+                    "Xác suất": [prob_dict[c] for c in service.class_names],
+                    "Tỷ lệ (%)": [f"{prob_dict[c] * 100:.2f}%" for c in service.class_names],
                 }).sort_values(by="Xác suất", ascending=False)
 
                 st.dataframe(
@@ -234,7 +178,7 @@ def main():
                 st.subheader("🔍 Từ khóa quan trọng (TF-IDF)")
                 if tokens_tfidf:
                     st.caption("Các từ trong văn bản có trọng số TF-IDF cao nhất:")
-                    token_df = pd.DataFrame(tokens_tfidf[:10], columns=["Từ khóa", "Trọng số TF-IDF"])
+                    token_df = pd.DataFrame(tokens_tfidf, columns=["Từ khóa", "Trọng số TF-IDF"])
                     token_df["Trọng số TF-IDF"] = token_df["Trọng số TF-IDF"].apply(lambda v: f"{v:.4f}")
                     st.dataframe(token_df, hide_index=True, use_container_width=True)
                 else:

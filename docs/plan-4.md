@@ -67,5 +67,14 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
   - Cung cấp song song phương án chạy thử nghiệm cục bộ với `streamlit run app.py` (cổng 8501) phục vụ chấm điểm ngoại tuyến.
 - **Kết quả bàn giao**: URL demo Streamlit hoạt động và được ghi nhận thống nhất trong toàn bộ tài liệu.
 
+### Giai đoạn 4 – Nghiệm thu chức năng (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Kết quả nghiệm thu**:
+  - Đã thực hiện kiểm thử thực tế toàn bộ 11 ca nghiệm thu (TC01 đến TC11) bao gồm 4 chủ đề phân loại, xử lý chuỗi rỗng, khoảng trắng, văn bản ngắn, từ vựng ngoài từ điển (OOV), cảnh báo độ tin cậy thấp (< 60%), giải thích từ khóa TF-IDF và trích xuất lịch sử CSV.
+  - Kết quả 11/11 ca nghiệm thu đều **ĐẠT (PASSED)**.
+  - Biên bản nghiệm thu chi tiết được lập tại: [docs/NGHIEM_THU.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/NGHIEM_THU.md).
+- **Kết quả bàn giao**: Biên bản nghiệm thu chức năng đầy đủ, có số liệu và thời gian phản hồi cho từng trường hợp.
+
+
 
 

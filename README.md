@@ -164,6 +164,7 @@ Phân tích trên 1.490 mẫu test thực tế ([`results/error_analysis.json`](
 - [Plan 5: Khắc phục nghiệm thu cuối và diễn tập bảo vệ](docs/plan-5.md)
 - [Plan 6: Sửa sai lệch cuối và khóa bản nộp có thể kiểm chứng](docs/plan-6.md)
 - [Plan 7: Hoàn tất website công khai và phát hành v1.0.3](docs/plan-7.md)
+- [Plan 8: Khôi phục website công khai và nghiệm thu bằng bằng chứng thực tế](docs/plan-8.md)
 - [Biên bản nghiệm thu chức năng Plan 4](docs/NGHIEM_THU.md)
 - [Bằng chứng xác minh CI GitHub Actions](docs/CI_VERIFICATION.md)
 - [Hướng dẫn triển khai Streamlit Cloud](docs/DEPLOYMENT.md)

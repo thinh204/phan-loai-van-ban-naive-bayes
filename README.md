@@ -5,9 +5,9 @@
 ## Sản phẩm
 
 - [Kế hoạch và phân công](docs/ke-hoach.md)
-- Báo cáo lý thuyết và ví dụ tính tay
-- Mã thực nghiệm có thể chạy lại trên bộ dữ liệu 20 Newsgroups
-- Kết quả đánh giá và nội dung thuyết trình
+- [Báo cáo lý thuyết, ví dụ tính tay và kết quả](docs/bao-cao.md)
+- [Mã thực nghiệm và cách chạy](docs/chay-thu-nghiem.md) trên bộ dữ liệu 20 Newsgroups
+- [Kết quả máy đọc được](results/metrics.json) và nội dung thuyết trình
 
 ## Nguyên tắc thực nghiệm
 

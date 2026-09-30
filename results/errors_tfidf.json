@@ -1,0 +1,50 @@
+[
+  {
+    "test_index": 1,
+    "true": "sci.space",
+    "predicted": "rec.sport.baseball",
+    "characters_after_removal": 0
+  },
+  {
+    "test_index": 22,
+    "true": "talk.politics.misc",
+    "predicted": "rec.sport.baseball",
+    "characters_after_removal": 784
+  },
+  {
+    "test_index": 36,
+    "true": "sci.space",
+    "predicted": "rec.sport.baseball",
+    "characters_after_removal": 4
+  },
+  {
+    "test_index": 38,
+    "true": "talk.politics.misc",
+    "predicted": "sci.space",
+    "characters_after_removal": 83
+  },
+  {
+    "test_index": 40,
+    "true": "comp.graphics",
+    "predicted": "sci.space",
+    "characters_after_removal": 112
+  },
+  {
+    "test_index": 42,
+    "true": "talk.politics.misc",
+    "predicted": "rec.sport.baseball",
+    "characters_after_removal": 46
+  },
+  {
+    "test_index": 43,
+    "true": "talk.politics.misc",
+    "predicted": "rec.sport.baseball",
+    "characters_after_removal": 184
+  },
+  {
+    "test_index": 65,
+    "true": "talk.politics.misc",
+    "predicted": "sci.space",
+    "characters_after_removal": 86
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "dataset": "20 Newsgroups, four selected categories",
+  "source": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html",
+  "classes": [
+    "comp.graphics",
+    "rec.sport.baseball",
+    "sci.space",
+    "talk.politics.misc"
+  ],
+  "remove": [
+    "headers",
+    "footers",
+    "quotes"
+  ],
+  "n_train": 2239,
+  "n_test": 1490,
+  "empty_after_removal": {
+    "train": 63,
+    "test": 42
+  },
+  "train_counts": {
+    "comp.graphics": 584,
+    "rec.sport.baseball": 597,
+    "sci.space": 593,
+    "talk.politics.misc": 465
+  },
+  "test_counts": {
+    "comp.graphics": 389,
+    "rec.sport.baseball": 397,
+    "sci.space": 394,
+    "talk.politics.misc": 310
+  },
+  "sklearn_version": "1.7.2",
+  "parameters": {
+    "alpha": 1.0,
+    "vectorizer": {
+      "min_df": 2,
+      "max_df": 0.95,
+      "lowercase": true
+    }
+  },
+  "models": {
+    "count": {
+      "n_features": 13068,
+      "accuracy": 0.8543624161073825,
+      "macro_f1": 0.8520442867918108,
+      "classification_report": {
+        "comp.graphics": {
+          "precision": 0.9136125654450262,
+          "recall": 0.897172236503856,
+          "f1-score": 0.9053177691309987,
+          "support": 389.0
+        },
+        "rec.sport.baseball": {
+          "precision": 0.8872180451127819,
+          "recall": 0.8916876574307305,
+          "f1-score": 0.8894472361809045,
+          "support": 397.0
+        },
+        "sci.space": {
+          "precision": 0.9122257053291536,
+          "recall": 0.7385786802030457,
+          "f1-score": 0.8162692847124825,
+          "support": 394.0
+        },
+        "talk.politics.misc": {
+          "precision": 0.7153846153846154,
+          "recall": 0.9,
+          "f1-score": 0.7971428571428572,
+          "support": 310.0
+        },
+        "accuracy": 0.8543624161073825,
+        "macro avg": {
+          "precision": 0.8571102328178943,
+          "recall": 0.856859643534408,
+          "f1-score": 0.8520442867918108,
+          "support": 1490.0
+        },
+        "weighted avg": {
+          "precision": 0.8649711480112797,
+          "recall": 0.8543624161073825,
+          "f1-score": 0.8550359388233432,
+          "support": 1490.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          349,
+          9,
+          11,
+          20
+        ],
+        [
+          12,
+          354,
+          2,
+          29
+        ],
+        [
+          18,
+          23,
+          291,
+          62
+        ],
+        [
+          3,
+          13,
+          15,
+          279
+        ]
+      ]
+    },
+    "tfidf": {
+      "n_features": 13068,
+      "accuracy": 0.8718120805369127,
+      "macro_f1": 0.8686632691636036,
+      "classification_report": {
+        "comp.graphics": {
+          "precision": 0.9140625,
+          "recall": 0.9023136246786633,
+          "f1-score": 0.908150064683053,
+          "support": 389.0
+        },
+        "rec.sport.baseball": {
+          "precision": 0.864367816091954,
+          "recall": 0.947103274559194,
+          "f1-score": 0.9038461538461539,
+          "support": 397.0
+        },
+        "sci.space": {
+          "precision": 0.8159806295399515,
+          "recall": 0.8553299492385786,
+          "f1-score": 0.8351920693928129,
+          "support": 394.0
+        },
+        "talk.politics.misc": {
+          "precision": 0.9108527131782945,
+          "recall": 0.7580645161290323,
+          "f1-score": 0.8274647887323944,
+          "support": 310.0
+        },
+        "accuracy": 0.8718120805369127,
+        "macro avg": {
+          "precision": 0.87631591470255,
+          "recall": 0.865702841151367,
+          "f1-score": 0.8686632691636036,
+          "support": 1490.0
+        },
+        "weighted avg": {
+          "precision": 0.8742181507466564,
+          "recall": 0.8718120805369127,
+          "f1-score": 0.8709242000580143,
+          "support": 1490.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          351,
+          10,
+          26,
+          2
+        ],
+        [
+          9,
+          376,
+          5,
+          7
+        ],
+        [
+          19,
+          24,
+          337,
+          14
+        ],
+        [
+          5,
+          25,
+          45,
+          235
+        ]
+      ]
+    }
+  }
+}

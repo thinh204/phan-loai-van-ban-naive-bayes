@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import re
 from pathlib import Path
 
 import sklearn
@@ -26,13 +25,6 @@ CATEGORIES = (
 REMOVE = ("headers", "footers", "quotes")
 VECTORIZER_OPTIONS = {"min_df": 2, "max_df": 0.95, "lowercase": True}
 ALPHA = 1.0
-
-
-def clean_excerpt(text: str, limit: int = 220) -> str:
-    """Keep a short example while masking the most obvious contact details."""
-    text = re.sub(r"\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b", "[email]", text)
-    text = re.sub(r"https?://\S+|www\.\S+", "[url]", text)
-    return " ".join(text.split())[:limit]
 
 
 def run(data_dir: Path, output_dir: Path) -> None:
@@ -58,6 +50,10 @@ def run(data_dir: Path, output_dir: Path) -> None:
         "remove": list(REMOVE),
         "n_train": len(train.data),
         "n_test": len(test.data),
+        "empty_after_removal": {
+            "train": sum(not text.strip() for text in train.data),
+            "test": sum(not text.strip() for text in test.data),
+        },
         "train_counts": {name: int((train.target == i).sum()) for i, name in enumerate(train.target_names)},
         "test_counts": {name: int((test.target == i).sum()) for i, name in enumerate(test.target_names)},
         "sklearn_version": sklearn.__version__,
@@ -93,7 +89,7 @@ def run(data_dir: Path, output_dir: Path) -> None:
             for label, row in zip(train.target_names, matrix):
                 writer.writerow([label, *row.tolist()])
 
-        # These examples support qualitative error analysis; no raw corpus is committed.
+        # Keep only indices and labels; the raw corpus remains in the local cache.
         errors = []
         for index, (true_label, predicted_label) in enumerate(zip(test.target, prediction)):
             if true_label != predicted_label:
@@ -101,7 +97,7 @@ def run(data_dir: Path, output_dir: Path) -> None:
                     "test_index": index,
                     "true": train.target_names[true_label],
                     "predicted": train.target_names[predicted_label],
-                    "excerpt": clean_excerpt(test.data[index]),
+                    "characters_after_removal": len(test.data[index].strip()),
                 })
             if len(errors) >= 8:
                 break

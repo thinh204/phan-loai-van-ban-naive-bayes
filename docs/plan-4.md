@@ -101,6 +101,15 @@ Plan 3 đã hoàn thành phần triển khai trong mã nguồn: môi trường c
   - Speaker notes của tất cả các slide được cập nhật chính xác theo số liệu thực nghiệm mới nhất.
 - **Kết quả bàn giao**: Tệp PowerPoint hoàn chỉnh và sẵn sàng cho buổi bảo vệ đề tài.
 
+### Giai đoạn 7 – Đóng gói bài nộp (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Tài liệu bàn giao**:
+  - Lập bảng checklist hồ sơ hoàn chỉnh: [docs/CHECKLIST_NOP_BAI.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/CHECKLIST_NOP_BAI.md).
+  - Đóng gói toàn bộ mã nguồn, dữ liệu mô hình nạp sẵn, slide PowerPoint, tài liệu báo cáo và kết quả thực nghiệm vào tệp lưu trữ: `release/phan-loai-van-ban-naive-bayes-final-submission.zip` (dung lượng 655 KB).
+  - Soạn thảo hướng dẫn chạy lại từ gói nộp và phương án demo ngoại tuyến độc lập không cần mạng Internet.
+- **Kết quả bàn giao**: Bộ hồ sơ nộp đầy đủ, có thể mở, kiểm thử và chạy lại ngay lập tức.
+
+
 
 
 

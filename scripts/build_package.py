@@ -27,6 +27,7 @@ ALLOWED_DIRS = [
     "presentation",
     ".streamlit",
     ".github",
+    "scripts",
 ]
 
 # Explicit whitelist of root files to include

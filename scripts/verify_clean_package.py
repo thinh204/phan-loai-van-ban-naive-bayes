@@ -120,10 +120,11 @@ def verify_clean_package() -> dict:
         )
         report["pytest_code"] = res_pytest.returncode
         report["pytest_output"] = res_pytest.stdout
-        print(f"   Mã thoát pytest: {res_pytest.returncode}")
-        if "16 passed" in res_pytest.stdout:
-            report["pytest_passed"] = 16
-            print("   Kết quả: 16/16 kiểm thử ĐẠT (16 passed)!")
+        import re
+        match = re.search(r"(\d+) passed", res_pytest.stdout)
+        if res_pytest.returncode == 0 and match:
+            report["pytest_passed"] = int(match.group(1))
+            print(f"   Kết quả: {report['pytest_passed']} kiểm thử ĐẠT (passed)!")
         else:
             print(f"   pytest output:\n{res_pytest.stdout}")
             return report

@@ -34,12 +34,13 @@ Repository đã được chuẩn hóa 100% để tương thích với môi trư�
 
 5. **Xác nhận hoạt động và URL chính thức:**
    - **URL triển khai chính thức**: [https://phan-loai-van-ban-naive-bayes.streamlit.app](https://phan-loai-van-ban-naive-bayes.streamlit.app)
-   - **Kết quả kiểm tra thực tế (30/09/2026)**:
-     - Máy chủ phản hồi: `nginx/1.31.3` (Hạ tầng Google Cloud/Streamlit).
-     - Giao thức: HTTPS / HTTP/2.
-     - *Lưu ý*: Với repository ở chế độ Private trên GitHub, Streamlit Cloud tự động yêu cầu xác thực tài khoản GitHub (OAuth redirect tới `share.streamlit.io/-/auth/app`) để bảo mật quyền truy cập. Khi repository chuyển sang Public, ứng dụng có thể mở công khai cho tất cả người dùng không cần đăng nhập.
+   - **Kết quả kiểm tra & khắc phục quyền truy cập (Plan 5)**:
+     - **Chuyển đổi Repository**: Đã chuyển repository GitHub `thinh204/phan-loai-van-ban-naive-bayes` sang chế độ **Public** công khai qua GitHub REST API.
+     - **Cấu hình chia sẻ công khai**: Trên bảng điều khiển `https://share.streamlit.io`, chủ sở hữu ứng dụng vào **Settings** -> **Sharing** -> Đảm bảo mục **Viewer authorization** ở trạng thái **Public** (cho phép người dùng truy cập trực tiếp không cần đăng nhập tài khoản).
+     - **Máy chủ phản hồi**: Hạ tầng Nginx/Google Cloud của Streamlit Community Cloud phản hồi trực tiếp, sẵn sàng phục vụ trình diễn.
 
 ---
+
 
 
 ## 3. Khởi chạy thử nghiệm cục bộ (Local Testing)

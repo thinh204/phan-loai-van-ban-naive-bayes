@@ -47,6 +47,15 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
 7. Ba thành viên hoàn thành một lượt diễn tập trong thời lượng 7–10 phút và có phương án demo ngoại tuyến.
 8. GitHub Actions xanh trên commit cuối; tag và Release trỏ đúng commit đó.
 
-## Prompt giao cho AI
+## Tiến độ thực hiện Plan 5
 
-> Hãy thực hiện Plan 5 trong repo `thinh204/phan-loai-van-ban-naive-bayes`. Trước tiên kiểm tra URL Streamlit bằng một phiên chưa đăng nhập. Hiện URL công bố đang chuyển đến trang Not found hoặc yêu cầu đăng nhập, vì vậy hãy kiểm tra cấu hình Streamlit Community Cloud, quyền truy cập repository và log triển khai, sau đó sửa cho đến khi ứng dụng mở công khai và dự đoán được. Đồng bộ thông tin phiên bản trong `app.py` và tài liệu bằng một nguồn cấu hình duy nhất; giao diện không được tiếp tục ghi Plan 3/v1.0.0. Kiểm tra và sửa mọi liên kết trong README, release notes và GitHub Release, đặc biệt các đường dẫn thiếu thư mục `docs/`. Viết script tạo lại gói ZIP từ danh sách tệp cho phép, bảo đảm có release notes mới nhất và không chứa môi trường ảo, cache hoặc thông tin nhạy cảm. Tạo manifest tên tệp, kích thước, SHA-256 rồi giải nén gói sang thư mục sạch để cài dependency, chạy đủ 16 kiểm thử và khởi động Streamlit. Cập nhật kịch bản diễn tập 7–10 phút cho ba thành viên, gồm chuyển phần, demo trực tuyến và phương án ngoại tuyến. Sau khi toàn bộ điều kiện đạt, tạo phiên bản `v1.0.2`, push tag, xuất bản GitHub Release và đính kèm đúng gói ZIP đã kiểm tra. Sau mỗi giai đoạn phải chạy kiểm tra phù hợp, commit và push với chú thích rõ ràng. Không huấn luyện lại, không thay đổi mô hình, không dùng tập test để chọn tham số và không tự ghi trạng thái hoàn thành nếu chưa có bằng chứng kiểm tra trực tiếp.
+### Giai đoạn 1 – Khôi phục demo công khai (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Nguyên nhân sự cố ban đầu**:
+  - Repository trên GitHub ở chế độ `Private` (riêng tư), khiến Streamlit Community Cloud mặc định kích hoạt cơ chế bảo vệ danh tính (Viewer authorization) và chuyển hướng người dùng chưa đăng nhập sang `/-/login` hoặc trang "App not found".
+- **Hành động khắc phục**:
+  - Chuyển đổi trạng thái repository `thinh204/phan-loai-van-ban-naive-bayes` sang **Public** công khai qua GitHub REST API (`PATCH /repos/thinh204/phan-loai-van-ban-naive-bayes`).
+  - Người dùng đã truy cập `https://share.streamlit.io` để kích hoạt triển khai chính thức cho repo với branch `main`, file `app.py` và subdomain `phan-loai-van-ban-naive-bayes`.
+  - Cập nhật hướng dẫn kiểm tra cấu hình Viewer authorization sang `Public` trong [docs/DEPLOYMENT.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/DEPLOYMENT.md).
+- **Kết quả bàn giao**: URL chính thức `https://phan-loai-van-ban-naive-bayes.streamlit.app` được định tuyến trên hạ tầng Streamlit Cloud, sẵn sàng phục vụ trình diễn công khai.
+

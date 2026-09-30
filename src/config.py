@@ -11,6 +11,13 @@ MODELS_DIR = ROOT / "models"
 RESULTS_DIR = ROOT / "results"
 DOCS_DIR = ROOT / "docs"
 
+# Central version and release metadata (Nguồn duy nhất cho thông tin phiên bản)
+APP_NAME = "Phân loại văn bản bằng Naive Bayes đa thức"
+APP_VERSION = "v1.0.2"
+PLAN_VERSION = "Plan 5"
+RELEASE_VERSION = "v1.0.2"
+FOOTER_CAPTION = f"Khoa Công nghệ Thông tin • Đề tài: Phân loại văn bản bằng Multinomial Naive Bayes ({APP_VERSION} - {PLAN_VERSION})"
+
 # Artifact file paths
 MODEL_PATH = MODELS_DIR / "naive_bayes_model.joblib"
 VECTORIZER_PATH = MODELS_DIR / "tfidf_vectorizer.joblib"
@@ -22,6 +29,7 @@ METRICS_PATH = RESULTS_DIR / "metrics.json"
 CONFUSION_CSV_PATH = RESULTS_DIR / "confusion_tfidf.csv"
 ALPHA_TUNING_PATH = RESULTS_DIR / "alpha_tuning.json"
 ERROR_ANALYSIS_PATH = RESULTS_DIR / "error_analysis.json"
+
 
 # Dataset classes and metadata
 CATEGORIES = (

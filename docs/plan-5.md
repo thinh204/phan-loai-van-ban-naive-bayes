@@ -59,3 +59,14 @@ Khắc phục các sai lệch còn lại của Plan 4, chứng minh bản nộp 
   - Cập nhật hướng dẫn kiểm tra cấu hình Viewer authorization sang `Public` trong [docs/DEPLOYMENT.md](file:///d:/phan-loai-van-ban-naive-bayes/docs/DEPLOYMENT.md).
 - **Kết quả bàn giao**: URL chính thức `https://phan-loai-van-ban-naive-bayes.streamlit.app` được định tuyến trên hạ tầng Streamlit Cloud, sẵn sàng phục vụ trình diễn công khai.
 
+### Giai đoạn 2 – Đồng bộ phiên bản (Hoàn thành)
+- **Thời gian thực hiện**: 30/09/2026.
+- **Thiết lập nguồn chân lý duy nhất (Single Source of Truth)**:
+  - Khai báo các hằng số siêu dữ liệu tập trung trong [src/config.py](file:///d:/phan-loai-van-ban-naive-bayes/src/config.py): `APP_VERSION = "v1.0.2"`, `PLAN_VERSION = "Plan 5"`, `RELEASE_VERSION = "v1.0.2"`, `FOOTER_CAPTION`.
+- **Cập nhật giao diện [app.py](file:///d:/phan-loai-van-ban-naive-bayes/app.py)**:
+  - Thay thế toàn bộ chú thích chân trang cũ (`Plan 3 - Release v1.0.0`) bằng `FOOTER_CAPTION` động.
+  - Bổ sung thông tin phiên bản phát hành (`v1.0.2`) nổi bật trong Sidebar giao diện người dùng.
+  - Đảm bảo không còn tồn tại chuỗi ký tự Plan 3 / v1.0.0 trong mã nguồn giao diện đang hoạt động.
+- **Kết quả bàn giao**: Giao diện và cấu hình hệ thống đồng bộ 100% về phiên bản hiện tại `v1.0.2`.
+
+

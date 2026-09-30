@@ -16,13 +16,16 @@ if str(ROOT) not in sys.path:
 from src.classifier_service import get_classifier_service
 from src.config import (
     ALPHA_TUNING_PATH,
+    APP_VERSION,
     CLASS_ICONS,
     CLASS_LABELS_VN,
     CONFUSION_CSV_PATH,
     EVALUATION_SUMMARY_PATH,
+    FOOTER_CAPTION,
     LOW_CONFIDENCE_THRESHOLD,
     SAMPLE_TEXTS,
 )
+
 
 
 @st.cache_resource
@@ -124,11 +127,13 @@ def main():
     # Sidebar
     with st.sidebar:
         st.header("⚙️ Thông tin hệ thống")
+        st.markdown(f"**Phiên bản ứng dụng:** `{APP_VERSION}`")
         st.markdown("**Thuật toán:** Multinomial Naive Bayes")
         st.markdown("**Trích xuất đặc trưng:** TF-IDF (`TfidfVectorizer`)")
         st.markdown("**Siêu tham số tối ưu:** `alpha = 0.1`")
         st.markdown(f"**Kích thước từ vựng:** `{len(service.vectorizer.get_feature_names_out()):,}` đặc trưng")
         st.markdown(f"**Số lớp phân loại:** `{len(service.class_names)}` lớp")
+
 
         st.markdown("---")
         st.subheader("📊 Hiệu năng thực nghiệm (Động)")
@@ -494,7 +499,8 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.caption("Khoa Công nghệ Thông tin • Đề tài: Phân loại văn bản bằng Multinomial Naive Bayes (Plan 3 - Release v1.0.0)")
+    st.caption(FOOTER_CAPTION)
+
 
 
 if __name__ == "__main__":

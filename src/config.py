@@ -52,6 +52,12 @@ DEFAULT_VECTORIZER_PARAMS = {
     "lowercase": True,
 }
 
+# UX WARNING THRESHOLDS (Ngưỡng cảnh báo giao diện phục vụ trải nghiệm người dùng, KHÔNG phải metric tối ưu)
+MIN_TEXT_LENGTH = 10               # Số ký tự tối thiểu để coi là văn bản có ý nghĩa
+MIN_WORD_COUNT = 3                 # Số từ tối thiểu trong văn bản
+MIN_IN_VOCAB_TOKENS = 2            # Ngưỡng số lượng từ khóa TF-IDF để coi là đủ tín hiệu
+LOW_CONFIDENCE_THRESHOLD = 0.60    # Ngưỡng cảnh báo độ tin cậy thấp (< 60%)
+
 SAMPLE_TEXTS = {
     "Đồ họa máy tính (3D Rendering)": (
         "I am looking for a 3D graphics rendering library with ray tracing and OpenGL shader support. "

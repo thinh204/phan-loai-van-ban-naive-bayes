@@ -136,3 +136,34 @@ def test_pipeline_predicts_new_text(service: TextClassifierService):
         assert res["confidence"] > 0.50
         assert len(res["top_features"]) > 0
         assert res["latency_ms"] >= 0.0
+
+
+# 10. Cảnh báo đầu vào không an toàn / OOV / ít từ vựng
+def test_ux_warnings_on_edge_inputs(service: TextClassifierService):
+    """Verify that service generates appropriate UX warnings for edge cases."""
+    # Empty input
+    res_empty = service.classify("")
+    assert any(w["type"] == "empty" for w in res_empty["warnings"])
+    assert res_empty["is_uncertain"] is True
+
+    # OOV input
+    res_oov = service.classify("asdkfjhasdkljfhasdkljf nonexistingtoken12345")
+    assert any(w["type"] == "no_vocab" for w in res_oov["warnings"])
+    assert any(w["type"] == "low_confidence" for w in res_oov["warnings"])
+    assert res_oov["is_uncertain"] is True
+
+
+# 11. Giải thích đặc trưng dự đoán (Feature Explainability)
+def test_feature_explanations_generated(service: TextClassifierService):
+    """Verify that feature explanation margins are properly computed for known words."""
+    text = "The NASA telescope captured high resolution imagery of the spiral galaxy in space."
+    res = service.classify(text)
+    assert len(res["explanations"]) > 0
+    first_exp = res["explanations"][0]
+    assert "token" in first_exp
+    assert "tfidf" in first_exp
+    assert "margin_contribution" in first_exp
+    assert "support_level" in first_exp
+    # Top supporting word for sci.space should have positive margin
+    assert first_exp["margin_contribution"] > 0
+

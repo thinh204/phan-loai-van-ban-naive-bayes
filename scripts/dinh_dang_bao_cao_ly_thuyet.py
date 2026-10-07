@@ -158,7 +158,7 @@ for style in doc.styles:
 assert preserved_text==[''.join(e.itertext()) for e in list(body)[list(body).index(intro._p):] if e.tag!=qn('w:sectPr')]
 doc.core_properties.title='Nghiên cứu và trình bày một phương pháp phân loại văn bản bằng MULTINOMIAL NAIVE BAYES'
 section=doc.sections[0]
-section.different_first_page_header_footer=True
+section.different_first_page_header_footer=False
 section.footer_distance=Cm(1)
 for footer in [section.footer,section.first_page_footer]:
     for element in list(footer._element): footer._element.remove(element)
@@ -176,7 +176,7 @@ run_pr.append(fonts)
 size=OxmlElement('w:sz');size.set(qn('w:val'),'26');run_pr.append(size)
 color=OxmlElement('w:color');color.set(qn('w:val'),'000000');run_pr.append(color)
 run.append(run_pr)
-text=OxmlElement('w:t');text.text='2';run.append(text)
+text=OxmlElement('w:t');text.text='1';run.append(text)
 field.append(run);footer_par._p.append(field)
 doc.save(OUT)
 shutil.copy2(OUT,ROOT/'docs/bao-cao-tri-tue-nhan-tao-nhom-6.docx')

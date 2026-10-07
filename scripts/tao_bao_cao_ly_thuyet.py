@@ -91,7 +91,7 @@ def page(title):
     doc.add_page_break(); h(title, 1)
 
 p('HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG', True, True)
-p('LỚP D23VHCN01-N', True, True)
+p('LỚP D23VHCNHT01-N', True, True)
 doc.add_paragraph()
 title = doc.add_paragraph('BÁO CÁO LÝ THUYẾT', 'Title'); title.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p('MÔN HỌC  TRÍ TUỆ NHÂN TẠO', True, True)
@@ -99,9 +99,9 @@ doc.add_paragraph()
 p('ĐỀ TÀI', True, True)
 p('NGHIÊN CỨU VÀ TRÌNH BÀY PHƯƠNG PHÁP\nPHÂN LOẠI VĂN BẢN BẰNG\nMULTINOMIAL NAIVE BAYES', True, True)
 doc.add_paragraph()
-p('Nhóm sinh viên thực hiện', True, True)
+p('Nhóm 6 sinh viên thực hiện', True, True)
 table(['Họ và tên sinh viên','Mã số sinh viên'],[
-    ['Lại Huy Thịnh','N23DVCN057'],['Nguyễn Trần Mạnh Dũng','N23DVCN01'],['Nguyễn Hữu Đức','N23DVCN012']], [10,6])
+    ['Lại Huy Thịnh','N23DVCN057'],['Nguyễn Trần Mạnh Dũng','N23DVCN015'],['Nguyễn Hữu Đức','N23DVCN012']], [10,6])
 p('Giảng viên hướng dẫn: ...................................................', center=True)
 doc.add_paragraph()
 p('Tháng 10 năm 2026', center=True)

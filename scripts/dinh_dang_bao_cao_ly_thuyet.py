@@ -33,8 +33,8 @@ replace={9:'MÔN HỌC: TRÍ TUỆ NHÂN TẠO',
 14:'Giảng viên hướng dẫn: ................................................',
 15:'Thực hiện bởi nhóm sinh viên: Nhóm 6',
 16:'1. Lại Huy Thịnh\tN23DVCN057',
-17:'2. Nguyễn Trần Mạnh Dũng\tN23DVCN015',
-18:'3. Nguyễn Hữu Đức\tN23DVCN012',
+17:'2. Nguyễn Hữu Đức\tN23DVCN012',
+18:'3. Nguyễn Trần Mạnh Dũng\tN23DVCN015',
 25:'TP.HCM, tháng 10/2026'}
 for i, src in enumerate(ref.paragraphs[:26]):
     if i==2: continue
@@ -51,20 +51,33 @@ for i, src in enumerate(ref.paragraphs[:26]):
         pr=node.get_or_add_pPr()
         for child in list(pr):
             if child.tag in [qn('w:numPr'),qn('w:ind'),qn('w:tabs')]: pr.remove(child)
-        par.paragraph_format.left_indent=Cm(0.5)
-        par.paragraph_format.tab_stops.add_tab_stop(Cm(10))
-        par.paragraph_format.space_after=Pt(3)
+        par.paragraph_format.left_indent=Cm(1.5)
+        par.paragraph_format.tab_stops.add_tab_stop(Cm(10.8))
+        par.paragraph_format.space_after=Pt(6)
         par.paragraph_format.line_spacing=1
+    if i in [14,15]:
+        par.alignment=WD_ALIGN_PARAGRAPH.CENTER
+        par.paragraph_format.left_indent=Cm(0)
+        par.paragraph_format.right_indent=Cm(0)
+    if i==14:
+        par.paragraph_format.space_before=Pt(14)
+        par.paragraph_format.space_after=Pt(0)
     for run in par.runs:
         run.font.name='Times New Roman'
         if i in [14,15,16,17,18,25]: run.font.size=Pt(13)
         run.font.color.rgb=RGBColor(0,0,0)
+    if i==14:
+        teacher_node=node
+        continue
     cover.append(node)
     if i==15:
         x=deepcopy(node); xp=Paragraph(x,doc._body)
         xp.runs[0].text='Lớp: D23VHCNHT01-N'
         for run in xp.runs[1:]: run.text=''
+        xp.paragraph_format.space_after=Pt(10)
         cover.append(x)
+    if i==18:
+        cover.append(teacher_node)
 
 for index,node in enumerate(cover): body.insert(index,node)
 anchor=intro

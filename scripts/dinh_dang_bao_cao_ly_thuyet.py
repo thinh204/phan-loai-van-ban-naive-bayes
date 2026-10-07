@@ -60,7 +60,7 @@ for i, src in enumerate(ref.paragraphs[:26]):
         par.paragraph_format.left_indent=Cm(0)
         par.paragraph_format.right_indent=Cm(0)
     if i==14:
-        par.paragraph_format.space_before=Pt(14)
+        par.paragraph_format.space_before=Pt(38)
         par.paragraph_format.space_after=Pt(0)
     for run in par.runs:
         run.font.name='Times New Roman'
@@ -107,12 +107,17 @@ for par in doc.paragraphs:
 for text,num,major in toc:
     x=anchor.insert_paragraph_before()
     x.paragraph_format.line_spacing=Pt(17)
-    x.paragraph_format.space_after=Pt(3)
+    x.paragraph_format.space_after=Pt(7)
     x.paragraph_format.left_indent=Cm(0 if major else 0.45)
-    x.paragraph_format.tab_stops.add_tab_stop(Cm(15.8),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
+    x.paragraph_format.right_indent=Cm(0)
+    x.paragraph_format.first_line_indent=Cm(0)
+    x.alignment=WD_ALIGN_PARAGRAPH.LEFT
+    x.paragraph_format.tab_stops.clear_all()
+    text_width=doc.sections[0].page_width-doc.sections[0].left_margin-doc.sections[0].right_margin
+    x.paragraph_format.tab_stops.add_tab_stop(text_width,WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
     r=x.add_run(f'{text}\t{num}')
     r.font.size=Pt(13)
-    r.bold=False
+    r.bold=major
 br=anchor.insert_paragraph_before();br.add_run().add_break(WD_BREAK.PAGE)
 
 for par in doc.paragraphs:

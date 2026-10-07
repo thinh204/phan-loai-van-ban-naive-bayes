@@ -29,7 +29,7 @@ logo.write_bytes(ZipFile(REF).read('word/media/image1.png'))
 rid,_=doc.part.get_or_add_image(str(logo))
 cover=[]
 replace={9:'MÔN HỌC: TRÍ TUỆ NHÂN TẠO',
-10:'ĐỀ TÀI: Nghiên cứu và trình bày một phương pháp\nphân loại văn bản bằng\nMULTINOMIAL NAIVE BAYES',
+10:'ĐỀ TÀI: Nghiên cứu và trình bày một phương pháp\nphân loại văn bản bằng MULTINOMIAL NAIVE BAYES',
 14:'Giảng viên hướng dẫn: ................................................',
 15:'Thực hiện bởi nhóm sinh viên: Nhóm 6',
 16:'1. Lại Huy Thịnh\tN23DVCN057',
@@ -64,6 +64,9 @@ for i, src in enumerate(ref.paragraphs[:26]):
         par.paragraph_format.space_after=Pt(0)
     for run in par.runs:
         run.font.name='Times New Roman'
+        if i==10:
+            run.font.size=Pt(16)
+            run.bold=True
         if i in [14,15,16,17,18,25]: run.font.size=Pt(13)
         run.font.color.rgb=RGBColor(0,0,0)
     if i==14:

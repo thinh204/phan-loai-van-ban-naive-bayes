@@ -29,7 +29,7 @@ logo.write_bytes(ZipFile(REF).read('word/media/image1.png'))
 rid,_=doc.part.get_or_add_image(str(logo))
 cover=[]
 replace={9:'MÔN HỌC: TRÍ TUỆ NHÂN TẠO',
-10:'ĐỀ TÀI: PHÂN LOẠI VĂN BẢN\nBẰNG MULTINOMIAL NAIVE BAYES',
+10:'ĐỀ TÀI: Nghiên cứu và trình bày một phương pháp\nphân loại văn bản bằng\nMULTINOMIAL NAIVE BAYES',
 14:'Giảng viên hướng dẫn: ................................................',
 15:'Thực hiện bởi nhóm sinh viên: Nhóm 6',
 16:'1. Lại Huy Thịnh\tN23DVCN057',
@@ -118,6 +118,7 @@ for par in doc.paragraphs:
 for style in doc.styles:
     if style.type in [1,2]: style.font.color.rgb=RGBColor(0,0,0)
 assert preserved_text==[''.join(e.itertext()) for e in list(body)[list(body).index(intro._p):] if e.tag!=qn('w:sectPr')]
+doc.core_properties.title='Nghiên cứu và trình bày một phương pháp phân loại văn bản bằng MULTINOMIAL NAIVE BAYES'
 doc.save(OUT)
 assert hashlib.sha256(REF.read_bytes()).hexdigest()==ref_sha
 print('Reference SHA256',ref_sha)

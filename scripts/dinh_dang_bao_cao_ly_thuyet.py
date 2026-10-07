@@ -4,6 +4,7 @@ from pathlib import Path
 import hashlib
 import re
 import shutil
+import runpy
 from zipfile import ZipFile
 from docx import Document
 from docx.text.paragraph import Paragraph
@@ -20,6 +21,18 @@ OUT=ROOT/'docs/bao-cao-ly-thuyet-phan-loai-van-ban.docx'
 ref_sha=hashlib.sha256(REF.read_bytes()).hexdigest()
 ref=Document(REF)
 doc=Document(OUT)
+# Hoàn nguyên section phân trang về page break trước khi sửa bìa/mục lục.
+# Cuối quy trình sẽ dựng lại 16 footer riêng để tránh lặp số khi xem trước.
+if len(doc.sections)>1:
+    for paragraph in doc.paragraphs:
+        pr=paragraph._p.find(qn('w:pPr'))
+        if pr is not None:
+            sect=pr.find(qn('w:sectPr'))
+            if sect is not None:
+                pr.remove(sect)
+                paragraph.add_run().add_break(WD_BREAK.PAGE)
+    numtype=doc.sections[0]._sectPr.find(qn('w:pgNumType'))
+    if numtype is not None: doc.sections[0]._sectPr.remove(numtype)
 body=doc._element.body
 intro=next(p for p in doc.paragraphs if p.text=='LỜI MỞ ĐẦU')
 all_nodes=list(body)
@@ -184,3 +197,4 @@ assert hashlib.sha256(REF.read_bytes()).hexdigest()==ref_sha
 print('Reference SHA256',ref_sha)
 print('TOC entries',len(toc))
 print('Preserved all theory paragraphs and tables')
+runpy.run_path(str(ROOT/'scripts/danh_so_tung_trang_bao_cao.py'),run_name='__main__')

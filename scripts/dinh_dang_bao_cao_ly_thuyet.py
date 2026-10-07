@@ -157,6 +157,27 @@ for style in doc.styles:
     if style.type in [1,2]: style.font.color.rgb=RGBColor(0,0,0)
 assert preserved_text==[''.join(e.itertext()) for e in list(body)[list(body).index(intro._p):] if e.tag!=qn('w:sectPr')]
 doc.core_properties.title='Nghiên cứu và trình bày một phương pháp phân loại văn bản bằng MULTINOMIAL NAIVE BAYES'
+section=doc.sections[0]
+section.different_first_page_header_footer=True
+section.footer_distance=Cm(1)
+for footer in [section.footer,section.first_page_footer]:
+    for element in list(footer._element): footer._element.remove(element)
+    footer.add_paragraph()
+footer_par=section.footer.paragraphs[0]
+footer_par.alignment=WD_ALIGN_PARAGRAPH.CENTER
+footer_par.paragraph_format.space_before=Pt(0)
+footer_par.paragraph_format.space_after=Pt(0)
+field=OxmlElement('w:fldSimple');field.set(qn('w:instr'),'PAGE')
+run=OxmlElement('w:r')
+run_pr=OxmlElement('w:rPr')
+fonts=OxmlElement('w:rFonts')
+for name in ['ascii','hAnsi','eastAsia']: fonts.set(qn('w:'+name),'Times New Roman')
+run_pr.append(fonts)
+size=OxmlElement('w:sz');size.set(qn('w:val'),'26');run_pr.append(size)
+color=OxmlElement('w:color');color.set(qn('w:val'),'000000');run_pr.append(color)
+run.append(run_pr)
+text=OxmlElement('w:t');text.text='2';run.append(text)
+field.append(run);footer_par._p.append(field)
 doc.save(OUT)
 shutil.copy2(OUT,ROOT/'docs/bao-cao-tri-tue-nhan-tao-nhom-6.docx')
 assert hashlib.sha256(REF.read_bytes()).hexdigest()==ref_sha

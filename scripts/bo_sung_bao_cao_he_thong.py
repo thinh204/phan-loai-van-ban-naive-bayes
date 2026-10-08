@@ -105,9 +105,9 @@ t=doc.add_table(rows=0,cols=2);t.autofit=False
 t.columns[0].width=Cm(15.3);t.columns[1].width=Cm(.7)
 for label,num in entries:
     cells=t.add_row().cells;cells[0].width=Cm(15.3);cells[1].width=Cm(.7)
-    font=12
-    available=15.1/2.54*72
+    font=13
     major=label.startswith(('CHƯƠNG','KẾT','LỜI','TÀI'))
+    available=Cm(15.3).pt-(0 if major else Cm(.45).pt)-4
     metric='TNRB' if major else 'TNR'
     dots=max(3,int((available-pdfmetrics.stringWidth(label+'  ',metric,font))/pdfmetrics.stringWidth('.',metric,font)))
     cells[0].text=label+' '+'.'*dots;cells[1].text=str(num)
@@ -117,10 +117,10 @@ for label,num in entries:
             e=OxmlElement('w:'+side);e.set(qn('w:w'),'0');e.set(qn('w:type'),'dxa');margins.append(e)
         c._tc.get_or_add_tcPr().append(margins)
         for par in c.paragraphs:
-            par.paragraph_format.left_indent=Cm(0)
+            par.paragraph_format.left_indent=Cm(.45 if i==0 and not major else 0)
             par.paragraph_format.right_indent=Cm(0)
             par.paragraph_format.first_line_indent=Cm(0)
-            par.paragraph_format.line_spacing=Pt(18)
+            par.paragraph_format.line_spacing=Pt(20)
             par.paragraph_format.space_after=Pt(9)
             par.alignment=WD_ALIGN_PARAGRAPH.RIGHT if i else WD_ALIGN_PARAGRAPH.LEFT
             for r in par.runs:r.font.size=Pt(font);r.bold=major
@@ -221,6 +221,14 @@ boundary();old(14);boundary();old(15)
 
 # Sửa phần dẫn nhập để phản ánh phạm vi đã bổ sung.
 for par in doc.paragraphs:
+    if '\tN23DVCN' in par.text:
+        par.alignment=WD_ALIGN_PARAGRAPH.LEFT
+        par.paragraph_format.right_indent=Cm(.5)
+        tabs=par._p.get_or_add_pPr().find(qn('w:tabs'))
+        if tabs is not None:tabs.getparent().remove(tabs)
+        tabs=OxmlElement('w:tabs')
+        tab=OxmlElement('w:tab');tab.set(qn('w:val'),'right');tab.set(qn('w:pos'),str(round(Cm(15.5).twips)))
+        tabs.append(tab);par._p.get_or_add_pPr().append(tabs)
     if par.text.startswith('Báo cáo gồm bảy chương'):
         par.text='Báo cáo gồm mười một chương. Chương 1 đến 7 giải thích cơ sở lý thuyết, ví dụ tính tay và giới hạn phương pháp. Chương 8 đến 11 trình bày ý tưởng hệ thống, chức năng, dữ liệu, logic xử lý, giao diện và thư viện theo hệ thống hiện có. Các số liệu hệ thống được ghi rõ là tham chiếu; báo cáo tập trung mô tả và nghiên cứu, không trình bày mã chương trình.'
     if par.text.startswith('Phạm vi chính là phân loại đơn nhãn'):

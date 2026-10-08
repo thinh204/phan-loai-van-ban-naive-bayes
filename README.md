@@ -164,6 +164,8 @@ phan-loai-van-ban-naive-bayes/
 
 ## 7. Tài liệu nộp và bảo vệ đồ án
 
+**Bản Word theo yêu cầu môn Trí tuệ nhân tạo:** [Báo cáo lý thuyết và thiết kế hệ thống của Nhóm 6](docs/bao-cao-tri-tue-nhan-tao-nhom-6-hoan-thien.docx). Bản 24 trang trình bày giải thuật, ý tưởng, chức năng, dữ liệu, logic xử lý, giao diện và thư viện; nội dung được đối chiếu với hệ thống hiện có. Giảng viên hướng dẫn còn để trống để nhóm bổ sung.
+
 | Tài liệu | Đường dẫn |
 | --- | --- |
 | Báo cáo PDF để nộp | [docs/bao-cao-do-an.pdf](docs/bao-cao-do-an.pdf) |
